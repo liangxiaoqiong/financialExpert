@@ -1,0 +1,312 @@
+
+<!--新增员工/编辑员工-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>添加||编辑员工</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+  <form class="modify-body" method="post" action="./employee_edit.html" id="form-submit">
+    <div class="fe-tab" style="padding: 0 20px;">
+      <ul>
+        <li onclick="changeTab('basic')" id="tabli-basic">员工信息</li>
+        <li onclick="changeTab('config')" id="tabli-config">功能配置</li>
+      </ul>
+    </div>
+    <div class="fe-dl-div modify-scroll" style="height: calc(100% - 90px)">
+      <!--region 员工信息-->
+      <div id="dl_basic">
+        <dl>
+          <dt><b class="color-red">*</b>员工姓名:</dt>
+          <dd>
+            <input class="dd-content" name="employee_name" type="text" />
+          </dd>
+        </dl>
+        <dl>
+          <dt>所属部门:</dt>
+          <dd>
+            <div class="rule-single-select dd-content">
+              <select>
+                <option value="">请选择所属部门</option>
+                <option value="1">所属部门1</option>
+                <option value="2">所属部门2</option>
+                <option value="3">所属部门3</option>
+              </select>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>性别:</dt>
+          <dd>
+            <div class="dd-content">
+              <div class="fe-radio-tab-group">
+                <label class="radio-tab">
+                  <input type="radio" name="sex" id="sex_1" value="1" checked>
+                  <label for="sex_1">男</label>
+                </label>
+                <label class="radio-tab">
+                  <input type="radio" name="sex" id="sex_2" value="2">
+                  <label for="sex_2">女</label>
+                </label>
+              </div>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>出生日期:</dt>
+          <dd>
+            <input type="text" value="2019-11-13" id="birthday" class="dd-content input-data" placeholder="请选择出生日期"/>
+            <div class="fe-radio-tab-group">
+              <label class="radio-tab">
+                <input type="radio" name="daytype" id="daytype_1" value="1" checked>
+                <label for="daytype_1">公历</label>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" name="daytype" id="daytype_2" value="2">
+                <label for="daytype_2">农历</label>
+              </label>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>家庭住址:</dt>
+          <dd>
+            <input class="dd-content" type="text" placeholder="请输入家庭地址"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>学历:</dt>
+          <dd>
+            <div class="rule-single-select dd-content">
+              <select>
+                <option value="">请选择学历</option>
+                <option value="1">小学</option>
+                <option value="2">初中</option>
+                <option value="3">高中</option>
+                <option value="4">中专</option>
+                <option value="5">大专</option>
+                <option value="6">本科</option>
+                <option value="7">博士</option>
+                <option value="8">硕士</option>
+                <option value="9">研究生</option>
+              </select>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>电话:</dt>
+          <dd>
+            <input class="dd-content" type="text" placeholder="请输入电话"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>身份证号码:</dt>
+          <dd>
+            <input class="dd-content" type="text" placeholder="请输入身份证号码"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>入职时间:</dt>
+          <dd>
+            <input type="text" value="2019-11-13" id="entryday" class="dd-content input-data" placeholder="请选择入职时间"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>紧急联系人:</dt>
+          <dd>
+            <input class="dd-content" type="text" placeholder="请输入紧急联系人"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>紧急联系人电话:</dt>
+          <dd>
+            <input class="dd-content" type="text" placeholder="请输入紧急联系人电话"/>
+          </dd>
+        </dl>
+        <dl>
+          <dt>备注:</dt>
+          <dd>
+            <textarea class="dd-content" rows="3" cols="40" placeholder="备注"></textarea>
+          </dd>
+        </dl>
+        <dl>
+          <dt>工作状态:</dt>
+          <dd>
+            <div class="fe-radio-tab-group">
+              <label class="radio-tab">
+                <input type="radio" name="jobtype" id="jobtype_1" value="1">
+                <label for="jobtype_1">在职</label>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" name="jobtype" id="jobtype_2" value="2" checked>
+                <label for="jobtype_2">离职</label>
+              </label>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>添加附件:</dt>
+          <dd>
+            <div class="upload-file-list dd-content">
+              <div>
+                <div class="upload-add" onclick="clickAddFile()">
+                  <a class="file-name color-link">点击添加附件</a>
+                </div>
+                <input type="file" id="add-file" multiple onchange="changeAddFile(this)">
+              </div>
+              <ul id="upload-file-ul"></ul>
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <!--endregion-->
+
+      <!--region 功能配置-->
+      <div id="dl_config">
+        <dl>
+          <dt>辅助添加收入:</dt>
+          <dd class="padding: 6px 0 6px 10px;">
+            <label class="fe-switch">
+              <input type="checkbox" id="fztjsr" class="cbx">
+              <label for="fztjsr" class="lbl"></label>
+            </label>
+            <span class="color-tip display-align">开启时可添加应收款信息，并由财务辅助编辑</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt>辅助添加支出:</dt>
+          <dd class="padding: 6px 0 6px 10px;">
+            <label class="fe-switch">
+              <input type="checkbox" id="fztjzc" class="cbx">
+              <label for="fztjzc" class="lbl"></label>
+            </label>
+            <span class="color-tip display-align">开启时可添加应付款信息，并由财务辅助编辑</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt>辅助添加应收款:</dt>
+          <dd class="padding: 6px 0 6px 10px;">
+            <label class="fe-switch">
+              <input type="checkbox" id="fztjysk" class="cbx">
+              <label for="fztjysk" class="lbl"></label>
+            </label>
+            <span class="color-tip display-align">开启时可添加应付款信息，并由财务辅助编辑</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt>辅助添加应付款:</dt>
+          <dd class="padding: 6px 0 6px 10px;">
+            <label class="fe-switch">
+              <input type="checkbox" id="fztjyfk" class="cbx">
+              <label for="fztjyfk" class="lbl"></label>
+            </label>
+            <span class="color-tip display-align">开启时可添加应付款信息，并由财务辅助编辑</span>
+          </dd>
+        </dl>
+      </div>
+      <!--endregion-->
+    </div>
+    <div class="layer-foot">
+      <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+      <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+    </div>
+  </form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.jeDate_('birthday');
+  publicObj.jeDate_('entryday');
+  /**region tab切换*/
+  var tabId = 'basic';
+  changeTab(tabId);
+  function changeTab(tid) {
+    tabId = tid
+    $('.fe-tab li').removeClass('active')
+    $('#tabli-' + tabId).addClass('active')
+    switch (tid) {
+      case "basic": //基本信息
+        $('#dl_basic').show()
+        $('#dl_config').hide()
+        break;
+      case "config": //系统配置
+        $('#dl_basic').hide()
+        $('#dl_config').show()
+        break;
+      default:
+        break;
+    }
+  }
+  /**endregion*/
+
+  /**region 上传附件*/
+  var fileList = []
+  //点击添加附件
+  function clickAddFile () {
+    $('#add-file').click()
+  }
+  //点击添加附件,上传文件
+  function changeAddFile (el) {
+    publicObj.uploadMultiple({
+      el: el,
+    }, function (img) {
+      fileList.push(img)
+      fileHtml()
+    })
+  }
+  //附件上传后拼接html
+  function fileHtml () {
+    var html = ''
+    fileList.forEach(function (value, index) {
+      html += '' +
+        '<li id="file_index-'+index+'">' +
+        '<span class="file-name">' + value.name + '</span>' +
+        '<div class="file-act">' +
+        '<a onclick="editFile('+index+')">编辑</a><input type="file" value="' + value.url + '" onchange="changeEditFile(this, '+index+')">' +
+        '<a onclick="delFile('+index+')">删除</a>' +
+        '</div>' +
+        '</li>'
+    })
+    $('#upload-file-ul').html(html)
+  }
+  function editFile (index) {
+    $('#file_index-' + index).find('.file-act input[type=file]').click()
+  }
+  function changeEditFile(el, index) {
+    publicObj.uploadFile({
+      el: el,
+      app: 'admin'
+    }, function (img) {
+      fileList[index] = img.url
+    });
+  }
+  function delFile (index) {
+    $('#file_index-' + index).remove()
+    fileList.splice(index, 1)
+  }
+  /**endregion*/
+
+  /**region 表单验证*/
+  function submitForm() {
+    if (tabId === 'basic') {
+      var verifyArr = [{ key: 'employee_name', verify_type: 'required', error_text: '请输入员工姓名'}]
+      if (!publicObj.verifyForm(verifyArr)) return false
+    }
+    //$('form').submit()
+    publicObj.layerMsg('保存成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+  /**endregion*/
+</script>
+</html>

@@ -1,0 +1,271 @@
+
+<!--查看收入明细/查看支出明细/查看应收款明细/查看应付款明细/查看关联收入明细/查看关联支出明细-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>查看账目明细</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+  <style>
+    .fe-table td {
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="right-row">
+  <div class="right-row-scroll">
+    <!--region 基本信息-->
+    <div>
+      <div class="right-title" style="margin-bottom: -6px">基本信息</div>
+      <div class="right-dl-div">
+        <div class="show-income_expenditure">
+          <dl><dt>收入/支出项目</dt><dd>技术维护</dd></dl>
+          <dl><dt>日期</dt><dd>2017-12-01</dd></dl>
+          <dl><dt>金额</dt><dd>20000.00元</dd></dl>
+          <dl><dt>支付账户</dt><dd>现金</dd></dl>
+          <dl><dt>详细事项</dt><dd>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</dd></dl>
+          <dl><dt>经手人</dt><dd>张大行</dd></dl>
+        </div>
+        <dl><dt>往来单位</dt><dd>娄底移动公司</dd></dl>
+        <dl><dt>录入员</dt><dd>小肌肤</dd></dl>
+        <dl><dt>录入时间</dt><dd>2017-12-01 12:12</dd></dl>
+        <dl><dt>最后查看时间</dt><dd>2017-12-01 12:12</dd></dl>
+        <dl><dt>账单状态</dt><dd><span class="color-red">待审核</span></dd></dl>
+      </div>
+    </div>
+    <!--endregion 基本信息-->
+
+    <!--region 图片附件-->
+    <div class="">
+      <div class="right-title">图片附件</div>
+      <div class="annex-img-list">
+        <img src="../../static/images/cs_img/img1.png" onclick="imgPreview(0)"/>
+        <img src="../../static/images/login/login_bg.png" onclick="imgPreview(1)"/>
+        <img src="../../static/images/cs_img/img1.png" onclick="imgPreview(2)"/>
+      </div>
+    </div>
+    <!--endregion-->
+
+    <!--region 其他附件-->
+    <div class="">
+      <div class="right-title">其他附件</div>
+      <ul class="annex-other-list">
+        <li><i class="feimg-annex-xls"></i><span class="file-name">我是附件.xls(88.7k)</span></li>
+        <li><i class="feimg-annex-rar"></i><span class="file-name">我是附件.rar(88.7k)</span></li>
+        <li><i class="feimg-annex-txt"></i><span class="file-name">我是附件.txt(88.7k)</span></li>
+        <li><i class="feimg-annex-doc"></i><span class="file-name">我是附件.doc(88.7k)</span></li>
+        <li><i class="feimg-annex-other"></i><span class="file-name">我是附件.其他附件(88.7k)</span></li>
+        <li><i class="feimg-annex-img"></i><span class="file-name">我是附件.png(88.7k)</span></li>
+      </ul>
+    </div>
+    <!--endregion-->
+
+    <!--region 关联收应收款-->
+    <div class="show-income_expenditure">
+      <div class="right-title">关联收应收款/付应付款</div>
+      <table class="fe-table">
+        <thead>
+        <tr>
+          <th class="t-left-m">ID</th>
+          <th>类别</th>
+          <th>日期</th>
+          <th>应收金额(元)</th>
+          <th>应收余额(元)</th>
+          <th>本次核销(元)</th>
+          <th class="t-left-m">详细事项</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="t-left-m">1</td>
+          <td>应收款项/应付款项</td>
+          <td>2019-09-09</td>
+          <td>2000.00</td>
+          <td>2000.00</td>
+          <td>2000.00</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        <tr>
+          <td class="t-left-m">2</td>
+          <td>应收款项/应付款项</td>
+          <td>2019-09-09</td>
+          <td>2000.00</td>
+          <td>2000.00</td>
+          <td>2000.00</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--endregion 关联收应收款-->
+
+    <!--region 已审核记录-->
+    <div class="show-income_expenditure">
+      <div class="right-title">已审核记录</div>
+      <table class="fe-table">
+        <thead>
+        <tr>
+          <th width="10%" class="t-left-m">序号</th>
+          <th width="10%">审核步骤</th>
+          <th width="15%">审核时间</th>
+          <th width="10%">审核人</th>
+          <th width="10%">审核意见</th>
+          <th class="t-left-m">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="t-left-m">1</td>
+          <td>信息审核</td>
+          <td>2019-09-09</td>
+          <td>张大黄</td>
+          <td>通过</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        <tr>
+          <td class="t-left-m">2</td>
+          <td>信息审核</td>
+          <td>2019-09-09</td>
+          <td>张大黄</td>
+          <td>驳回</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--endregion 已审核记录-->
+
+    <!--region 待审核人员-->
+    <div class="show-income_expenditure">
+      <div class="right-title">待审核人员</div>
+      <table class="fe-table">
+        <thead>
+        <tr>
+          <th width="10%" class="t-left-m">序号</th>
+          <th width="10%">审核步骤</th>
+          <th class="t-left-m">审核人</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="t-left-m">1</td>
+          <td>信息审核</td>
+          <td class="t-left-m">公司会计</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--endregion 待审核人员-->
+  </div>
+
+  <!--收入/支出显示-->
+  <div class="right-row-foot show-income_expenditure">
+    <a class="febtn-default" onclick="verifyAccount()">审核</a>
+    <a class="febtn-default" onclick="editAccount()">编辑</a>
+    <a class="febtn-default" onclick="cancelAccount()">撤销</a>
+    <a class="febtn-default" onclick="publicObj.layerShow({title: '添加提醒', el: 'memorandum/memorandum_edit.html'})">提醒</a>
+    <a class="febtn-default" onclick="delAccount()">删除</a>
+  </div>
+
+  <!--应收款/应付款显示-->
+  <div class="right-row-foot show-receivable_payable">
+    <a class="febtn-default" onclick="editAccount()">编辑</a>
+    <a class="febtn-default" onclick="transferAccount()">转为收入/支出</a>
+    <a class="febtn-default" onclick="viewRelateAccount()">关联收入/支出</a>
+    <a class="febtn-default" onclick="delAccount()">删除</a>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  var typeArr = { income: '收入', expenditure: '支出', receivable: '应收款', payable: '应付款' }
+  var pageType = publicObj.getQueryVariable("type");//pageType,页面裂类型
+  pageType = pageType ? pageType : 'income'
+  pageSetting(pageType)
+  function pageSetting (pageType) {
+    switch (pageType) {
+      case 'income': //收入
+      case 'expenditure': //支出
+        $('.show-income_expenditure').show()
+        $('.show-receivable_payable').hide()
+        break
+      case 'receivable': //应收款
+      case 'payable': //应付款
+        $('.show-receivable_payable').show()
+        $('.show-income_expenditure').hide()
+        break
+      case 'relate_income': //关联收入【来源：应收款管理】
+        $('.show-income_expenditure').show()
+        $('.show-income_expenditure.right-row-foot').hide()
+        $('.show-receivable_payable').hide()
+        $('.right-row-scroll').css('height', '100%')
+        break
+      case 'relate_expenditure': //关联支出【来源：应付款管理、报销管理】
+        $('.show-income_expenditure').show()
+        $('.show-income_expenditure.right-row-foot').hide()
+        $('.show-receivable_payable').hide()
+        $('.right-row-scroll').css('height', '100%')
+        break
+      default:
+        break
+    }
+  }
+
+  //图片预览
+  function imgPreview (key) {
+    var imgData = {
+      start: key,
+      data: [
+        {alt: '图片1', src: '../static/images/cs_img/img1.png'},
+        {alt: '图片2', src: '../static/images/login/login_bg.png'},
+        {alt: '图片3', src: '../static/images/cs_img/img1.png'}
+      ]
+    }
+    parent.publicObj.imgPreview(imgData, 2)
+  }
+
+  //审核【收入/支出】
+  function verifyAccount () {
+    var title_text = pageType ===  'income' ? '收入' : '支出'
+    publicObj.layerShow({title: '审核'+title_text+'信息', el: 'accountManage/verify_account.html?type='+pageType})
+  }
+  //编辑【收入/支出/应收款待处理/应付款待处理】
+  function editAccount () {
+    publicObj.layerShow({title: '编辑'+typeArr[pageType]+'信息', el: 'accountManage/account_edit.html?type='+pageType})
+  }
+  //撤销【收入/支出】
+  function cancelAccount () {
+    var title_text = pageType ===  'income' ? '收入' : '支出'
+    publicObj.layerShow({title: '申请撤销'+title_text+'信息', el: 'accountManage/cancel_account.html?type='+pageType})
+  }
+  //转为收入/支出【应收款待处理/应付款待处理】
+  function transferAccount () {
+    var title_text = pageType ===  'receivable' ? '收入' : '支出'
+    var type = pageType ===  'receivable' ? 'income' : 'expenditure'
+    publicObj.layerShow({title: '转为'+title_text+'信息', el: 'accountManage/account_edit.html?type='+type})
+  }
+  //查看关联收入/支出明细【应收款待处理/应付款待处理】
+  function viewRelateAccount () {
+    var text = pageType === 'receivable' ? '收入' : '支出'
+    var type = pageType === 'receivable' ? 'income' : 'expenditure'
+    publicObj.layerShow({title: '查看关联'+text+'信息', el: 'accountManage/account_view.html?type=relate_'+type})
+  }
+  //删除【收入/支出/应收款待处理/应付款待处理】
+  function delAccount() {
+    publicObj.confirmDel(function (layeo) {
+      publicObj.layerMsg('删除成功', 1)
+      parent.layer.close(layeo)
+      setTimeout(function () {
+        publicObj.layerFrameClose()
+      }, 800)
+    })
+  }
+</script>
+</html>

@@ -1,0 +1,396 @@
+/*region 首页 center.html*/
+body {
+  overflow-y: auto;
+}
+.page-center {
+  padding: 6px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  min-width: 1000px;
+}
+.page-center .center-left {
+  width: calc(100% - 234px);
+}
+
+/*region 左侧续费提示*/
+.center-left .refee-title {
+  padding: 16px 80px 16px 20px;
+  position: relative;
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
+.center-left .refee-title .re-text {
+  width: calc(100% - 120px);
+  padding: 0 10px;
+}
+.center-left .refee-title .re-text h1 {
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.center-left .refee-title .re-text p {
+  color: #666666;
+  font-size: 12px;
+}
+.refee-title .re-btn a {
+  width: 90px;
+  height: 32px;
+  background-color: #FC1A1A;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius:4px;
+}
+.refee-title .re-close {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+}
+/*endregion*/
+
+/*region 待处理概况*/
+.center-left .center-table {
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
+.center-table .title {
+  padding: 18px 20px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+.center-table .table-row {
+  display: inline-block;
+  width: 100%;
+}
+.center-table .table-row a {
+  position: relative;
+  padding-bottom: 20px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+}
+.center-table .table-row a:nth-child(1) {
+ text-align: left;
+  padding-left: 54px;
+  width: 20%;
+}
+.center-table .table-row a:nth-child(2),
+.center-table .table-row a:nth-child(3) {
+  width: 30%;
+}
+.center-table .table-row a:nth-child(4) {
+  text-align: right;
+  padding-right: 54px;
+  width: 20%;
+}
+.center-table .table-row a:after {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  top: calc(50% - 35px);
+  right: 0;
+  width: 1px;
+  height: 50px;
+  background-color: #F0F0F0;
+  display: inline-block;
+}
+.center-table .table-row a:last-child:after {
+  display: none;
+}
+.center-table .table-row a>div {
+  text-align: left;
+  color: #666666;
+  display: inline-block;
+}
+.center-table .table-row a p {
+  font-size: 12px;
+}
+.center-table .table-row a h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 7px 0;
+}
+/*endregion*/
+
+.center-left .center-progress {
+  background-color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  padding: 0 20px 20px 20px;
+  margin-bottom: 16px;
+}
+.center-left .center-progress .title {
+  padding: 18px 0;
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+.center-left .center-progress .chart-progress {
+  display: flex;
+  display: -webkit-flex;
+  background-color: #F7F8FA;
+  padding: 20px 0;
+}
+.center-progress .cp-text,
+.center-progress .cp-pro {
+  width: 50%;
+}
+.center-progress .cp-text {
+  padding-left: 30px;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.center-progress .cp-text .t-container {
+  text-align: left;
+  display: inline-block;
+  line-height: 24px;
+}
+.center-progress .cp-text .text-t {
+  color: #333333;
+  font-size: 14px;
+}
+.center-progress .cp-text .text-m {
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+.center-progress .cp-text .text-point {
+  color: #666666;
+  font-size: 12px;
+}
+.center-progress .cp-text .text-point .point {
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  border-radius: 100%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.center-progress .cp-text .text-point .point.point-1 {
+  background-color: #1A8FFC;
+}
+.center-progress .cp-text .text-point .point.point-2 {
+  background-color: #FFCE02;
+}
+.center-progress .cp-text .text-point span {
+  vertical-align: middle;
+}
+.center-progress .cp-pro {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.center-left .center-progress .pro-zc {
+  width: 34%;
+  padding-right: 10px;
+}
+.center-left .center-progress .pro-ysf {
+  width: 66%;
+  padding-left: 10px;
+}
+.center-left .center-progress .pro-ysf ul {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+.center-left .center-progress .pro-ysf ul li {
+  width: calc(50% - 10px);
+  float: left;
+}
+.center-left .center-progress .pro-ysf ul li:nth-child(1) {
+  margin-right: 10px;
+}
+.center-left .center-progress .pro-ysf ul li:nth-child(2) {
+  margin-left: 10px;
+}
+.center-left .center-chart {
+  display: inline-block;
+  width: 100%;
+  background-color: #ffffff;
+}
+.center-left .center-chart {
+  display: inline-block;
+  width: 100%;
+  padding: 0 20px 20px 20px;
+}
+.center-left .center-chart li {
+  width: 50%;
+  float: left;
+  display: inline-block;
+}
+.center-left .center-chart li:first-child {
+  padding-right: 10px;
+}
+.center-left .center-chart li:last-child {
+  padding-left: 10px;
+}
+.center-left .center-chart .title {
+  padding: 18px 0;
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+.center-left .center-chart .chart-bar {
+  width: 100%;
+  height: 320px;
+  padding-right: 40px;
+  background-color: #F7F8FA;
+  position: relative;
+}
+.center-left .center-chart .chart-bar>div {
+  width: 100%;
+  height: 100%;
+}
+.center-left .center-chart .chart-bar .chart-unit {
+  position: absolute;
+  z-index: 1;
+  width: 44px;
+  bottom: 51px;
+  right: 0;
+  font-size: 12px;
+}
+
+/*region 右侧*/
+.page-center .center-right {
+  width: 218px;
+  height: 100%;
+}
+.page-center .center-right .admin-info {
+  background-color: #1A8FFC;
+  padding: 20px 0;
+  font-size: 12px;
+  line-height: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+.page-center .center-right .admin-info p,
+.page-center .center-right .admin-info span {
+  color: #ffffff;
+}
+.admin-info h1 {
+  font-size: 14px;
+  margin: 14px 0 3px 0;
+  color: #ffffff;
+}
+.admin-info button {
+  width:88px;
+  height:32px;
+  background-color: #ffffff;
+  border: none;
+  color: #1A8FFC;
+  font-size: 12px;
+  margin-top: 15px;
+  border-radius: 3px;
+}
+.center-right .system-link {
+  padding: 12px 20px;
+  background-color: #ffffff;
+  min-height: 478px;
+}
+.center-right .system-link a {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  padding: 12px 0 15px 0;
+  position: relative;
+}
+.center-right .system-link a i {
+  color: #333333;
+  font-size: 18px;
+  width: 25px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 9px;
+  font-weight: bold;
+}
+.center-right .system-link a h1 {
+  color: #555555;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.center-right .system-link a p {
+  color: #666666;
+  font-size: 12px;
+}
+.center-right .system-link a .tip-left {
+  position: absolute;
+  z-index: 1;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+  border-radius:8px;
+  display: none;
+}
+.center-right .system-link a .tip-left:after {
+  position: absolute;
+  z-index: 1;
+  content: '';
+}
+.center-right .system-link a:hover .tip-left {
+  display: inline-block;
+}
+.center-right .system-link a .tip-left.tip-service {
+  width: 222px;
+  min-height: 156px;
+  left: -250px;
+  top: calc(50% - 78px);
+  padding: 20px;
+}
+.center-right .system-link a .tip-left.tip-service:after {
+  background: url("../images/icon_img/right_arrow.png")center center no-repeat;
+  background-size: 32.2px 36px;
+  width: 33px;
+  height: 36px;
+  right: -20px;
+  top: calc(50% - 18px);
+}
+.center-right .system-link a .tip-left.tip-service p {
+  margin: 5px 0;
+  color: #333333;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.center-right .system-link a .tip-left.tip-qrcode {
+  width: 120px;
+  height: 147px;
+  left: -148px;
+  top: calc(50% - 73.5px);
+  padding: 10px;
+}
+.center-right .system-link a .tip-left.tip-qrcode:after {
+  background: url("../images/icon_img/right_arrow.png")center center no-repeat;
+  background-size: 32.2px 36px;
+  width: 33px;
+  height: 36px;
+  right: -20px;
+  top: calc(50% - 15px);
+}
+.center-right .system-link a .tip-left.tip-qrcode img {
+  width: 100px;
+  height: 100px;
+}
+.center-right .system-link a .tip-left.tip-qrcode p {
+  color: #333333;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 4px;
+  text-align: center;
+}
+/*endregion*/

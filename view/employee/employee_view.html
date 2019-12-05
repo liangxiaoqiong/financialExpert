@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>查看员工详情</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body>
+<div class="right-row">
+  <div class="right-row-scroll">
+    <!--region 基本信息-->
+    <div>
+      <div class="right-title" style="margin-bottom: -6px">基本信息</div>
+      <div class="right-dl-div">
+        <dl><dt>姓名</dt><dd>蒋大为</dd></dl>
+        <dl><dt>登录密码</dt><dd>2233</dd></dl>
+        <dl><dt>性别</dt><dd>女</dd></dl>
+        <dl><dt>出生年月</dt><dd>2007-12-01</dd></dl>
+        <dl><dt>学历</dt><dd>本科</dd></dl>
+        <dl><dt>入职时间</dt><dd>2017-12-01</dd></dl>
+        <dl><dt>电话</dt><dd>15153568978</dd></dl>
+        <dl><dt>状态</dt><dd>在职</dd></dl>
+        <dl><dt>紧急联系人</dt><dd>桃花</dd></dl>
+        <dl><dt>联系电话</dt><dd>110</dd></dl>
+        <dl><dt>家庭住址</dt><dd>福建省厦门市公安局</dd></dl>
+        <dl><dt>报销人</dt><dd>小肌肤</dd></dl>
+      </div>
+    </div>
+    <!--endregion 基本信息-->
+  
+    <!--region 图片附件-->
+    <div class="">
+      <div class="right-title">图片附件</div>
+      <div class="annex-img-list">
+        <img src="../../static/images/cs_img/img1.png" onclick="imgPreview(0)"/>
+        <img src="../../static/images/login/login_bg.png" onclick="imgPreview(1)"/>
+        <img src="../../static/images/cs_img/img1.png" onclick="imgPreview(2)"/>
+      </div>
+    </div>
+    <!--endregion-->
+    
+    <!--region 其他附件-->
+    <div class="">
+      <div class="right-title">其他附件</div>
+      <ul class="annex-other-list">
+        <li><i class="feimg-annex-xls"></i><span class="file-name">我是附件.xls(88.7k)</span></li>
+      </ul>
+    </div>
+    <!--endregion-->
+  
+    <!--region 备注-->
+    <div>
+      <div class="right-title">备注</div>
+      <div style="padding: 0 30px">
+        <textarea rows="4" style="width: 100%;margin-bottom: 15px" placeholder="备注"></textarea>
+      </div>
+    </div>
+    <!--endregion 备注-->
+  </div>
+
+  <div class="right-row-foot">
+    <a class="febtn-default"
+       onclick="publicObj.layerShow({title: '编辑员工', el: 'employee/employee_edit.html'})">
+      编辑
+    </a>
+    <a class="febtn-default" onclick="delEmployee()">删除</a>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+
+  //图片预览
+  function imgPreview (key) {
+    var imgData = {
+      start: key,
+      data: [
+        {alt: '图片1', src: '../static/images/cs_img/img1.png'},
+        {alt: '图片2', src: '../static/images/login/login_bg.png'},
+        {alt: '图片3', src: '../static/images/cs_img/img1.png'}
+      ]
+    }
+    parent.publicObj.imgPreview(imgData, 2)
+  }
+  //删除
+  function delEmployee() {
+    publicObj.confirmDel(function (layeo) {
+      publicObj.layerMsg('删除成功', 1)
+      parent.layer.close(layeo)
+    }, {title: '确认要删除该员工吗？'})
+  }
+
+</script>
+</html>

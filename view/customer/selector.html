@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>选择来往单位</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+<body>
+  <div class="modify-body">
+    <!--region 搜索-->
+    <form class="search-content" method="post">
+      <div class="search-container">
+        <ul class="search-left" style="width: 100%">
+          <li>
+            <div class="l-content rule-single-select">
+              <select>
+                <option value="">请选择身份标签</option>
+                <option value="1">标签1</option>
+                <option value="2">标签2</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div class="l-content rule-single-select">
+              <select>
+                <option value="">请选择客户分类</option>
+                <option value="1">客户分类1</option>
+                <option value="2">客户分类2</option>
+                <option value="3">客户分类3</option>
+                <option value="4">客户分类4</option>
+              </select>
+            </div>
+          </li>
+          <li style="margin-right: 30px;float: right;">
+            <div class="l-content input-search">
+              <input type="text" placeholder="快捷搜索" style="width: 150px"/>
+              <button type="submit" class="febtn-default">搜索</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </form>
+    <!--endregion-->
+
+    <div>
+      <table class="fe-table">
+        <tr>
+          <th class="t-left-m">序号</th>
+          <th>名称</th>
+          <th>联系人</th>
+          <th>联系电话</th>
+          <th class="t-left" width="40%">备注</th>
+        </tr>
+        <tr onclick="selectSelector('供应商')">
+          <td class="t-left-m">1</td>
+          <td>供应商</td>
+          <td>周公</td>
+          <td>15265659898</td>
+          <td class="t-left">哈哈哈哈哈哈哈哈哈哈哈哈</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  function selectSelector (data) {
+    var iframeIndex = publicObj.getQueryVariable("iframeIndex");
+    var iframeThis = publicObj.getIframeIndex();
+    publicObj.layerShow({title: '核销应收款', el: 'accountManage/writeoff_account.html?iframeIndex='+iframeThis})
+    /*parent.$("#layui-layer-iframe"+iframeIndex).contents().find('input[name="txt_payee_name"]').val(data)
+    publicObj.layerFrameClose()*/
+  }
+</script>

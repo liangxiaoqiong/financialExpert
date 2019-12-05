@@ -1,0 +1,52 @@
+
+1、jquery版本：jquery-3.2.1.min.js
+
+2、弹框插件：layer.js【官方文档：https://www.layui.com/doc/modules/layer.html】
+（1）、封装的iframe/div弹框方法：publicObj.layerShow()【参考页面：accountManage/income_expenditure_list.html】
+（2）、封装的关闭弹出框口 ifream方法：publicObj.layerFrameClose()【参考页面：accountManage/account_edit.html】
+（3）、封装的图片预览方法：parent.publicObj.imgPreview()【（parent.是预览在父窗口）参考页面：accountManage/income_expenditure_list.html】
+（4）、封装的消息提示弹框方法：publicObj.layerMsg()【参考页面：accountManage/income_expenditure_list.html】
+（5）、封装的删除提示弹框方法：publicObj.confirmDel()【参考页面：accountManage/income_expenditure_list.html】
+
+、日期插件：jedate.js【官方文档：http://www.jemui.com/uidoc/jedate.html】
+（1）、引入插件js：static/lib/jedate/jedate.js
+（2）、引入插件css：static/lib/jedate/jeDageGray.css
+（1）、该页面引入需要初始化： publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});【参考页面：accountManage/income_expenditure_list.html】
+
+3、表单验证：
+（1）、插件：jquery.validate
+（2）、自定义验证方法【参考页面：login.html/register.html/...】
+
+
+4、图表数据插件：echarts.js
+（1）、引入插件js：static/lib/echarts/echarts.min.js
+（2）、界面引入html：<div class="chart-bar" id="chart-income"></div>【需要给定改div一定的宽高】
+（3）、js调用方法：publicObj.echartBar('chart-income', {})【参考页面：center.html】
+
+5、圆型进度数据插件：radialIndicator.js【不兼容IE】【参考页面：center.html】
+（1）、引入插件js：static/lib/radialIndicator/radialIndicator.min.js
+（2）、界面引入html：
+  <div class="radialIndicator-div"><div class="radialIndicator" id="3" data-value="70" data-title="已收款"></div></div>
+  【data-value值为100%的占比，data-title值为中间说明文字】
+（3）、js调用方法：publicObj.diyRadialIndicator('.radialIndicator#3')【参考页面：center.html】
+
+、圆型进度数据插件：circleChart.js【不兼容IE】【参考页面：center.html】
+（1）、引入插件js：static/lib/circleChart/circleChart.min.js
+（2）、界面引入html：<div class="circleChart" id="3" data-value="70"></div>【data-value值为100%的占比】
+（3）、js调用方法：publicObj.circleChartCus('.circleChart#2', {}, {text_t: '已收款'})
+
+
+5、上传文件：前端自定义样式
+（1）、单文件上传
+（2）、多文件上传【参考页面：accountManage/account_edit.html】
+
+
+6、账目共用同个页面
+（2）、收入管理页面、支出管理页面【accountManage\income_expenditure_list.html】
+    区分方式：传参数type=income_list：收入管理页面，expenditure_list：支出管理页面
+（2）、应收管理页面、应付管理页面【accountManage\receivable_payable_list.html】
+    区分方式：传参数type=receivable_list：应收管理页面，payable_list：应付管理页面
+（1）、编辑账目：记一笔、编辑收入信息、编辑支出信息【accountManage\account_edit.html】
+    区分方式：传参数type【tabId】=undefined：记一笔，income：编辑收入账目信息，expenditure：编辑支出账目信息
+（2）、右滑查看明细【accountManage\account_view.html】
+    区分方式：传参数type=income：查看收入明细，expenditure：查看支出明细

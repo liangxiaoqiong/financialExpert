@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'feicon';
+  src:  url('fonts/feicon.eot?dul6tt');
+  src:  url('fonts/feicon.eot?dul6tt#iefix') format('embedded-opentype'),
+    url('fonts/feicon.ttf?dul6tt') format('truetype'),
+    url('fonts/feicon.woff?dul6tt') format('woff'),
+    url('fonts/feicon.svg?dul6tt#feicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="feicon-"], [class*=" feicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'feicon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+}
+
+.feicon-pwd:before {
+  content: "\e900";
+}
+.feicon-user:before {
+  content: "\e901";
+}
+.feicon-account:before {
+  content: "\e902";
+}
+.feicon-company:before {
+  content: "\e903";
+}
+.feicon-phone:before {
+  content: "\e904";
+}
+.feicon-img-code:before {
+  content: "\e905";
+}
+.feicon-img-pic:before {
+  content: "\e906";
+  color: #1A8FFC;
+}
+.feicon-file-pic .path1:before {
+  content: "\e907";
+  color: rgb(192, 192, 192);
+}
+.feicon-file-pic .path2:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.feicon-mark:before {
+  content: "\e909";
+}
+.feicon-msg .path1:before {
+  content: "\e90a";
+  color: rgb(51, 51, 51);
+}
+.feicon-msg .path2:before {
+  content: "\e90b";
+  margin-left: -1.197265625em;
+  color: rgb(0, 0, 0);
+}
+.feicon-msg .path3:before {
+  content: "\e90c";
+  margin-left: -1.197265625em;
+  color: rgb(0, 0, 0);
+}
+.feicon-msg .path4:before {
+  content: "\e90d";
+  margin-left: -1.197265625em;
+  color: rgb(0, 0, 0);
+}
+.feicon-wechat:before {
+  content: "\e90e";
+}
+.feicon-customer-service:before {
+  content: "\e90f";
+}
+.feicon-notice:before {
+  content: "\e910";
+}

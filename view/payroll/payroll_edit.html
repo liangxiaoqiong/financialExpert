@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>新增/编辑工资条</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+  <style>
+    #total_tbody th {
+      padding: 12px 0;
+    }
+  </style>
+</head>
+
+<body>
+<div class="modify-body">
+  <div class="modify-scroll" style="padding: 10px 20px;">
+    <div style="padding-bottom: 20px">
+      <span><b class="color-red">*</b>工资条名称:</span>
+      <input type="text" name="payroll_name" placeholder="请输入工资条名称" style="width: 250px" />
+      
+      <span class="ml-10"><b class="color-red">*</b>月份:</span>
+      <div class="rule-single-select" style="width: 250px">
+        <select>
+          <option value="">全部</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+    </div>
+    <table class="fe-table border">
+      <thead>
+      <tr>
+        <th rowspan="2">姓名</th>
+        <th colspan="5">工资、奖金</th>
+        <th colspan="5">代扣代缴</th>
+        <th rowspan="2">实发工资</th>
+        <th rowspan="2" width="12%">备注</th>
+        <th rowspan="2" width="30px"></th>
+      </tr>
+      <tr>
+        <th>基本工资</th>
+        <th>奖金</th>
+        <th>提成</th>
+        <th>补贴</th>
+        <th>其他</th>
+        <th>社保</th>
+        <th>公积金</th>
+        <th>个税</th>
+        <th>罚款</th>
+        <th>其他</th>
+      </tr>
+      </thead>
+      <tbody id="payroll_tbody"><!--员工工资条列表--></tbody>
+      <tbody id="total_tbody"><!--合计--></tbody>
+    </table>
+    <div style="padding: 20px 0">
+      <a class="febtn-default" style="width: 88px" onclick="addOnePayroll()">增加一条</a>
+      <a class="febtn-default" style="width: 112px;margin: 0 6px" onclick="addAllPayroll()">增加所有员工</a>
+      <a class="febtn-white" style="width: 64px" onclick="clearEmployeeName()">删除</a>
+    </div>
+    <div>
+      <div class="display-align" style="margin-bottom: 10px;float: left">
+        <span class="display-align">备注：</span>
+        <input type="text" name="payroll_name" placeholder="备注" style="width: 250px;height: 36px" />
+      </div>
+      <div class="display-align" style="margin-left: 20px">
+        <span style="display: inline-block;vertical-align: top;line-height: 36px;">添加附件：</span>
+        <div class="upload-file-list display-align" style="width: 250px">
+          <div>
+            <div class="upload-add" onclick="clickAddFile()">
+              <a class="file-name color-link">点击添加附件</a>
+            </div>
+            <input type="file" id="add-file" multiple onchange="changeAddFile(this)">
+          </div>
+          <ul id="upload-file-ul"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  //新增编辑提交的数据
+  var payrollData = {
+    list: [
+      {
+        payroll_name: '张小花',
+        salaryBonus_basic: '0.00',//基本工资
+        salaryBonus_bonus: '0.00',//奖金
+        salaryBonus_royalty: '0.00',//提成
+        salaryBonus_subsidy: '0.00',//补贴
+        salaryBonus_other: '0.00',//工资、奖金-其他
+        substitute_socialSecurity: '0.00',//社保
+        substitute_accumulationFund: '0.00',//公积金
+        substitute_personalIncomeTax: '0.00',//个税
+        substitute_fine: '0.00',//罚款
+        substitute_other: '0.00',//代扣代缴-其他
+        paid_wages: '0.00',//实发工资
+        remark: '',//备注
+      },
+      {
+        payroll_name: '张大花',
+        salaryBonus_basic: '0.00',
+        salaryBonus_bonus: '0.00',
+        salaryBonus_royalty: '0.00',
+        salaryBonus_subsidy: '0.00',
+        salaryBonus_other: '0.00',
+        substitute_socialSecurity: '0.00',
+        substitute_accumulationFund: '0.00',
+        substitute_personalIncomeTax: '0.00',
+        substitute_fine: '0.00',
+        substitute_other: '0.00',
+        paid_wages: '0.00',
+      }
+    ],
+    total: {
+      total_salaryBonus_basic: 0.00,
+      total_salaryBonus_bonus: 0.00,
+      total_salaryBonus_royalty: 0.00,
+      total_salaryBonus_subsidy: 0.00,
+      total_salaryBonus_other: 0.00,
+      total_substitute_socialSecurity: 0.00,
+      total_substitute_accumulationFund: 0.00,
+      total_substitute_personalIncomeTax: 0.00,
+      total_substitute_fine: 0.00,
+      total_substitute_other: 0.00,
+      total_paid_wages: 0.00,
+    },//总计
+  }
+  function htmlTr (payroll, index) {
+    var payroll_name = payroll ? payroll.payroll_name : ''
+    return '\n' +
+      '      <tr>\n' +
+      '        <td onclick="selectPayee()">'+payroll_name+'</td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'salaryBonus_basic\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'salaryBonus_bonus\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'salaryBonus_royalty\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'salaryBonus_subsidy\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'salaryBonus_other\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'substitute_socialSecurity\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'substitute_accumulationFund\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'substitute_personalIncomeTax\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'substitute_fine\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'substitute_other\', '+index+')">0.00</div></td>\n' +
+      '        <td><div contenteditable="true" class="textarea-div" onblur="textBlurMoney(this, \'paid_wages\', '+index+')">0.00</div></td>\n' +
+      '        <td class="remark">\n' +
+      '          <div contenteditable="true" class="textarea-div" onblur="textBlurRemark(this, '+index+')"></div>\n' +
+      '        </td>\n' +
+      '        <td><a class="feimg-del-grey" onclick="del(this, '+index+')"></a></td>\n' +
+      '      </tr>';
+  }
+  //默认设置员工工资条列表【编辑时才有数据】
+  payrollTable()
+  function payrollTable () {
+    var html = ''
+    payrollData.list.forEach(function (value, index) {
+      html += htmlTr(value, index);
+    })
+    $('#payroll_tbody').html(html)
+    payrollTotal()
+  }
+  //添加一条
+  function addOnePayroll() {
+    var arr = {
+      payroll_name: '',
+      salaryBonus_basic: '0.00',
+      salaryBonus_bonus: '0.00',
+      salaryBonus_royalty: '0.00',
+      salaryBonus_subsidy: '0.00',
+      salaryBonus_other: '0.00',
+      substitute_socialSecurity: '0.00',
+      substitute_accumulationFund: '0.00',
+      substitute_personalIncomeTax: '0.00',
+      substitute_fine: '0.00',
+      substitute_other: '0.00',
+      paid_wages: '0.00',
+    }
+    payrollData.list.push(arr)
+    payrollTable()
+  }
+  //增加所有员工
+  function addAllPayroll() {
+    var payrollList = [
+      {
+        payroll_name: '张三',
+        salaryBonus_basic: '0.00',
+        salaryBonus_bonus: '0.00',
+        salaryBonus_royalty: '0.00',
+        salaryBonus_subsidy: '0.00',
+        salaryBonus_other: '0.00',
+        substitute_socialSecurity: '0.00',
+        substitute_accumulationFund: '0.00',
+        substitute_personalIncomeTax: '0.00',
+        substitute_fine: '0.00',
+        substitute_other: '0.00',
+        paid_wages: '0.00',
+      },
+      {
+        payroll_name: '李四',
+        salaryBonus_basic: '0.00',
+        salaryBonus_bonus: '0.00',
+        salaryBonus_royalty: '0.00',
+        salaryBonus_subsidy: '0.00',
+        salaryBonus_other: '0.00',
+        substitute_socialSecurity: '0.00',
+        substitute_accumulationFund: '0.00',
+        substitute_personalIncomeTax: '0.00',
+        substitute_fine: '0.00',
+        substitute_other: '0.00',
+        paid_wages: '0.00',
+      },
+      {
+        payroll_name: '王五',
+        salaryBonus_basic: '0.00',
+        salaryBonus_bonus: '0.00',
+        salaryBonus_royalty: '0.00',
+        salaryBonus_subsidy: '0.00',
+        salaryBonus_other: '0.00',
+        substitute_socialSecurity: '0.00',
+        substitute_accumulationFund: '0.00',
+        substitute_personalIncomeTax: '0.00',
+        substitute_fine: '0.00',
+        substitute_other: '0.00',
+        paid_wages: '0.00',
+      }
+    ]
+    payrollData.list= payrollList
+    payrollTable()
+  }
+  //选择员工
+  function selectPayee() {
+    publicObj.layerShow({title: '选择员工', el: '../employee/select_employee.html'})
+  }
+  //金额编辑
+  function textBlurMoney (obj, type, index) {
+    var content = parseFloat($(obj).text()).toFixed(2);
+    $(obj).text(content);
+    payrollData.list[index][type] = content
+    payrollTotal()
+  }
+  //备注编辑
+  function textBlurRemark (obj, index) {
+    var content = $(obj).text();
+    $(obj).text(content);
+    payrollData.list[index].remark = content
+  }
+  
+  //删除某项工资条
+  function del(obj, index) {
+    $(obj).parents('tr').remove()
+    payrollData.list.splice(index, 1)
+  }
+  
+  //实时更新合计
+  function payrollTotal() {
+    var totalArr = {
+      total_salaryBonus_basic: 0,
+      total_salaryBonus_bonus: 0,
+      total_salaryBonus_royalty: 0,
+      total_salaryBonus_subsidy: 0,
+      total_salaryBonus_other: 0,
+      total_substitute_socialSecurity: 0,
+      total_substitute_accumulationFund: 0,
+      total_substitute_personalIncomeTax: 0,
+      total_substitute_fine: 0,
+      total_substitute_other: 0,
+      total_paid_wages: 0,
+    }
+    payrollData.list.forEach(function (value) {
+      totalArr.total_salaryBonus_basic += (+value.salaryBonus_basic)
+      totalArr.total_salaryBonus_bonus += (+value.salaryBonus_bonus)
+      totalArr.total_salaryBonus_royalty += (+value.salaryBonus_royalty)
+      totalArr.total_salaryBonus_subsidy += (+value.salaryBonus_subsidy)
+      totalArr.total_salaryBonus_other += (+value.salaryBonus_other)
+      totalArr.total_substitute_socialSecurity += (+value.substitute_socialSecurity)
+      totalArr.total_substitute_accumulationFund += (+value.substitute_accumulationFund)
+      totalArr.total_substitute_personalIncomeTax += (+value.substitute_personalIncomeTax)
+      totalArr.total_substitute_fine += (+value.substitute_fine)
+      totalArr.total_substitute_other += (+value.substitute_other)
+      totalArr.total_paid_wages += (+value.paid_wages)
+    })
+    payrollData.total = totalArr
+    var html = '\n' +
+      '      <tr>\n' +
+      '        <th>合计</th>\n' +
+      '        <th>'+(payrollData.total.total_salaryBonus_basic).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_salaryBonus_bonus).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_salaryBonus_royalty).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_salaryBonus_subsidy).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_salaryBonus_other).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_substitute_socialSecurity).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_substitute_accumulationFund).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_substitute_personalIncomeTax).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_substitute_fine).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_substitute_other).toFixed(2)+'</th>\n' +
+      '        <th>'+(payrollData.total.total_paid_wages).toFixed(2)+'</th>\n' +
+      '        <th></th>\n' +
+      '        <th></th>\n' +
+      '      </tr>';
+    $('#total_tbody').html(html)
+  }
+  //删除员工姓名
+  function clearEmployeeName() {
+    payrollData.list.forEach(function (value) {
+      value.payroll_name = ''
+    })
+    payrollTable()
+  }
+
+
+  /**region 上传附件*/
+  var fileList = []
+  //点击添加附件
+  function clickAddFile () {
+    $('#add-file').click()
+  }
+  //点击添加附件,上传文件
+  function changeAddFile (el) {
+    publicObj.uploadMultiple({
+      el: el,
+    }, function (img) {
+      fileList.push(img)
+      fileHtml()
+    })
+  }
+  //附件上传后拼接html
+  function fileHtml () {
+    var html = ''
+    fileList.forEach(function (value, index) {
+      html += '' +
+        '<li id="file_index-'+index+'">' +
+        '<span class="file-name">' + value.name + '</span>' +
+        '<div class="file-act">' +
+        '<a onclick="editFile('+index+')">编辑</a><input type="file" value="' + value.url + '" onchange="changeEditFile(this, '+index+')">' +
+        '<a onclick="delFile('+index+')">删除</a>' +
+        '</div>' +
+        '</li>'
+    })
+    $('#upload-file-ul').html(html)
+  }
+  function editFile (index) {
+    $('#file_index-' + index).find('.file-act input[type=file]').click()
+  }
+  function changeEditFile(el, index) {
+    publicObj.uploadFile({
+      el: el,
+      app: 'admin'
+    }, function (img) {
+      fileList[index] = img.url
+    });
+  }
+  function delFile (index) {
+    $('#file_index-' + index).remove()
+    fileList.splice(index, 1)
+  }
+  /**endregion*/
+  
+  function submitForm() {
+    var verifyArr = [
+      { key: 'payroll_name', verify_type: 'required', error_text: '请输入工资条名称'}
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    publicObj.layerMsg('添加工资条成功！', 1)
+    publicObj.layerFrameClose()
+  }
+  
+</script>
+</html>

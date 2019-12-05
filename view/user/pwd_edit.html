@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>修改密码</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body style="background-color: #ffffff">
+<form method="post" action="./pwd_edit.html" id="form-submit">
+  <div class="white-title"><i class="feimg-t-pwd"></i><b>修改密码</b></div>
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt><b class="color-red">*</b>旧密码:</dt>
+      <dd><input type="text" name="pwd_old" class="dd-content" placeholder="请输入旧密码" /></dd>
+    </dl>
+    <dl>
+      <dt>新密码:</dt>
+      <dd><input type="text" name="pwd_new" class="dd-content" placeholder="请输入新密码" /></dd>
+    </dl>
+    <dl>
+      <dt>确认密码:</dt>
+      <dd><input type="text" name="pwd_new2" class="dd-content" placeholder="请确认密码" /></dd>
+    </dl>
+    <div style="padding: 10px 100px">
+      <button class="febtn-default" type="button" onclick="submitForm()" style="width: 88px">确认修改</button>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  parent.$('#iframe-menu').hide()
+  //表单验证提交
+  function submitForm () {
+    var verifyArr = [
+      { key: 'pwd_old', verify_type: 'required', error_text: '请输入旧密码'},
+      { key: 'pwd_new', verify_type: 'required', error_text: '请输入新密码'},
+      { key: 'pwd_new2', verify_type: 'equalTo', error_text: '两次密码输入不一致', equal_val: 'pwd_new'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    publicObj.layerMsg('操作成功', 1)
+  }
+</script>
+</html>

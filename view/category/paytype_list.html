@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>支付账户</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body class="iframe-body">
+<div class="iframe-main paytype-list-page">
+  <!--region 搜索-->
+  <form class="search-content" method="post" action="./paytype_list.html">
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <a class="febtn-white" style="width: 120px" onclick="modifyItem('add')">
+            <i class="feimg-add"></i><span>新增支付账户</span>
+          </a>
+        </li>
+        <li>
+          <span>账户类型</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">支付宝</option>
+              <option value="2">微信</option>
+              <option value="3">现金</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>账户名称</span>
+          <div class="l-content">
+            <input type="text"/>
+          </div>
+        </li>
+        <li>
+          <div class="l-content">
+            <button type="submit" class="febtn-default" style="width: 63px">搜索</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div style="padding:20px;background-color: #ffffff;" class="border-b">
+    <div class="list-row3">
+      <a><p>余额(元)</p><h1>86000</h1></a>
+      <a><p>流入(元)</p><h1 class="color-default">86000</h1></a>
+      <a><p>流出(元)</p><h1 class="color-orange">86000</h1></a>
+    </div>
+  </div>
+
+  <ul class="type-list">
+    <li>
+      <div class="title">
+        <b>我的支付宝</b>
+        <span>
+          <i class="feimg-edit-grey" onclick="modifyItem('edit')"></i>
+          <i class="feimg-del-grey" onclick="delPayType()"></i>
+        </span>
+      </div>
+      <div class="list-row3">
+        <a><p>余额(元)</p><h1>86000</h1></a>
+        <a><p>流入(元)</p><h1 class="color-default">86000</h1></a>
+        <a><p>流出(元)</p><h1 class="color-orange">86000</h1></a>
+      </div>
+    </li>
+    <li>
+      <div class="title">
+        <b>我的微信</b>
+        <span>
+          <i class="feimg-edit-grey" onclick="modifyItem('edit')"></i>
+          <i class="feimg-del-grey" onclick="delPayType()"></i>
+        </span>
+      </div>
+      <div class="list-row3">
+        <a><p>余额(元)</p><h1>86000</h1></a>
+        <a><p>流入(元)</p><h1 class="color-default">86000</h1></a>
+        <a><p>流出(元)</p><h1 class="color-orange">86000</h1></a>
+      </div>
+    </li>
+    <li>
+      <div class="title">
+        <b>我的现金</b>
+        <span>
+          <i class="feimg-edit-grey" onclick="modifyItem('edit')"></i>
+          <i class="feimg-del-grey" onclick="delPayType()"></i>
+        </span>
+      </div>
+      <div class="list-row3">
+        <a><p>余额(元)</p><h1>86000</h1></a>
+        <a><p>流入(元)</p><h1 class="color-default">86000</h1></a>
+        <a><p>流出(元)</p><h1 class="color-orange">86000</h1></a>
+      </div>
+    </li>
+  </ul>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.getIframeMenuHtml('accountManage', 'paytype_list')//获取左侧菜单
+
+  //新增/编辑新增支付账户
+  function modifyItem(type) {
+    var title_ = type === 'add' ? '新增' : '编辑'
+    var html = '<div style="padding: 20px 30px 40px 30px"><span><b class="color-red">*</b>名称：</span><input type="text" name="paytypename" placeholder="请输入支付账户名称" style="width: 300px;"></div>'
+    parent.layer.confirm(html, {
+      type: 1,
+      title: title_ + '支付账户',
+    }, function (index) {
+      var name = parent.$('input[name="paytypename"]').val()
+      if (name === '') {
+        publicObj.layerMsg('请输入支付账户名称')
+        return false
+      }
+      publicObj.layerMsg('操作成功', 1)
+      parent.layer.close(index)
+    })
+  }
+  //删除
+  function delPayType () {
+    publicObj.confirmDel(function (layeo) {
+      publicObj.layerMsg('删除成功', 1)
+      parent.layer.close(layeo)
+    }, {title: '确认要删除该账户吗？'})
+  }
+</script>
+</html>

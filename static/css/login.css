@@ -1,0 +1,292 @@
+
+
+html,
+.register-login {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+.register-login {
+    background: url("../images/login/login_bg.png")left top no-repeat;
+    background-size: 100% 100%;
+}
+.register-login .rl-container {
+    display: flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: calc(100% - 60px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 145px;
+}
+.left-text {
+    height: 490px;
+    display: flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 30px;
+}
+.left-text .t-title {
+    color: #fff;
+}
+.left-text .t-title h1 {
+    margin-bottom: 12px;
+}
+.left-text .t-title h1 img {
+    width: 184px;
+    height: auto;
+    vertical-align: middle;
+}
+.left-text .t-title p img {
+    width: 390px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.left-text .t-qrcode .qrcode-div {
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 27px rgba(255,255,255,0.43);
+    opacity:1;
+    border-radius:2px;
+    padding: 16px 16px 10px 16px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 38px;
+}
+.left-text .t-qrcode .qrcode-div img {
+    width: 118px;
+    height: 118px;
+    margin-bottom: 4px;
+}
+.left-text .t-qrcode .qrcode-div p {
+    font-size: 14px;
+}
+.right-box .box-form {
+    background: #FAFAFA;
+    border-radius: 10px;
+    padding: 30px;
+}
+.right-box .box-form .box-title {
+    margin: 0 0 26px 0;
+    justify-content: space-between;
+    display: flex;
+    display: -webkit-flex;
+    height: 50px;
+}
+.box-title .back-left {
+    display: inline-block;
+    width: 22px;
+    height: 21px;
+    background: url("../images/icon_img/left_black.png")center center no-repeat;
+    background-size: 22px 21px;
+    margin-right: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.box-title .title-l h2 {
+    color: #333333;
+    font-size: 22px;
+    font-weight: bold;
+}
+.box-title .title-r .tip-div {
+    width: 129px;
+    height: 32px;
+    background: url("../images/login/tip_bg.png")center center no-repeat;
+    background-size: 129px 32px;
+    color: #FCAE1A;
+    font-size: 14px;
+}
+.box-title .title-r .rt-img img {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+.right-box .form-group li {
+    margin-bottom: 20px;
+    width: 290px;
+    display: flex;
+    display: -webkit-flex;
+}
+.right-box .form-group li .form-item {
+    border-radius: 4px;
+    position: relative;
+    width: 100%;
+}
+.right-box .form-group li .form-item>i {
+    position: absolute;
+    z-index: 10;
+    width: 36px;
+    height: 42px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    color: #C0C0C0;
+}
+.input-control {
+    width: 100%;
+    height: 42px;
+    position: relative;
+}
+
+.input-control input {
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    position: absolute;
+    left: 0;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding-left: 36px;
+}
+
+.input-control .input-clear {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    background: url("../images/icon_img/close_grey.png") center center no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.input-control:hover .input-clear,
+.input-control input:focus ~ .input-clear {
+    display: inline-block;
+}
+
+
+
+.right-box .form-group li .input-control {
+    padding-left: 36px;
+}
+.right-box .form-group li .input-control input:focus {
+    border: 1px solid #1A8FFC;
+}
+.right-box .form-group li.form-imgcode .form-item {
+    width:calc(100% - 114px);
+    margin-right: 14px;
+}
+.right-box .form-group li.form-imgcode img {
+    width:100px;
+    height:42px;
+}
+.right-box .form-group li.form-phonecode button {
+    width:100px;
+    height:42px;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    color: #1A8FFC;
+}
+.right-box .form-group li.form-phonecode button:disabled {
+    color: #999999;
+}
+.right-box .form-sub {
+    margin-bottom: 20px;
+}
+.right-box .form-sub button {
+    width:100%;
+    height:42px;
+    font-size: 16px;
+    background:rgba(26,143,252,1);
+    box-shadow:0px 6px 8px rgba(26,143,252,0.4);
+    opacity:1;
+    border-radius:4px;
+    border: none;
+    outline:none;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 6px;
+    font-weight: bold;
+    padding-left: 4px;
+}
+.right-box .pact-tip {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 8px
+}
+.form-qrcode {
+    width: 290px;
+}
+#login-qrcode .box-title {
+    margin-bottom: 20px;
+}
+.form-qrcode .login-qrcode {
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+.form-qrcode .code-img {
+    background-color: #ffffff;
+    border-radius:10px;
+    padding: 25px;
+    width: 170px;
+    height: 170px;
+    border: 1px solid #E5E5E5;
+}
+.form-qrcode .code-img img {
+    width: 120px;
+    height: 120px;
+}
+.form-qrcode .code-tip {
+    margin: 13px 0;
+    font-size: 12px;
+}
+.form-qrcode .code-tip {
+    margin: 10px 0;
+    line-height: 20px;
+}
+.ficon-scan-code {
+    width: 30px;
+    height: 30px;
+    background: url("../images/login/scan_code.png")center center no-repeat;
+    background-size: 30px 30px;
+    margin-right: 5px;
+}
+.login-foot {
+    color: #FFFFFF;
+    font-size: 12px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+#form-error {
+    position: relative;
+}
+.error-content {
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    left: 0;
+}
+
+.fe-checkbox input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+}
+.fe-checkbox input[type=checkbox]:checked {
+    background: url("../images/icon_img/checked.png")center center no-repeat;
+    background-size: 16px 16px;
+}
+.fe-checkbox font {
+    font-size: 14px;
+}

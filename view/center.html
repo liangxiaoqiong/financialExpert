@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>管理首页</title>
+  <link rel="stylesheet" type="text/css" href="../static/iconfont/feicon/style.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/public.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/center.css" />
+  <script type="text/javascript" charset="utf-8" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script>parent.$('#iframe-menu').hide()</script>
+</head>
+<body>
+<div class="page-center">
+  <div class="center-left">
+    <div class="refee-title flex-between" id="refee-div">
+      <i class="feimg-warn"></i>
+      <div class="re-text">
+        <h1>您的vip账户将在2022年10月09日到期，为了不影响您的正常使用，请在到期前续费！</h1>
+        <p>官方咨询电话: 400-888-8888</p>
+      </div>
+      <div class="re-btn">
+        <a class="flex-row">立即续费</a>
+      </div>
+      <a class="re-close flex-row" onclick="closeReBtn()"><i class="feimg-close-grey"></i></a>
+    </div>
+    <div class="center-table">
+      <div class="title">待处理概况</div>
+      <div class="table-row flex-row">
+        <a><div><p>待审核收入(元)</p><h1>7800.00</h1><p>数量: 26笔</p></div></a>
+        <a><div><p>待审核支出(元)</p><h1>12000.00</h1><p>数量: 120笔</p></div></a>
+        <a><div><p>待审核报销(元)</p><h1>22000.00</h1><p>数量: 86笔</p></div></a>
+        <a>
+          <div>
+            <p>本周待处理任务</p>
+            <h1>26</h1>
+            <p><span>全部: 72</span><span>本月: 42</span></p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="center-progress">
+      <div class="pro-zc">
+        <div class="title">资产概况</div>
+        <div class="chart-progress">
+          <div class="cp-text">
+            <div class="t-container">
+              <div class="text-t">实时余额(元)</div>
+              <div class="text-m">7800.00</div>
+              <div class="text-point"><i class="point point-1"></i><span>总收入：100</span></div>
+              <div class="text-point"><i class="point point-2"></i><span>总收入：100</span></div>
+            </div>
+          </div>
+          <div class="cp-pro">
+            <div class="radialIndicator-div">
+              <div class="radialIndicator" id="1" data-value="75" data-title="收入支出比"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pro-ysf">
+        <div class="title">应收付概况概况</div>
+        <ul>
+          <li class="chart-progress">
+            <div class="cp-text">
+              <div class="t-container">
+                <div class="text-t">剩余应收款(元)</div>
+                <div class="text-m">7800.00</div>
+                <div class="text-point"><span>总收款：100</span></div>
+                <div class="text-point"><span>本月收款：65</span></div>
+              </div>
+            </div>
+            <div class="cp-pro">
+              <div class="radialIndicator-div">
+                <div class="radialIndicator" id="2" data-value="65" data-title="已收款"></div>
+              </div>
+            </div>
+          </li>
+          <li class="chart-progress">
+            <div class="cp-text">
+              <div class="t-container">
+                <div class="text-t">剩余应付款(元)</div>
+                <div class="text-m">8600.00</div>
+                <div class="text-point"><span>总付款：100</span></div>
+                <div class="text-point"><span>本月付款：70</span></div>
+              </div>
+            </div>
+            <div class="cp-pro">
+              <div class="radialIndicator-div">
+                <div class="radialIndicator" id="3" data-value="70" data-title="已收款"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ul class="center-chart">
+      <li>
+        <div class="title">最近一月收入走势</div>
+        <div class="chart-bar">
+          <div id="chart-income"></div>
+          <span class="chart-unit">日期</span>
+        </div>
+      </li>
+      <li>
+        <div class="title">最近一月支出走势</div>
+        <div class="chart-bar">
+          <div id="chart-expenditure"></div>
+          <span class="chart-unit">日期</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="center-right">
+    <div class="admin-info">
+      <img src="../static/images/cs_img/admin_avatar.png" class="admin-avatar">
+      <h1>梁山好汉张小黄</h1>
+      <p>ID:25500</p>
+      <p><i class="feimg-vip display-align" style="margin-right: 3px"></i><span class="display-align">单月会员</span></p>
+      <p>VIP有效期至: 2019-09-22</p>
+      <p>文件空间剩余大小: 200M</p>
+      <p>数据空间剩余大小: 200M</p>
+      <button type="button" class="flex-row">立即续费</button>
+    </div>
+    <div class="system-link">
+      <a>
+        <i class="feicon-customer-service"></i>
+        <div><h1>有问题找我</h1><p>客服QQ：5658965</p></div>
+        <div class="tip-left tip-service">
+          <p>电话: 400-800-5588</p>
+          <p>QQ: 5652358</p>
+          <p>微信: REH002</p>
+          <p>地址: 湖南省娄底市湖里区坊湖西路889号201室</p>
+        </div>
+      </a>
+      <a>
+        <i class="feicon-phone"></i>
+        <div><h1>财务专家APP下载</h1><p>实时记录每一分账</p></div>
+        <div class="tip-left tip-qrcode">
+          <img src="../static/images/cs_img/qr_img.png">
+          <p>下载财务管家APP</p>
+        </div>
+      </a>
+      <a>
+        <i class="feimg-wechart-black"></i>
+        <div><h1>关注公众号</h1><p>关注公众号实时了解动态</p></div>
+        <div class="tip-left tip-qrcode">
+          <img src="../static/images/cs_img/qr_img.png">
+          <p>关注公众号</p>
+        </div>
+      </a>
+      <a>
+        <i class="feicon-mark"></i>
+        <div><h1>使用帮助</h1><p>更多使用帮助请进入查看</p></div>
+      </a>
+      <a href="feedback/feedback_list.html">
+        <i class="feimg-msg-black"></i>
+        <div><h1>意见反馈</h1><p>写下您的意见或建议</p></div>
+      </a>
+    </div>
+  </div>
+</div>
+<!--<script type="text/javascript" charset="utf-8" src="../static/lib/circleChart/circleChart.min.js">/*不兼容IE*/</script>-->
+<script type="text/javascript" charset="utf-8" src="../static/lib/radialIndicator/radialIndicator.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../static/lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  //隐藏续费提示
+  function closeReBtn () {
+    $('#refee-div').slideToggle('hide')
+  }
+  /**region 圆型进度%*/
+  publicObj.diyRadialIndicator('.radialIndicator#1', {barBgColor: '#FFCE02'})
+  publicObj.diyRadialIndicator('.radialIndicator#2')
+  publicObj.diyRadialIndicator('.radialIndicator#3')
+  /**endregion*/
+
+  /**region 柱状图*/
+  var dateArr = ['10-01', '10-03','10-05','10-07','10-09','10-11','10-13','10-15','10-17','10-19','10-21','10-23','10-25','10-27','10-29','10-31'];
+  //最近一月收入走势
+  var incomeData = [8,2,3,2,6,7,4,7,9,1,2,3,1,3,5,8]
+  publicObj.echartBar('chart-income', {
+    xAxis: {
+      data: dateArr,
+    },
+    series: [
+      {
+        name: '收入数',
+        itemStyle: {
+          normal: {
+            shadowOffsetX: 4,//柱状图像右移动4px的投影
+            shadowColor: '#D6EBFF',//柱状图像右移动4px的投影的颜色
+            barBorderRadius: 3,
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [
+                {offset: 0, color: '#BDDFFE'},
+                {offset: 1, color: '#1A8FFC'}
+              ]
+            )
+          }
+        },
+        data: incomeData
+      }
+    ]
+  })
+  //最近一月支出走势
+  var expendData = [1,2,6,2,6,7,4,7,9,1,2,7,1,3,5,8]
+  publicObj.echartBar('chart-expenditure', {
+    xAxis: {
+      data: dateArr,
+    },
+    series: [
+      {
+        name: '支出数',
+        itemStyle: {
+          normal: {
+            shadowOffsetX: 4,//柱状图像右移动4px的投影
+            shadowColor: '#FFF1D1',//柱状图像右移动4px的投影的颜色
+            barBorderRadius: 3,
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [
+                {offset: 0, color: '#FFECC3'},
+                {offset: 1, color: '#FCB61A'}
+              ]
+            )
+          }
+        },
+        data: expendData
+      }
+    ]
+  })
+  /**endregion*/
+</script>
+</body>
+</html>

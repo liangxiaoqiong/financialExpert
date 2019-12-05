@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>查看报销明细</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body>
+<div class="right-row">
+  <div class="right-row-scroll">
+    <!--region 基本信息-->
+    <div>
+      <div class="right-title" style="margin-bottom: -6px">基本信息</div>
+      <div class="right-dl-div">
+        <dl><dt>报销日期</dt><dd>2017-12-01 12:12</dd></dl>
+        <dl><dt>报销金额</dt><dd>2000.00元</dd></dl>
+        <dl><dt>详细事项</dt><dd>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</dd></dl>
+        <dl><dt>报销人</dt><dd>小肌肤</dd></dl>
+        <dl><dt>最后查看时间</dt><dd>2017-12-01 12:12</dd></dl>
+        <dl><dt>提交时间</dt><dd><span class="color-red">同意报销</span></dd></dl>
+      </div>
+    </div>
+    <!--endregion 基本信息-->
+  </div>
+
+  <div class="right-row-foot">
+    <a class="febtn-default"
+       onclick="publicObj.layerShow({title: '查看关联支出信息', el: 'accountManage/account_view.html?type=relate_expenditure'})">
+      关联支出
+    </a>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>新增/编辑客户</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" method="post" action="./customer_edit.html" id="form-submit">
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt><b class="color-red">*</b>客户名称:</dt>
+      <dd><input type="text" name="customer_name" class="dd-content" placeholder="请输入客户名称" /></dd>
+    </dl>
+    <dl>
+      <dt>联系人:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入联系人" /></dd>
+    </dl>
+    <dl>
+      <dt>联系电话:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入联系电话" /></dd>
+    </dl>
+    <dl>
+      <dt>邮箱:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入邮箱" /></dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>客户分类:</dt>
+      <dd>
+        <div class="rule-single-select dd-content">
+          <select name="customer_category" id="customer_category">
+            <option value="">请选择客户分类</option>
+            <option value="1">分类1</option>
+            <option value="2">分类2</option>
+            <option value="3">分类3</option>
+          </select>
+        </div>
+        <a class="febtn-white btn-m" onclick="addLayer('category')" title="新增分类">
+          <i class="feimg-add"></i><span>新增分类</span>
+        </a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>身份标签:</dt>
+      <dd>
+        <div class="rule-single-select dd-content">
+          <select name="customer_tag" id="customer_tag">
+            <option value="">请选择身份标签</option>
+            <option value="1">标签1</option>
+            <option value="2">标签2</option>
+            <option value="3">标签3</option>
+          </select>
+        </div>
+        <a class="febtn-white btn-m" onclick="addLayer('tag')" title="新增身份标签">
+          <i class="feimg-add"></i><span>新增身份标签</span>
+        </a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>备注:</dt>
+      <dd>
+        <textarea class="dd-content" rows="4" cols="40" placeholder="事项内容"></textarea>
+      </dd>
+    </dl>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  //新增分类/身份标签
+  function addLayer(type) {
+    var title_ = type === 'category' ? '客户分类' : '身份标签'
+    var html = '<div style="padding: 20px 30px 40px 30px"><span><b class="color-red">*</b>名称：</span><input type="text" name="addname" placeholder="请输入'+title_+'" style="width: 300px;"></div>'
+    parent.layer.confirm(html, {
+      type: 1,
+      title: '新增' + title_,
+    }, function (index) {
+      var name = parent.$('input[name="addname"]').val()
+      if (name === '') {
+        publicObj.layerMsg('请输入'+title_+'名称')
+        return false
+      }
+      //添加到select option
+      var selectDmo = document.getElementById('customer_' + type);
+      selectDmo.add(new Option(''+ name + '',"99"));
+      publicObj.layerMsg('添加成功', 1)
+      $(".rule-single-select").ruleSingleSelect();
+      parent.layer.close(index)
+    })
+  }
+  //表单验证提交
+  function submitForm () {
+    var verifyArr = [
+      { key: 'customer_name', verify_type: 'required', error_text: '请输入客户名称'},
+      { key: 'customer_category', verify_type: 'required', error_text: '请选择客户分类', input_type: 'select'},
+      { key: 'customer_tag', verify_type: 'required', error_text: '请选择身份标签', input_type: 'select'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    publicObj.layerMsg('操作成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+</script>
+</html>

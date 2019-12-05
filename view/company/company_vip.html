@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>企业vip</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/center.css" />
+</head>
+
+<body class="iframe-body page-companyvip">
+<div class="iframe-main center-left" style="overflow-x: hidden">
+  <ul class="border-b center-progress">
+    <li>
+      <div class="title">VIP信息</div>
+      <div class="chart-progress">
+        <div class="cp-text">
+          <div class="t-container">
+            <div class="text-t">当前会员等级</div>
+            <div class="text-m">单月会员<i class="feimg-vip-big"></i></div>
+            <div class="text-point">会员期限</div>
+            <div class="text-point">截止2020/02/02</div>
+          </div>
+        </div>
+        <div class="cp-pro">
+          <div class="radialIndicator-div">
+            <img src="../../static/images/cs_img/user_logo.png">
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">文件空间</div>
+      <div class="chart-progress">
+        <div class="cp-text">
+          <div class="t-container">
+            <div class="text-t">剩余文件空间(M)</div>
+            <div class="text-m">7800</div>
+            <div class="text-point">总文件空间(M)</div>
+            <div class="text-point">860000</div>
+          </div>
+        </div>
+        <div class="cp-pro">
+          <div class="radialIndicator-div">
+            <div class="radialIndicator" id="1" data-value="75" data-title="已使用"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">数据空间</div>
+      <div class="chart-progress">
+        <div class="cp-text">
+          <div class="t-container">
+            <div class="text-t">剩余数据空间(条)</div>
+            <div class="text-m">7800</div>
+            <div class="text-point">总数据空间(条)</div>
+            <div class="text-point">8600000</div>
+          </div>
+        </div>
+        <div class="cp-pro">
+          <div class="radialIndicator-div">
+            <div class="radialIndicator" id="2" data-value="75" data-title="已使用"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ul class="vip-recharge-list">
+    <li>
+      <div class="title">基础版</div>
+      <div class="price">¥<b>120</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">适用于公司初创，业务量不大，简单记录收支 流水、应收应付，简单管理库存。特别推荐小微商户、个体户、初创型小公司购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">标准版</div>
+      <div class="price">¥<b>300</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">大部分用户的选择。适用于公司业务进入发展期，记账数据较多，对报表分析、财务管理有更高的要求。推荐物流企业、传媒、科技、工业制品等企业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">旗舰版</div>
+      <div class="price">¥<b>500</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">适用于有一定规模，记账人数及分店都较多，数据量大的公司。特别推荐连锁企业、微商代购、电商零售批发行业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li class="masonry">
+      <div class="title">钻石版</div>
+      <div class="price">¥<b>900</b>/年</div>
+      <div class="discount-tip"></div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"></a>
+      <div class="vip-desc">适用于有一定规模，记账人数及分店都较多，数据量大的公司。特别推荐连锁企业、微商代购、电商零售批发行业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</div>
+
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/radialIndicator/radialIndicator.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.getIframeMenuHtml('system', 'company_vip')//获取左侧菜单
+  /**region 圆型进度%*/
+  publicObj.diyRadialIndicator('.radialIndicator#1')
+  publicObj.diyRadialIndicator('.radialIndicator#2')
+  /**endregion*/
+
+  function toPay () {
+    publicObj.layerShow({el: 'public/success_alert.html', area: ['300px', '300px'], offset: ['', ''], skin: 'success-alert'})
+  }
+</script>
+</html>

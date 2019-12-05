@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>部门管理</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body>
+<div class="modify-body" style="padding: 0">
+  
+  <div class="modify-scroll">
+    <div class="fe-dl-div">
+      <dl>
+        <dt style="width: 60px"><b class="color-red">*</b>名称:</dt>
+        <dd>
+          <input type="text" class="dd-content" placeholder="请输入部门名称">
+        </dd>
+      </dl>
+      <dl>
+        <dt style="width: 60px">备注:</dt>
+        <dd>
+          <textarea cols="3" class="dd-content" placeholder="备注"></textarea>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  function submitForm() {
+    publicObj.layerFrameClose()
+  }
+</script>
+</html>

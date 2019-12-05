@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>个人信息</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form method="post" style="background-color: #ffffff">
+  <div class="white-title"><i class="feimg-t-user"></i><b>个人信息</b></div>
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt>用户名:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入用户名" /></dd>
+    </dl>
+    <dl>
+      <dt style="line-height: 104px">头像:</dt>
+      <dd>
+        <div id="company_logo">
+          <div class="upload-file">
+            <div class="file-div">
+              <div class="file-add">点击上传</div>
+              <div class="file-img">
+                <img src="../../static/images/cs_img/admin_avatar.png">
+              </div>
+              <input type="file" title=" " name="company_logo" onchange="uploadLogo(this)">
+            </div>
+            <span class="color-tip">建议上传正方形的logo(背景透明)</span>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>姓名:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入姓名" /></dd>
+    </dl>
+    <dl>
+      <dt>电话:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入电话" /></dd>
+    </dl>
+    <dl>
+      <dt>邮箱:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入邮箱" /></dd>
+    </dl>
+    <div style="padding: 10px 100px">
+      <button class="febtn-default" type="button" onclick="submitForm()" style="width: 88px">确认修改</button>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  parent.$('#iframe-menu').hide()
+
+  /**region 头像*/
+  isLogo()
+  function isLogo() {
+    var company_logo = $('input[name="company_logo"]').val()
+    if (company_logo === '') {
+      $('#company_logo .file-add').show()
+      $('#company_logo .file-img').hide()
+    } else {
+      $('#company_logo .file-img').show()
+      $('#company_logo .file-add').hide()
+    }
+  }
+  function uploadLogo(el) {
+    publicObj.uploadFile({
+      el: el,
+    }, function (img) {
+      console.log(img)
+      isLogo()
+    })
+  }
+  /**endregion*/
+  //表单验证提交
+  function submitForm () {
+    publicObj.layerMsg('操作成功', 1)
+  }
+</script>
+</html>

@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>新增/编辑资产</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" method="post">
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt><b class="color-red">*</b>资产分类:</dt>
+      <dd>
+        <div class="rule-single-select dd-content">
+          <select name="asset_category" id="asset_category">
+            <option value="">请选择资产分类</option>
+            <option value="1">分类1</option>
+            <option value="2">分类2</option>
+            <option value="3">分类3</option>
+          </select>
+        </div>
+        <a class="febtn-white btn-m" onclick="addCategoryLayer()" title="新增分类">
+          <i class="feimg-add"></i><span>新增分类</span>
+        </a>
+      </dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>资产名称:</dt>
+      <dd><input type="text" name="asset_name" class="dd-content" placeholder="请输入资产名称" /></dd>
+    </dl>
+    <dl>
+      <dt>资产编号:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入资产编号" /></dd>
+    </dl>
+    <dl>
+      <dt>型号/规格:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入型号/规格" /></dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>数量:</dt>
+      <dd><input type="text" name="asset_num" class="dd-content" placeholder="请输入数量" /></dd>
+    </dl>
+    <dl>
+      <dt>单位:</dt>
+      <dd><input type="text" class="dd-content" placeholder="请输入单位" /></dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>资产原值:</dt>
+      <dd>
+        <div class="input-unit dd-content">
+          <input type="text" name="asset_money" class="dd-content" placeholder="请输入资产原值" />
+          <em>元</em>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>备注:</dt>
+      <dd>
+        <textarea class="dd-content" rows="4" cols="40" placeholder="备注"></textarea>
+      </dd>
+    </dl>
+    <dl>
+      <dt>添加附件:</dt>
+      <dd>
+        <div class="upload-file-list dd-content">
+          <div>
+            <div class="upload-add" onclick="clickAddFile()">
+              <a class="file-name color-link">点击添加附件</a>
+            </div>
+            <input type="file" id="add-file" multiple onchange="changeAddFile(this)">
+          </div>
+          <ul id="upload-file-ul"></ul>
+        </div>
+      </dd>
+    </dl>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+
+  /**region 上传附件*/
+  var fileList = []
+  //点击添加附件
+  function clickAddFile () {
+    $('#add-file').click()
+  }
+  //点击添加附件,上传文件
+  function changeAddFile (el) {
+    publicObj.uploadMultiple({
+      el: el,
+    }, function (img) {
+      fileList.push(img)
+      fileHtml()
+    })
+  }
+  //附件上传后拼接html
+  function fileHtml () {
+    var html = ''
+    fileList.forEach(function (value, index) {
+      html += '' +
+        '<li id="file_index-'+index+'">' +
+        '<span class="file-name">' + value.name + '</span>' +
+        '<div class="file-act">' +
+        '<a onclick="editFile('+index+')">编辑</a><input type="file" value="' + value.url + '" onchange="changeEditFile(this, '+index+')">' +
+        '<a onclick="delFile('+index+')">删除</a>' +
+        '</div>' +
+        '</li>'
+    })
+    $('#upload-file-ul').html(html)
+  }
+  function editFile (index) {
+    $('#file_index-' + index).find('.file-act input[type=file]').click()
+  }
+  function changeEditFile(el, index) {
+    publicObj.uploadFile({
+      el: el,
+      app: 'admin'
+    }, function (img) {
+      fileList[index] = img.url
+    });
+  }
+  function delFile (index) {
+    $('#file_index-' + index).remove()
+    fileList.splice(index, 1)
+  }
+  /**endregion*/
+
+  //新增资产分类
+  function addCategoryLayer(type) {
+    var html = '<div style="padding: 20px 30px 40px 30px"><span><b class="color-red">*</b>名称：</span><input type="text" name="addname" placeholder="请输入资产分类" style="width: 300px;"></div>'
+    parent.layer.confirm(html, {
+      type: 1,
+      title: '新增资产分类',
+    }, function (index) {
+      var name = parent.$('input[name="addname"]').val()
+      if (name === '') {
+        publicObj.layerMsg('请输入资产分类名称')
+        return false
+      }
+      //添加到select option
+      var selectDmo = document.getElementById('asset_category' + type);
+      selectDmo.add(new Option(''+ name + '',"99"));
+      publicObj.layerMsg('保存成功', 1)
+      $(".rule-single-select").ruleSingleSelect();
+      parent.layer.close(index)
+    })
+  }
+  //表单验证提交
+  function submitForm () {
+    var verifyArr = [
+      { key: 'asset_category', verify_type: 'required', error_text: '请选择资产分类', input_type: 'select'},
+      { key: 'asset_name', verify_type: 'required', error_text: '请输入资产名称'},
+      { key: 'asset_num', verify_type: 'required', error_text: '请输入数量'},
+      { key: 'asset_money', verify_type: 'required', error_text: '请输入资产原值'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    publicObj.layerMsg('保存成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+</script>
+</html>

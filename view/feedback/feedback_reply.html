@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>提交反馈</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" >
+  <div class="fe-dl-div modify-scroll">
+    <div>
+      <dl>
+        <dt>反馈类型:</dt>
+        <dd>
+          <div class="dd-content">
+            <div class="fe-radio-tab-group">
+              <label class="radio-tab">
+                <input type="radio" name="sex" id="type_1" value="1" checked>
+                <label for="type_1">建议</label>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" name="sex" id="type_2" value="2">
+                <label for="type_2">问题</label>
+              </label>
+            </div>
+          </div>
+        </dd>
+      </dl>
+      <dl>
+        <dt><b class="color-red">*</b>标题:</dt>
+        <dd>
+          <input class="dd-content" name="title" type="text" placeholder="请输入标题"/>
+        </dd>
+      </dl>
+      <dl>
+        <dt><b class="color-red">*</b>备注:</dt>
+        <dd>
+          <textarea class="dd-content" name="remark" placeholder="备注" rows="3"></textarea>
+        </dd>
+      </dl>
+      <dl>
+        <dt>相关图片:</dt>
+        <dd class="upload-file-feedback">
+          <div class="add-file-btn">
+            <button class="febtn-default" type="button" onclick="clickAddFile()">选择图片</button>
+            <input type="file" id="add-file" title=" " multiple onchange="changeAddFile(this)">
+          </div>
+          <ul id="file-feedback-ul" class="file-feedback-ul">
+            <!--<li>
+              <div class="img-box">
+                <img src="../../static/images/cs_img/img1.png">
+                <div class="remark">暂无描述...</div>
+              </div>
+              <div class="box-act">
+                <a class="color-link">描述</a>
+                <a class="color-link" onclick="delFile()">删除</a>
+              </div>
+            </li>-->
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  /**region 相关图片*/
+  //相关图片数据
+  var fileList = [
+    {
+      img_url: '../../static/images/cs_img/img1.png',//图片路径
+      remark: ''//描述
+    }
+  ]
+  fileHtml()
+  //点击添加附件
+  function clickAddFile () {
+    $('#add-file').click()
+  }
+  //点击添加附件,上传文件
+  function changeAddFile (el) {
+    publicObj.uploadMultiple({
+      el: el,
+    }, function (img) {
+      fileList.push({img_url: '../'+img.url, remark: ''})
+      fileHtml()
+    })
+  }
+  //附件上传后拼接html
+  function fileHtml () {
+    var html = ''
+    fileList.forEach(function (value, index) {
+      var remark = value.remark !== '' ? value.remark : '暂无描述...'
+      html += '' +
+        '<li>' +
+          '<div class="img-box">' +
+            '<img src="'+value.img_url+'">' +
+            '<div class="remark">'+remark+'</div>' +
+          '</div>' +
+          '<div class="box-act">' +
+            '<a class="color-link" onclick="updRemark('+index+')">描述</a>' +
+            '<a class="color-link" onclick="delFile('+index+')">删除</a>' +
+          '</div>' +
+        '</li>'
+    })
+    $('#file-feedback-ul').html(html)
+  }
+  //修改描述
+  var remarkLayer;
+  function updRemark (key) {
+    var html = '<div style="padding: 20px 30px 40px 30px"><textarea name="feedback_remark" placeholder="描述" rows="3" style="width: 100%"></textarea></div>'
+    remarkLayer = parent.layer.confirm(html, {
+      type: 1,
+      title: '图片描述',
+      btn: ['批量描述', '单张描述']
+    }, function (index) {
+      var remark = parent.$('textarea[name="feedback_remark"]').val()
+      submitRemark(key, remark, 2)
+    }, function () {
+      var remark = parent.$('textarea[name="feedback_remark"]').val()
+      submitRemark(key, remark, 1)
+    })
+  }
+  //type-1:单张描述。2-批量描述
+  function submitRemark (key, new_remark, type) {
+    if (new_remark === '') {
+      publicObj.layerMsg('请输入图片描述')
+      return false
+    }
+    if (+type === 1) {
+      fileList[key].remark = new_remark
+    } else {
+      fileList.forEach(function (value) {
+        value.remark = new_remark
+      })
+    }
+    parent.layer.close(remarkLayer)
+    fileHtml()
+  }
+  //删除当前图片
+  function delFile (index) {
+    fileList.splice(index, 1)
+    fileHtml()
+  }
+  /**endregion*/
+
+  /**region 表单验证*/
+  function submitForm() {
+    var verifyArr = [
+      { key: 'title', verify_type: 'required', error_text: '请输入标题'},
+      { key: 'remark', verify_type: 'required', error_text: '请输入备注', input_type: 'textarea'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    //$('form').submit()
+    publicObj.layerMsg('操作成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+  /**endregion*/
+</script>
+</html>

@@ -1,0 +1,9 @@
+{
+  "code": 1,
+  "msg": "上传成功",
+  "data": {
+    "url": "../static/images/cs_img/admin_avatar.png",
+    "name": "我是附件.png",
+    "size": "88.7k"
+  }
+}

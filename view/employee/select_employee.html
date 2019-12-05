@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>选择员工</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body>
+<div class="modify-body">
+  <!--region 搜索-->
+  <form class="search-content" style="border-bottom: 0;">
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <span>所属部门</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">部门1</option>
+              <option value="2">部门2</option>
+              <option value="3">部门3</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>工作状态</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">在职</option>
+              <option value="2">离职</option>
+            </select>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+  
+  <div class="modify-scroll" style="padding-top: 10px;height: calc(100% - 100px)">
+    <table class="fe-table">
+      <thead>
+      <tr>
+        <th class="t-left">
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-all">
+            <font>序号</font>
+          </label>
+        </th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>入职时间</th>
+        <th>电话</th>
+        <th>状态</th>
+        <th class="t-left-m">备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>李大呼</td>
+        <td>女</td>
+        <td>2019-11-30</td>
+        <td>15589896363</td>
+        <td>在职</td>
+        <td class="t-left-m">哈哈哈哈哈哈哈</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="table-foot">
+      <div class="foot-action">
+        <label class="fe-checkbox">
+          <input type="checkbox" class="check-all">
+        </label>
+        <button type="button" class="febtn-white check-all-btn">全选</button>
+      </div>
+    </div>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  function submitForm() {
+    publicObj.layerFrameClose()
+  }
+</script>
+</html>

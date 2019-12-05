@@ -1,0 +1,250 @@
+<!--应收管理/应付管理-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>应收/应付管理</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-content" method="post" action="./receivable_payable_list.html">
+    <div class="search-container">
+      <ul class="search-left">
+        <li id="search-receivable">
+          <span>应收款类别</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">类别1</option>
+              <option value="2">类别2</option>
+            </select>
+          </div>
+        </li>
+        <li id="search-payable">
+          <span>应付款类别</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">类别1</option>
+              <option value="2">类别2</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>处理状态</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">待处理</option>
+              <option value="2">已处理</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>时间范围</span>
+          <div class="l-content rule-single-select">
+            <select onchange="setTime(this)">
+              <option value="">全部</option>
+              <option value="1">当天</option>
+              <option value="7">一周</option>
+              <option value="15">半个月</option>
+              <option value="30">一个月</option>
+              <option value="90">三个月</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+          </div>
+        </li>
+        <li>
+          <div class="l-content input-search">
+            <input type="text" placeholder="快捷搜索" style="width: 150px"/>
+            <button type="submit" class="febtn-default">搜索</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div class="list-row4">
+    <a><p>应收金额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>应收余额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>应付金额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>应付余额(元)</p><h1 class="color-orange">86000</h1></a>
+  </div>
+
+  <div>
+    <table class="fe-table">
+      <thead>
+      <tr>
+        <th class="t-left">
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-all" onchange="publicObj.checkAll()">
+          </label>
+          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+        </th>
+        <th>
+          <a><span>往来单位</span><i class="feimg-sort-desc"></i></a>
+        </th>
+        <th>类别</th>
+        <th>应收/付金额(元)</th>
+        <th>应收/付余额(元)</th>
+        <th>
+          <a><span>日期</span><i class="feimg-sort-desc"></i></a>
+        </th>
+        <th width="30%">详细事项</th>
+        <th>录入员</th>
+        <th>录入时间</th>
+        <th>状态</th>
+        <th>附件</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--region 待处理-->
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>娄底移动公司</td>
+        <td>应收/付款项</td>
+        <td><span class="color-red">30</span></td>
+        <td><span class="color-red">30</span></td>
+        <td>2019-11-30</td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大胡</td>
+        <td>2019-03-06</td>
+        <td><a class="color-link">待处理</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewAccount()">查看</a>
+          <div class="action-hover">
+            <a onclick="editAccount()">编辑</a>
+            <a onclick="transferAccount()">转为收入/支出</a>
+            <a onclick="delAccount()">删除</a>
+          </div>
+        </td>
+      </tr>
+      <!--endregion-->
+
+      <!--region 已处理-->
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>娄底移动公司</td>
+        <td>应收/付款项</td>
+        <td><span class="color-red">30</span></td>
+        <td><span class="color-red">30</span></td>
+        <td>2019-11-30</td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大胡</td>
+        <td>2019-03-06</td>
+        <td><a class="color-link">待处理</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewAccount()">查看</a>
+          <div class="action-hover">
+            <a onclick="viewRelateAccount()">关联收入/支出</a>
+            <a onclick="delAccount()">删除</a>
+          </div>
+        </td>
+      </tr>
+      <!--endregion-->
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  var pageType = publicObj.getQueryVariable("type");//pageType,页面裂类型
+  publicObj.getIframeMenuHtml('accountManage', pageType + '_list')//获取左侧菜单
+  var pageTitle = ''
+  if (pageType === 'receivable') {
+    $('#search-receivable').show()
+    $('#search-payable').hide()
+    pageTitle  = '应收款'
+  } else {
+    $('#search-receivable').show()
+    $('#search-payable').hide()
+    pageTitle  = '应付款'
+  }
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  function setTime (obj) {
+    var val = $(obj).find('option:selected').val()
+    if (val === '') {
+      $('#startTime').val('')
+      $('#endTime').val('')
+    } else {
+      $('#startTime').val(publicObj.dayToTime(val, 'date')[0])
+      $('#endTime').val(publicObj.dayToTime(val, 'date')[1])
+    }
+  }
+  /**endregion*/
+
+  //查看
+  function viewAccount () {
+    publicObj.layerShow({title: '查看'+pageTitle+'明细', el: 'accountManage/account_view.html?type='+pageType}, 'right')
+    event.stopPropagation()
+  }
+  //编辑
+  function editAccount () {
+    publicObj.layerShow({title: '编辑'+pageTitle+'信息', el: 'accountManage/account_edit.html?type='+pageType})
+    event.stopPropagation()
+  }
+  //转为收入/支出
+  function transferAccount () {
+    var text = pageType === 'receivable' ? '收入' : '支出'
+    publicObj.layerShow({title: '转为'+text+'信息', el: 'accountManage/account_edit.html?type='+pageType})
+    event.stopPropagation()
+  }
+  //查看关联收入/支出明细
+  function viewRelateAccount () {
+    var text = pageType === 'receivable' ? '收入' : '支出'
+    var type = pageType === 'receivable' ? 'income' : 'expenditure'
+    publicObj.layerShow({title: '查看关联'+text+'信息', el: 'accountManage/account_view.html?type=relate_'+type})
+    event.stopPropagation()
+  }
+  //删除
+  function delAccount() {
+    publicObj.confirmDel(function (layeo) {
+      publicObj.layerMsg('删除成功', 1)
+      parent.layer.close(layeo)
+    })
+    event.stopPropagation()
+  }
+</script>
+</html>

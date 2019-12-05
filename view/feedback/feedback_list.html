@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>意见反馈</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body class="iframe-body">
+<div class="iframe-main" style="left: 0;">
+  <!--region 搜索-->
+  <form class="search-content">
+    <div class="search-container">
+      <div class="white-title"><i class="feimg-t-msg"></i><b>意见反馈</b></div>
+      <ul class="search-left flex-right" style="padding-right: 20px;width: initial;">
+        <li>
+          <span>反馈类型</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">建议</option>
+              <option value="2">问题</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+          </div>
+        </li>
+        <li>
+          <div class="l-content input-search">
+            <input type="text" placeholder="快捷搜索" style="width: 120px"/>
+            <button type="submit" class="febtn-default">搜索</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div>
+    <table class="fe-table">
+      <thead>
+      <tr>
+        <th class="t-left">
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-all">
+          </label>
+          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+        </th>
+        <th>标题</th>
+        <th>反馈类型</th>
+        <th>相关图片</th>
+        <th>未读回复</th>
+        <th>状态</th>
+        <th>提交时间</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>支付失败</td>
+        <td>问题</td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/cs_img/img1.png');event.stopPropagation()"></a>
+        </td>
+        <td>无</td>
+        <td>提交反馈</td>
+        <td>2019-09-09 12:12</td>
+        <td class="table-action">
+          <a onclick="replyFeedback()">回复</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="table-foot">
+      <div class="foot-action">
+        <label class="fe-checkbox">
+          <input type="checkbox" class="check-all">
+        </label>
+        <button type="button" class="febtn-white check-all-btn">全选</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  parent.$('#iframe-menu').hide()
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  /**endregion*/
+
+  //回复
+  function replyFeedback () {
+    publicObj.layerShow({title: '提交反馈', el: 'feedback/feedback_reply.html'})
+  }
+</script>
+</html>

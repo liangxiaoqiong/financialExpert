@@ -1,0 +1,266 @@
+<!--收入管理/支出管理-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>收入/支出管理</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-content" method="post" action="./income_expenditure_list.html">
+    <div class="search-container">
+      <ul class="search-left">
+        <li id="search-income" style="display: none">
+          <span>收入</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">收入1</option>
+              <option value="2">收入2</option>
+            </select>
+          </div>
+        </li>
+        <li id="search-expenditure" style="display: none">
+          <span>支出</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">支出1</option>
+              <option value="2">支出2</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>经手人</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">经手人1</option>
+              <option value="2">经手人2</option>
+              <option value="3">经手人3</option>
+              <option value="4">经手人4</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>审核状态</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">待审核</option>
+              <option value="2">已审核</option>
+              <option value="3">审核驳回</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+          </div>
+        </li>
+        <li>
+          <div class="l-content input-search">
+            <input type="text" placeholder="快捷搜索" style="width: 140px"/>
+            <button type="submit" class="febtn-default">搜索</button>
+            <a class="febtn-white ml-10" style="margin-left: 13px">导出列表</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div class="list-row6">
+    <a><p>实时余额(元)</p><h1>86000</h1></a>
+    <a><p>总收入(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>总支出(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>本月盈利(元)</p><h1>86000</h1></a>
+    <a><p>本月收入(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>本月支出(元)</p><h1 class="color-orange">86000</h1></a>
+  </div>
+
+  <div>
+    <table class="fe-table">
+      <thead>
+        <tr>
+          <th class="t-left">
+            <label class="fe-checkbox">
+              <input type="checkbox" class="check-all" onchange="publicObj.checkAll()">
+            </label>
+            <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+          </th>
+          <th>收入/支出日期</th>
+          <th>收入/支出项目</th>
+          <th>收入/支出金额(元)</th>
+          <th width="30%">详细事项</th>
+          <th>经手人</th>
+          <th>录入员</th>
+          <th>录入时间</th>
+          <th>审核状态</th>
+          <th>附件</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="viewAccount()">
+          <td>
+            <label class="fe-checkbox">
+              <input type="checkbox" class="check-td" value="1">
+              <font>1</font>
+            </label>
+          </td>
+          <td>2019-03-06</td>
+          <td>餐饮</td>
+          <td><span class="color-red">30</span></td>
+          <td>今天在二楼吃饭</td>
+          <td>张小黄</td>
+          <td>小米</td>
+          <td>2019-03-06</td>
+          <td><a class="color-link">待审核(1/2)</a></td>
+          <td>
+            <a class="feicon-img-pic"
+               onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+          </td>
+          <td class="table-action">
+            <a onclick="viewAccount()">查看</a>
+            <div class="action-hover">
+              <a onclick="verifyAccount()">审核</a>
+              <a onclick="editAccount()">编辑</a>
+              <a onclick="cancelAccount()">撤销</a>
+              <a onclick="addMemorandum()">提醒</a>
+              <a onclick="delAccount()">删除</a>
+            </div>
+          </td>
+        </tr>
+        <tr onclick="viewAccount()">
+          <td>
+            <label class="fe-checkbox">
+              <input type="checkbox" class="check-td" value="2">
+              <font>2</font>
+            </label>
+          </td>
+          <td>2019-03-06</td>
+          <td>餐饮</td>
+          <td><span class="color-red">30</span></td>
+          <td>今天在二楼吃饭</td>
+          <td>张小黄</td>
+          <td>小米</td>
+          <td>2019-03-06</td>
+          <td><a class="color-red">已驳回</a></td>
+          <td>
+            <a class="feicon-img-pic"
+               onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+          </td>
+          <td class="table-action">
+            <a onclick="viewAccount()">查看</a>
+            <div class="action-hover">
+              <a onclick="verifyAccount()">审核</a>
+              <a onclick="editAccount()">编辑</a>
+              <a onclick="cancelAccount()">撤销</a>
+              <a onclick="addMemorandum()">提醒</a>
+              <a onclick="delAccount()">删除</a>
+            </div>
+          </td>
+        </tr>
+        <tr onclick="viewAccount()">
+          <td>
+            <label class="fe-checkbox">
+              <input type="checkbox" class="check-td" value="3">
+              <font>3</font>
+            </label>
+          </td>
+          <td>2019-03-06</td>
+          <td>餐饮</td>
+          <td><span class="color-red">30</span></td>
+          <td>今天在二楼吃饭</td>
+          <td>张小黄</td>
+          <td>小米</td>
+          <td>2019-03-06</td>
+          <td><a>已审核</a></td>
+          <td>
+            <a class="feicon-img-pic"
+               onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+          </td>
+          <td class="table-action">
+            <a onclick="viewAccount()">查看</a>
+            <div class="action-hover">
+              <a onclick="verifyAccount()">审核</a>
+              <a onclick="editAccount()">编辑</a>
+              <a onclick="cancelAccount()">撤销</a>
+              <a onclick="addMemorandum()">提醒</a>
+              <a onclick="delAccount()">删除</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="fe-empty"><!--空白页--></div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  var pageType = publicObj.getQueryVariable("type");//pageType,页面裂类型
+  publicObj.getIframeMenuHtml('accountManage', pageType + '_list')//获取左侧菜单
+  var pageTitle = ''
+  if (pageType === 'income') {
+    $('#search-income').show()
+    $('#search-expenditure').hide()
+    pageTitle  = '收入'
+  } else {
+    $('#search-expenditure').show()
+    $('#search-income').hide()
+    pageTitle  = '支出'
+  }
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+
+  //查看
+  function viewAccount () {
+    publicObj.layerShow({title: '查看'+pageTitle+'明细', el: 'accountManage/account_view.html?type='+pageType}, 'right')
+    event.stopPropagation()
+  }
+  //审核
+  function verifyAccount () {
+    publicObj.layerShow({title: '审核'+pageTitle+'信息', el: 'accountManage/verify_account.html?type='+pageType})
+    event.stopPropagation()
+  }
+  //编辑
+  function editAccount () {
+    publicObj.layerShow({title: '编辑'+pageTitle+'信息', el: 'accountManage/account_edit.html?type='+pageType})
+    event.stopPropagation()
+  }
+  //撤销
+  function cancelAccount () {
+    publicObj.layerShow({title: '申请撤销'+pageTitle+'信息', el: 'accountManage/cancel_account.html?type='+pageType})
+    event.stopPropagation()
+  }
+  //提醒
+  function addMemorandum () {
+    publicObj.layerShow({title: '添加提醒', el: 'memorandum/memorandum_edit.html'})
+    event.stopPropagation()
+  }
+  //删除
+  function delAccount() {
+    publicObj.confirmDel(function (layeo) {
+      publicObj.layerMsg('删除成功', 1)
+      parent.layer.close(layeo)
+    })
+    event.stopPropagation()
+  }
+</script>
+</html>

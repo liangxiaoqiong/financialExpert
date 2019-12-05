@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>审核设置</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body class="iframe-body">
+<form class="iframe-main" method="post">
+  <div class="fe-tab" style="padding: 20px 0 0 20px;">
+    <ul>
+      <li onclick="changeTab('income')" id="tabli-income">收入审核</li>
+      <li onclick="changeTab('expenditure')" id="tabli-expenditure">支出审核</li>
+      <li onclick="changeTab('incomeRevocation')" id="tabli-incomeRevocation">收入撤销审核</li>
+      <li onclick="changeTab('expenditureRevocation')" id="tabli-expenditureRevocation">支出撤销审核</li>
+      <li onclick="changeTab('reimbursement')" id="tabli-reimbursement">报销审核</li>
+      <li onclick="changeTab('paySlip')" id="tabli-paySlip">工资条审核</li>
+    </ul>
+  </div>
+  <div class="fe-dl-div modify-scroll" style="height: calc(100% - 120px)">
+    <div>
+      <dl>
+        <dt>审核模式:</dt>
+        <dd>
+          <div class="fe-radio-tab-group">
+            <label class="radio-tab">
+              <input type="radio" name="sex" id="auth_type1" value="1" checked>
+              <label for="auth_type1">单人审核模式</label>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="sex" id="auth_type2" value="2">
+              <label for="auth_type2">多人审核模式</label>
+            </label>
+          </div>
+          <font class="color-tip">单人审核时只需要任何一个审核人员审核即可通过；多人审核时需要所有审核人审核完才可通过</font>
+        </dd>
+      </dl>
+      <dl>
+        <dt>审核人:</dt>
+        <dd>
+          <ul class="auth-setting-list" id="auth-setting-list"><!--审核人列表--></ul>
+          <div>
+            <a class="febtn-default" onclick="addAuthUser()">添加审核人</a>
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="right-row-foot">
+    <button class="febtn-default" type="button" onclick="submitForm()">提交保存</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.getIframeMenuHtml('system', 'auth_setting')//获取左侧菜单
+  /**region tab切换*/
+  var tabId = 'income';
+  changeTab(tabId);
+  function changeTab(tid) {
+    tabId = tid
+    $('.fe-tab li').removeClass('active')
+    $('#tabli-' + tabId).addClass('active')
+  }
+  /**endregion*/
+
+  /**region 审核人*/
+  //审核人列表
+  var authUserList = [
+      {name: '张小花'}, {name: '李四'}
+    ]
+  authUserHtml()
+  function authUserHtml () {
+    var html = ''
+    authUserList.forEach(function (value, index) {
+      html += '<li><input type="text" value="'+value.name+'"><a class="feimg-minus-red" onclick="delAuthUser('+index+')"></a></li>'
+    })
+    $('#auth-setting-list').html(html)
+  }
+  //添加审核人
+  function addAuthUser () {
+    publicObj.layerShow({title: '添加审核人', el: 'user/auth_list.html'})
+  }
+  //确定选择的审核人
+  function submitSelectAuthUser (options) {
+    options.forEach(function (value) {
+      authUserList.push({name: value})
+    })
+    authUserHtml()
+  }
+  //移除审核人
+  function delAuthUser (index) {
+    authUserList.splice(index, 1)
+    authUserHtml()
+  }
+  /**endregion*/
+
+  /**region 表单验证*/
+  function submitForm() {
+    //$('form').submit()
+    publicObj.layerMsg('保存成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+  /**endregion*/
+</script>
+</html>

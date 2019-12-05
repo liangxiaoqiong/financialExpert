@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>新增/编辑系统用户</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" method="post">
+  <div class="fe-tab" style="padding: 0 20px;">
+    <ul>
+      <li onclick="changeTab('basic')" id="tabli-basic">用户信息</li>
+      <li onclick="changeTab('config')" id="tabli-config">权限分配</li>
+    </ul>
+  </div>
+  <div class="fe-dl-div modify-scroll" style="height: calc(100% - 90px)">
+    <!--region 用户信息-->
+    <div id="dl_basic">
+      <dl>
+        <dt><b class="color-red">*</b>登录账号:</dt>
+        <dd>
+          <input class="dd-content" name="account_number" type="text" placeholder="请输入登录账号" />
+          <font class="color-tip">字母、下划线，不可修改</font>
+        </dd>
+      </dl>
+      <dl>
+        <dt><b class="color-red">*</b>登录密码:</dt>
+        <dd>
+          <input class="dd-content" name="password" type="password" placeholder="请输入登录密码" />
+        </dd>
+      </dl>
+      <dl>
+        <dt><b class="color-red">*</b>确认密码:</dt>
+        <dd>
+          <input class="dd-content" name="password2" type="password" placeholder="请输入确认密码" />
+        </dd>
+      </dl>
+      <dl>
+        <dt><b class="color-red">*</b>姓名:</dt>
+        <dd>
+          <input class="dd-content" name="name" type="text" placeholder="请输入姓名" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>头像:</dt>
+        <dd>
+          <div id="user_logo">
+            <div class="upload-file">
+              <div class="file-div">
+                <div class="file-add">点击上传</div>
+                <div class="file-img">
+                  <img src="../../static/images/cs_img/admin_avatar.png">
+                </div>
+                <input type="file" title=" " name="user_logo" onchange="uploadUserLogo(this)">
+              </div>
+              <span class="color-tip">建议上传正方形的头像</span>
+            </div>
+          </div>
+        </dd>
+      </dl>
+      <dl>
+        <dt>电话:</dt>
+        <dd>
+          <input class="dd-content" type="text" placeholder="请输入电话" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>邮箱:</dt>
+        <dd>
+          <input class="dd-content" type="text" placeholder="请输入邮箱" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>是否启用:</dt>
+        <dd class="padding: 6px 0 6px 10px;">
+          <label class="fe-switch">
+            <input type="checkbox" id="is_on" class="cbx">
+            <label for="is_on" class="lbl"></label>
+          </label>
+          <span class="color-tip display-align">不启用则无法使用该账户登录</span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>信息待审:</dt>
+        <dd class="padding: 6px 0 6px 10px;">
+          <label class="fe-switch">
+            <input type="checkbox" id="xxds" class="cbx">
+            <label for="xxds" class="lbl"></label>
+          </label>
+          <span class="color-tip display-align">发布的信息是否需要审核才显示</span>
+        </dd>
+      </dl>
+    </div>
+    <!--endregion-->
+
+    <!--region 权限分配-->
+    <div id="dl_config">
+      <div class="common-tree">
+        <label class="fe-checkbox">
+          <input type="checkbox" id="checkbox-all" onchange="checkAuthAll(this)">
+          <font>所有权限</font>
+        </label>
+        <ul id="auth-tree-list">
+          <!--<li class="tree-one">
+            <label class="fe-checkbox">
+              <input type="checkbox" onchange="checkAuthChild(this)">
+              <font>账目管理</font>
+            </label>
+            <ul>
+              <li class="tree-two">
+                <label class="fe-checkbox">
+                  <input type="checkbox">
+                  <font>收入管理</font>
+                </label>
+                <ul>
+                  <li class="tree-three">
+                    <label class="fe-checkbox">
+                      <input type="checkbox">
+                      <font>显示</font>
+                    </label>
+                  </li>
+                  <li class="tree-three">
+                    <label class="fe-checkbox">
+                      <input type="checkbox">
+                      <font>查看</font>
+                    </label>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+    <!--endregion-->
+  </div>
+  <div class="layer-foot">
+    <button class="febtn-white" type="button" onclick="publicObj.layerFrameClose()">取消</button>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  /**region tab切换*/
+  var tabId = 'basic';
+  var pageType = publicObj.getQueryVariable("type");//pageType,编辑时才有
+  if (pageType) {
+    tabId = pageType
+  }
+  changeTab(tabId);
+  function changeTab(tid) {
+    tabId = tid
+    $('.fe-tab li').removeClass('active')
+    $('#tabli-' + tabId).addClass('active')
+    switch (tid) {
+      case "basic": //用户信息
+        $('#dl_basic').show()
+        $('#dl_config').hide()
+        break;
+      case "config": //权限分配
+        $('#dl_basic').hide()
+        $('#dl_config').show()
+        break;
+      default:
+        break;
+    }
+  }
+  /**endregion*/
+
+  /**region 公司logo*/
+  isLogo()
+  function isLogo() {
+    var company_logo = $('input[name="user_logo"]').val()
+    if (company_logo === '') {
+      $('#user_logo .file-add').show()
+      $('#user_logo .file-img').hide()
+    } else {
+      $('#user_logo .file-img').show()
+      $('#user_logo .file-add').hide()
+    }
+  }
+  function uploadUserLogo(el) {
+    publicObj.uploadFile({
+      el: el,
+    }, function (img) {
+      console.log(img)
+      isLogo()
+    })
+  }
+  /**endregion*/
+
+  /**region 权限分配*/
+  var authList = [
+    {
+      type: 'accountManage',
+      title: '账目管理',
+      child: [
+        {
+          type: 'income',
+          title: '收入管理',
+          child: [
+            {type: 'income_show', title: '显示', is_checked: 0},
+            {type: 'income_view', title: '查看', is_checked: 0},
+            {type: 'income_add', title: '添加', is_checked: 0},
+            {type: 'income_control', title: '控制', is_checked: 0},
+            {type: 'income_delete', title: '删除', is_checked: 0},
+          ],
+          is_checked: 0
+        },
+        {
+          type: 'expenditure',
+          title: '支出管理',
+          child: [
+            {type: 'expenditure_show', title: '显示', is_checked: 0},
+            {type: 'expenditure_view', title: '查看', is_checked: 0},
+            {type: 'expenditure_add', title: '添加', is_checked: 0},
+            {type: 'expenditure_control', title: '控制', is_checked: 0},
+            {type: 'expenditure_delete', title: '删除', is_checked: 0},
+          ],
+          is_checked: 0
+        },
+        {
+          type: 'receivable',
+          title: '应收款管理',
+          child: [
+            {type: 'receivable_show', title: '显示', is_checked: 0},
+            {type: 'receivable_view', title: '查看', is_checked: 0},
+            {type: 'receivable_add', title: '添加', is_checked: 0},
+            {type: 'receivable_control', title: '控制', is_checked: 0},
+            {type: 'receivable_delete', title: '删除', is_checked: 0},
+          ]
+        },
+        {
+          type: 'payable',
+          title: '应付款管理',
+          child: [
+            {type: 'payable_show', title: '显示', is_checked: 0},
+            {type: 'payable_view', title: '查看', is_checked: 0},
+            {type: 'payable_add', title: '添加', is_checked: 0},
+            {type: 'payable_control', title: '控制', is_checked: 0},
+            {type: 'payable_delete', title: '删除', is_checked: 0},
+          ],
+          is_checked: 0
+        },
+      ],
+      is_checked: 0,//是否选中
+      is_show_child: 1//是否显示子级。默认=1
+    },
+    {
+      type: 'memorandum',
+      title: '计划任务',
+      child: [],
+      is_checked: 0,
+      is_show_child: 1
+    }
+  ]
+  authCheckHtml()
+  function authCheckHtml () {
+    var html = ''
+    authList.forEach(function (val1) {
+      var checked = +val1.is_checked === 1 ? 'checked' : ''
+      html += '<li class="tree-one">'
+      html += '' +
+        '<div class="flex-between"><label class="fe-checkbox">' +
+        '<input type="checkbox" value="'+val1.type+'" '+checked+' onchange="checkAuthChild(this, \'one\', \''+val1.type+'\')">' +
+        '<font>'+val1.title+'</font>' +
+        '</label><span class="flex-row" style="flex: 1" onclick="treeChildToggle(this, \''+val1.type+'\')">&nbsp;</span></div>'
+      if (val1.child.length > 0) {
+        var displayStyle = +val1.is_show_child === 1 ? 'style="display:block"' : 'style="display:none"'
+        html += '<ul '+displayStyle+'>'
+        val1.child.forEach(function (val2) {
+          var checked = +val2.is_checked === 1 ? 'checked' : ''
+          html += '<li class="tree-two">'
+          html += '' +
+            '<label class="fe-checkbox">' +
+            '<input type="checkbox" value="'+val2.type+'" '+checked+' onchange="checkAuthChild(this, \'two\', \''+val1.type+'\', \''+val2.type+'\')">' +
+            '<font>'+val2.title+'</font>' +
+            '</label>'
+          html += '</li>'
+          if (val2.child.length > 0) {
+            html += '<ul>'
+            val2.child.forEach(function (val3) {
+              var checked = +val3.is_checked === 1 ? 'checked' : ''
+              html += '<li class="tree-three">'
+              html += '' +
+                '<label class="fe-checkbox">' +
+                '<input type="checkbox" value="'+val3.type+'" '+checked+' onchange="checkAuthChild(this, \'three\', \''+val1.type+'\', \''+val2.type+'\', \''+val3.type+'\')">' +
+                '<font>'+val3.title+'</font>' +
+                '</label>'
+              html += '</li>'
+            })
+            html += '</ul>'
+          }
+        })
+        html += '</ul>'
+      }
+      html += '</li>'
+    })
+    $('#auth-tree-list').html(html)
+    isCheckedAll()
+  }
+  //点击全选、所有权限
+  function checkAuthAll (obj) {
+    var isChecked = $(obj).is(':checked') ? 1 : 0
+    authList.forEach(function (val1) {
+      val1.is_checked = isChecked
+      if (val1.child.length > 0) {
+        val1.child.forEach(function (val2) {
+          val2.is_checked = isChecked
+          if (val2.child.length > 0) {
+            val2.child.forEach(function (val3) {
+              val3.is_checked = isChecked
+            })
+          }
+        })
+      }
+    })
+    authCheckHtml()
+  }
+  //点击子项
+  function checkAuthChild (obj, level, typeValue1, typeValue2, typeValue3) {
+    var isChecked = $(obj).is(':checked') ? 1 : 0
+    authList.forEach(function (val1) {
+      switch (level) {
+        case 'one':
+          if (val1.type === typeValue1) {
+            val1.is_checked = isChecked
+            if (val1.child.length > 0) {
+              val1.child.forEach(function (val2) {
+                val2.is_checked = isChecked
+                if (val2.child.length > 0) {
+                  val2.child.forEach(function (val3) {
+                    val3.is_checked = isChecked
+                  })
+                }
+              })
+            }
+          }
+          break
+        case 'two':
+          if (val1.type === typeValue1) {
+            if (val1.child.length > 0) {
+              var checkedOneLen = 0
+              val1.child.forEach(function (val2) {
+                if (val2.type === typeValue2) {
+                  val2.is_checked = isChecked
+                  if (val2.child.length > 0) {
+                    val2.child.forEach(function (val3) {
+                      val3.is_checked = isChecked
+                    })
+                  }
+                }
+                if (+val2.is_checked === 1) checkedOneLen++
+              })
+              val1.is_checked = (checkedOneLen === val1.child.length) ? 1 : 0
+            }
+          }
+          break
+        case 'three':
+          if (val1.type === typeValue1) {
+            if (val1.child.length > 0) {
+              var checkedOneLen = 0
+              val1.child.forEach(function (val2) {
+                if (val2.type === typeValue2) {
+                  if (val2.child.length > 0) {
+                    var checkedTwoLen = 0
+                    val2.child.forEach(function (val3) {
+                      if (val3.type === typeValue3) {
+                        val3.is_checked = isChecked
+                      }
+                      if (+val3.is_checked === 1) checkedTwoLen++
+                    })
+                    val2.is_checked = (checkedTwoLen === val2.child.length) ? 1 : 0
+                  }
+                }
+                if (+val2.is_checked === 1) checkedOneLen++
+              })
+              val1.is_checked = (checkedOneLen === val1.child.length) ? 1 : 0
+            }
+          }
+          break
+        default:
+          break
+      }
+    })
+    authCheckHtml()
+  }
+  //判断是否全选
+  function isCheckedAll() {
+    var checkOneLen = 0
+    authList.forEach(function (val1) {
+      if (+val1.is_checked === 1) checkOneLen++
+    })
+    $('#checkbox-all').prop("checked", +checkOneLen === authList.length)
+  }
+  function treeChildToggle(obj, typeVal) {
+    authList.forEach(function (val1) {
+      if (typeVal === val1.type) {
+        if (+val1.is_show_child === 1) {
+          $(obj).parents('li.tree-one').find('ul').hide(500)
+          val1.is_show_child = 0
+        } else {
+          $(obj).parents('li.tree-one').find('ul').show(500)
+          val1.is_show_child = 1
+        }
+      }
+    })
+
+  }
+  /**endregion*/
+
+  /**region 表单验证*/
+  function submitForm() {
+    if (tabId === 'basic') {
+      var verifyArr = [
+        { key: 'account_number', verify_type: 'required', error_text: '请输入登录账号'},
+        { key: 'password', verify_type: 'required', error_text: '请输入登录密码'},
+        { key: 'password2', verify_type: 'required', error_text: '请输入确认密码'},
+        { key: 'password2', verify_type: 'equalTo', error_text: '请输入确认密码', equal_val: 'password'},
+        { key: 'name', verify_type: 'required', error_text: '请输入姓名'},
+        ]
+      if (!publicObj.verifyForm(verifyArr)) return false
+    }
+    //$('form').submit()
+    console.log(authList)
+    publicObj.layerMsg('操作成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+  /**endregion*/
+</script>
+</html>

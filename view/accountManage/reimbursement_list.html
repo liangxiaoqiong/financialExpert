@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>报销管理</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-content" method="post" action="./reimbursement_list.html">
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <span>审核状态</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">待审核</option>
+              <option value="2">报销驳回</option>
+              <option value="3">同意报销</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>报销状态</span>
+          <div class="l-content rule-single-select">
+            <select>
+              <option value="">全部</option>
+              <option value="1">待报销</option>
+              <option value="2">报销审核中</option>
+              <option value="3">报销驳回</option>
+              <option value="4">已报销</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+          </div>
+        </li>
+        <li>
+          <div class="l-content input-search">
+            <input type="text" placeholder="快捷搜索" style="width: 150px"/>
+            <button type="submit" class="febtn-default">搜索</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div class="list-row5">
+    <a><p>待报销金额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>报销审核中余额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>报销驳回金额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a><p>已报销金额(元)</p><h1 class="color-orange">86000</h1></a>
+    <a class="row-help">
+      <div>
+        <i class="feimg-question-default"></i>
+        <div>
+          <p>关注公众号</p>
+          <p>提交报销数据</p>
+        </div>
+        <div class="help-qrcode">
+          <img src="../../static/images/cs_img/qr_img.png">
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div>
+    <table class="fe-table">
+      <thead>
+      <tr>
+        <th class="t-left">
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-all" onchange="publicObj.checkAll()">
+          </label>
+          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+        </th>
+        <th>
+          <a><span>报销日期</span><i class="feimg-sort-desc"></i></a>
+        </th>
+        <th>报销金额(元)</th>
+        <th width="30%">详细事项</th>
+        <th>报销人</th>
+        <th>提交时间</th>
+        <th>审核状态</th>
+        <th>报销状态</th>
+        <th>附件</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>2019-09-09</td>
+        <td><span class="color-red">30</span></td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大混</td>
+        <td>2019-11-30</td>
+        <td><a class="color-link">待审核</a></td>
+        <td><a class="color-link">待报销</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewReimbursement()">查看</a>
+          <div class="action-hover">
+            <a onclick="viewRelateAccount()">关联支出</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>2019-09-09</td>
+        <td><span class="color-red">30</span></td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大混</td>
+        <td>2019-11-30</td>
+        <td><a class="color-red">报销驳回</a></td>
+        <td><a class="color-link">报销审核中</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewReimbursement()">查看</a>
+          <div class="action-hover">
+            <a onclick="viewRelateAccount()">关联支出</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>2019-09-09</td>
+        <td><span class="color-red">30</span></td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大混</td>
+        <td>2019-11-30</td>
+        <td><a>同意报销</a></td>
+        <td><a class="color-red">报销驳回</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewReimbursement()">查看</a>
+          <div class="action-hover">
+            <a onclick="viewRelateAccount()">关联支出</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>2019-09-09</td>
+        <td><span class="color-red">30</span></td>
+        <td>哈哈哈哈哈哈哈</td>
+        <td>张大混</td>
+        <td>2019-11-30</td>
+        <td><a>同意报销</a></td>
+        <td><a>已报销</a></td>
+        <td>
+          <a class="feicon-img-pic"
+             onclick="parent.publicObj.imgPreview('../static/images/login/login_bg.png');event.stopPropagation()"></a>
+        </td>
+        <td class="table-action">
+          <a onclick="viewReimbursement()">查看</a>
+          <div class="action-hover">
+            <a onclick="viewRelateAccount()">关联支出</a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.getIframeMenuHtml('accountManage', 'reimbursement_list')//获取左侧菜单
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  /**endregion*/
+
+  //查看报销明细
+  function viewReimbursement () {
+    publicObj.layerShow({title: '查看报销明细', el: 'accountManage/reimbursement_view.html'}, 'right')
+    event.stopPropagation()
+  }
+  //查看关联支出明细
+  function viewRelateAccount () {
+    publicObj.layerShow({title: '查看关联支出信息', el: 'accountManage/account_view.html?type=relate_expenditure'})
+    event.stopPropagation()
+  }
+</script>
+</html>

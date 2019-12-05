@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>重置密码</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" method="post">
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt>重置用户:</dt>
+      <dd><input type="text" class="dd-content" value="张小花" disabled /></dd>
+    </dl>
+    <dl>
+      <dt>旧登录密码:</dt>
+      <dd><input type="text" class="dd-content" value="123456" disabled /></dd>
+    </dl>
+    <dl>
+      <dt>新登录密码:</dt>
+      <dd>
+        <input type="text" class="dd-content mr-10" placeholder="请输入新登录密码" />
+        <a class="color-link">获取随机数字密码</a>
+        <font class="color-tip" style="margin: 0 5px">|</font>
+        <a class="color-link">获取混合密码</a>
+        <font style="color: #C0C0C0">区分大小写</font>
+      </dd>
+    </dl>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  //表单验证提交
+  function submitForm () {
+    publicObj.layerMsg('保存成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+</script>
+</html>

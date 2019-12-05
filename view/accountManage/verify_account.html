@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>审核收入/支出信息</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+
+<body>
+<div style="height: 100%">
+  <div class="right-row" style="height: calc(100% - 80px);padding-bottom: 20px">
+    <!--region 基本信息-->
+    <div>
+      <div class="right-title" style="margin-bottom: -6px">基本信息</div>
+      <div class="right-dl-div">
+        <dl><dt>收入/支出项目</dt><dd>技术维护</dd></dl>
+        <dl><dt>日期</dt><dd>2017-12-01</dd></dl>
+        <dl><dt>金额</dt><dd>20000.00元</dd></dl>
+        <dl><dt>支付账户</dt><dd>现金</dd></dl>
+        <dl><dt>详细事项</dt><dd>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</dd></dl>
+        <dl><dt>经手人</dt><dd>张大行</dd></dl>
+        <dl><dt>录入员</dt><dd>小肌肤</dd></dl>
+        <dl><dt>录入时间</dt><dd>2017-12-01 12:12</dd></dl>
+      </div>
+    </div>
+    <!--endregion 基本信息-->
+
+    <!--region 审核信息栏-->
+    <div>
+      <div class="right-title">已审核记录</div>
+      <table class="fe-table">
+        <thead>
+        <tr>
+          <th width="10%" class="t-left-m">序号</th>
+          <th width="10%">审核步骤</th>
+          <th width="15%">审核时间</th>
+          <th width="10%">审核人</th>
+          <th width="10%">审核意见</th>
+          <th class="t-left-m">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="t-left-m">1</td>
+          <td>信息审核</td>
+          <td>2019-09-09</td>
+          <td>张大黄</td>
+          <td>通过</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        <tr>
+          <td class="t-left-m">2</td>
+          <td>信息审核</td>
+          <td>2019-09-09</td>
+          <td>张大黄</td>
+          <td>驳回</td>
+          <td class="t-left-m">哈哈哈哈哈哈哈</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--endregion 审核信息栏-->
+
+    <!--region 审核备注-->
+    <div>
+      <div class="right-title">审核备注</div>
+      <div style="padding: 0 30px">
+        <textarea rows="4" style="width: 100%;margin-bottom: 15px" placeholder="审核备注"></textarea>
+      </div>
+    </div>
+    <!--endregion 申请备注-->
+  </div>
+
+  <div class="layer-foot" style="padding: 30px 0">
+    <button class="febtn-white" type="reset" onclick="publicObj.layerFrameClose()">取消</button>
+    <button class="febtn-white" onclick="publicObj.layerFrameClose()">驳回</button>
+    <button class="febtn-default" type="submit">通过</button>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+</html>

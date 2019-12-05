@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>注册</title>
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/login.css" />
+</head>
+<body class="register-login">
+<div class="rl-container">
+  <div class="left-text">
+    <div class="t-title">
+      <h1><img src="../../static/images/login/title.png"></h1>
+      <p><img src="../../static/images/login/text.png"></p>
+    </div>
+    <div class="t-qrcode">
+      <div class="qrcode-div">
+        <img src="../../static/images/cs_img/qr_img.png">
+        <p>扫码关注微信号</p>
+      </div>
+      <div class="qrcode-div">
+        <img src="../../static/images/cs_img/qr_img.png">
+        <p>扫码下载APP</p>
+      </div>
+    </div>
+  </div>
+  <div class="right-box">
+    <form class="box-form" action="login.html" method="post">
+      <div class="box-title" id="form-error">
+        <div class="title-l">
+          <div class="flex-row">
+            <a class="back-left" onclick="javascript:history.go(-1)"></a>
+            <h2 class="display-align">注册</h2>
+          </div>
+        </div>
+      </div>
+      <ul class="form-group">
+        <li>
+          <div class="form-item">
+            <i class="feicon-company"></i>
+            <div class="input-control">
+              <input type="text" name="company_name" placeholder="请输入公司名称">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form-item">
+            <i class="feicon-phone"></i>
+            <div class="input-control">
+              <input type="tel" name="phone" placeholder="请输入手机号码">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form-item">
+            <i class="feicon-pwd"></i>
+            <div class="input-control">
+              <input type="password" name="password" placeholder="请输入登录密码">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+        </li>
+        <li class="form-imgcode">
+          <div class="form-item">
+            <i class="feicon-img-code"></i>
+            <div class="input-control">
+              <input type="tel" name="img_code" placeholder="请输入左侧验证码">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+          <img src="../../static/images/cs_img/img_code.png">
+        </li>
+        <li class="form-phonecode">
+          <div class="form-item">
+            <i class="feicon-account"></i>
+            <div class="input-control">
+              <input type="tel" name="phone_code" placeholder="请输入短信验证码">
+            </div>
+            <button type="button" id="send-code-btn" onclick="sendMessage()">获取验证码</button>
+          </div>
+        </li>
+      </ul>
+      <div class="form-sub">
+        <button type="button" onclick="register()">注册</button>
+      </div>
+      <div class="pact-tip">注册将代表你同意并遵守<a class="color-link" onclick="publicObj.layerShow({el: '../login/register_protocol.html', area: ['60%', '95%']})">《注册协议》</a></div>
+    </form>
+  </div>
+</div>
+<div class="login-foot">版权所有 亿腾网络 Copyright © 2019 ETeng Network. All Rights Reserved.</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  /**region 短信验证码*/
+  var InterValObj; //timer变量，控制时间
+  var count = 60; //间隔函数，1秒执行
+  var curCount;//当前剩余秒数
+  function sendMessage() {
+    var verifyArr = [
+      { key: 'phone', verify_type: 'required', error_text: '请输入手机号码'},
+      { key: 'phone', verify_type: 'phone', error_text: '请输入有效的手机号码'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    curCount = count;
+    //设置button效果，开始计时
+    $("#send-code-btn").attr("disabled", "true");
+    $("#send-code-btn").text(curCount + "秒");
+    InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+  }
+
+  //timer处理函数
+  function SetRemainTime() {
+    if (curCount == 0) {
+      window.clearInterval(InterValObj);//停止计时器
+      $("#send-code-btn").removeAttr("disabled");//启用按钮
+      $("#send-code-btn").text("重新获取");//
+    }
+    else {
+      curCount--;
+      $("#send-code-btn").text(curCount + "秒");
+    }
+  }
+  /**endregion*/
+  /**region 表单验证*/
+  function register () {
+    var verifyArr = [
+      { key: 'company_name', verify_type: 'required', error_text: '请输入公司名称'},
+      { key: 'phone', verify_type: 'required', error_text: '请输入手机号码'},
+      { key: 'phone', verify_type: 'phone', error_text: '请输入有效的手机号码'},
+      { key: 'password', verify_type: 'required', error_text: '请输入登录密码'},
+      { key: 'img_code', verify_type: 'required', error_text: '请输入左侧图形验证码'},
+      { key: 'phone_code', verify_type: 'required', error_text: '请输入短信验证码'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    $('form').submit()
+  }
+  /**endregion*/
+</script>
+</html>

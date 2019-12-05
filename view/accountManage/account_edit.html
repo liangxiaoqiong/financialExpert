@@ -1,0 +1,404 @@
+
+<!--记一笔/编辑收入信息/编辑支出信息-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>添加||编辑账目</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+  <form class="modify-body" method="post" action="./account_edit.html" id="form-submit">
+    <div class="fe-tab" style="padding: 0 20px;">
+      <ul>
+        <li onclick="changeTab('income')" id="tabli-income">收入</li>
+        <li onclick="changeTab('expenditure')" id="tabli-expenditure">支出</li>
+        <li onclick="changeTab('receivable')" id="tabli-receivable">应收款</li>
+        <li onclick="changeTab('payable')" id="tabli-payable">应付款</li>
+        <li onclick="changeTab('receive_debt')" id="tabli-receive_debt">收应收款</li>
+        <li onclick="changeTab('pay_debt')" id="tabli-pay_debt">付应付款</li>
+      </ul>
+    </div>
+    <div class="fe-dl-div modify-scroll" style="height: calc(100% - 90px)">
+      <dl>
+        <dt><b class="color-red">*</b>金额:</dt>
+        <dd>
+          <div class="input-unit dd-content">
+            <input id="txtmoney" name="money" type="text" /><em>元</em>
+          </div>
+        </dd>
+      </dl>
+      <dl id="dl_incometype">
+        <dt><b class="color-red">*</b>收入项目:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="incometype" id="incometype">
+              <option value="">-请选择-</option>
+              <option value="2">技术维护</option>
+              <option value="3">其他收入</option>
+              <option value="1">会员费</option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('incometype')" title="增加收入项目">
+            <i class="feimg-add"></i><span>新增项目</span>
+          </a>
+        </dd>
+      </dl>
+      <dl id="dl_expendituretype">
+        <dt><b class="color-red">*</b>支出项目:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="expendituretype" id="expendituretype">
+              <option value="">-请选择-</option>
+              <option value="1">办公用品</option>
+              <option value="2">电费</option>
+              <option value="3">房租</option>
+              <option value="4">工资</option>
+              <option value="5">水费</option>
+              <option value="6">差旅费报销</option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('expendituretype')" title="增加支出项目">
+            <i class="feimg-add"></i><span>新增项目</span>
+          </a>
+        </dd>
+      </dl>
+      <dl id="dl_receivabletype">
+        <dt><b class="color-red">*</b>应收款类别:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="receivabletype" id="receivabletype">
+              <option value="">-请选择-</option>
+              <option value="1">应收款项</option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('receivabletype')" title="增加应收款类别">
+            <i class="feimg-add"></i><span>新增类别</span>
+          </a>
+        </dd>
+      </dl>
+      <dl id="dl_payabletype">
+        <dt><b class="color-red">*</b>应付款类别:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="payabletype" id="payabletype">
+              <option value="">-请选择-</option>
+              <option value="1">应付款项</option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('payabletype')" title="增加应付款类别">
+            <i class="feimg-add"></i><span>新增类别</span>
+          </a>
+        </dd>
+      </dl>
+      <dl>
+        <dt>日期:</dt>
+        <dd>
+          <input type="text" value="2019-11-13" class="dd-content input-data" id="txttime"/>
+        </dd>
+      </dl>
+      <dl id="dl_paytype">
+        <dt><b class="color-red">*</b>支付账户:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="paytype" id="paytype">
+              <option value="">-请选择-</option>
+              <option value="1">现金</option>
+              <option value="2">银行卡</option>
+              <option value="3">微信</option>
+              <option value="4">支付宝 </option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('paytype')" title="增加支付账户">
+            <i class="feimg-add"></i><span>新增账户</span>
+          </a>
+        </dd>
+      </dl>
+      <dl id="dl_sponsor">
+        <dt><b class="color-red">*</b>经手人:</dt>
+        <dd>
+          <div class="rule-single-select dd-content">
+            <select name="sponsor" id="sponsor">
+              <option value="">-请选择-</option>
+              <option value="3">kk</option>
+              <option value="1">经手人1</option>
+              <option value="2">经手人2</option>
+            </select>
+          </div>
+          <a class="febtn-white btn-m" onclick="addCategory('sponsor')" title="新增经手人">
+            <i class="feimg-add"></i><span>新增经手人</span>
+          </a>
+        </dd>
+      </dl>
+      <dl id="dl_payee">
+        <dt>往来单位:</dt>
+        <dd>
+          <div class="input-unit dd-content" onclick="selectPayee()">
+            <input type="text" readonly name="txt_payee_name" placeholder="选择往来单位">
+            <em class="unit-bg"><i class="feimg-search-grey"></i></em>
+          </div>
+        </dd>
+      </dl>
+      <dl>
+        <dt>详细事项:</dt>
+        <dd>
+          <textarea class="dd-content" rows="3" cols="40"></textarea>
+        </dd>
+      </dl>
+      <dl id="dl_entryuser">
+        <dt>录入员:</dt>
+        <dd>张大黄</dd>
+      </dl>
+      <dl id="dl_entrytime">
+        <dt>录入时间:</dt>
+        <dd>2019-09-09 02:02</dd>
+      </dl>
+      <dl>
+        <dt>添加附件:</dt>
+        <dd>
+          <div class="upload-file-list dd-content">
+            <div>
+              <div class="upload-add" onclick="clickAddFile()">
+                <a class="file-name color-link">点击添加附件</a>
+              </div>
+              <input type="file" id="add-file" multiple onchange="changeAddFile(this)">
+            </div>
+            <ul id="upload-file-ul"></ul>
+          </div>
+        </dd>
+      </dl>
+      <dl id="dl_fundesc">
+        <dt>功能说明:</dt>
+        <dd>
+          <div style="line-height: 18px" id="fundesctxt"></div>
+        </dd>
+      </dl>
+    </div>
+    <div class="layer-foot">
+      <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+      <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+    </div>
+  </form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  publicObj.jeDate_('txttime');
+  /**region tab切换*/
+  var tabId = 'income';
+  var pageType = publicObj.getQueryVariable("type");//pageType,编辑时才有
+  if (pageType) {
+    tabId = pageType
+    $('.fe-tab').hide()
+    $('#dl_entryuser, #dl_entrytime').show()
+    $('.modify-scroll').css('height', 'calc(100% - 60px)')
+  } else {
+    $('#dl_entryuser, #dl_entrytime').hide()
+  }
+  changeTab(tabId);
+  function changeTab(tid) {
+    tabId = tid
+    $('.fe-tab li').removeClass('active')
+    $('#tabli-' + tabId).addClass('active')
+    switch (tid) {
+      case "income": //收入
+        $("#txtmoney").removeAttr("readonly");
+        $("#dl_incometype").show();
+        $("#dl_expendituretype").hide();
+        $("#dl_receivabletype").hide();
+        $("#dl_payabletype").hide();
+        $("#dl_paytype").show();
+        $("#dl_sponsor").show();
+        $("#dl_fundesc").hide();
+        break;
+      case "expenditure": //支出
+        $("#txtmoney").removeAttr("readonly");
+        $("#dl_incometype").hide();
+        $("#dl_expendituretype").show();
+        $("#dl_receivabletype").hide();
+        $("#dl_payabletype").hide();
+        $("#dl_paytype").show();
+        $("#dl_sponsor").show();
+        $("#dl_fundesc").hide();
+        break;
+      case "receivable": //应收款
+        $("#txtmoney").attr("readonly", "true");
+        $("#dl_incometype").hide();
+        $("#dl_expendituretype").hide();
+        $("#dl_receivabletype").show();
+        $("#dl_payabletype").hide();
+        $("#dl_paytype").hide();
+        $("#dl_sponsor").hide();
+        $("#fundesctxt").text('此功能用于记录已经成功的订单或合同，但是未付款的情况，应收款计入当天营业额，但未记入收入明细，不影响公司账户余额');
+        $("#dl_fundesc").show();
+        $("#txtmoney").removeAttr("readonly");
+        break;
+      case "payable": //应付款
+        $("#txtmoney").removeAttr("readonly");
+        $("#dl_incometype").hide();
+        $("#dl_expendituretype").hide();
+        $("#dl_receivabletype").hide();
+        $("#dl_payabletype").show();
+        $("#dl_paytype").hide();
+        $("#dl_sponsor").hide();
+        $("#fundesctxt").text('此功能用于记录本公司需要支付供应商的款项，应付款计入当天营业额，但未记入支出明细，不影响公司账户余额');
+        $("#dl_fundesc").show();
+        break;
+      case "receive_debt":
+        $("#dl_incometype").show();
+        $("#dl_expendituretype").hide();
+        $("#dl_receivabletype").hide();
+        $("#dl_payabletype").hide();
+        $("#dl_paytype").show();
+        $("#dl_sponsor").show();
+        $("#fundesctxt").text('当收到客户拖欠本公司货款或者合同款项时，执行此操作，收回款项记入收入明细同时应收款项核销相应金额，公司账户余额增加相应金额');
+        $("#dl_fundesc").show();
+        break;
+      case "pay_debt":
+        $("#txtmoney").attr("readonly", "true");
+        $("#dl_incometype").hide();
+        $("#dl_expendituretype").show();
+        $("#dl_receivabletype").hide();
+        $("#dl_payabletype").hide();
+        $("#dl_paytype").show();
+        $("#dl_sponsor").show();
+        $("#fundesctxt").text('当支付供应商的款项时，执行此操作，还款款项记入支出明细，同时应付款项核销相应金额，公司账户余额减少相应金额');
+        $("#dl_fundesc").show();
+        break;
+    }
+  }
+  /**endregion*/
+
+  /**region 上传附件*/
+  var fileList = []
+  //点击添加附件
+  function clickAddFile () {
+    $('#add-file').click()
+  }
+  //点击添加附件,上传文件
+  function changeAddFile (el) {
+    publicObj.uploadMultiple({
+      el: el,
+    }, function (img) {
+      fileList.push(img)
+      fileHtml()
+    })
+  }
+  //附件上传后拼接html
+  function fileHtml () {
+    var html = ''
+    fileList.forEach(function (value, index) {
+      html += '' +
+        '<li id="file_index-'+index+'">' +
+        '<span class="file-name">' + value.name + '</span>' +
+        '<div class="file-act">' +
+        '<a onclick="editFile('+index+')">编辑</a><input type="file" value="' + value.url + '" onchange="changeEditFile(this, '+index+')">' +
+        '<a onclick="delFile('+index+')">删除</a>' +
+        '</div>' +
+        '</li>'
+    })
+    $('#upload-file-ul').html(html)
+  }
+  function editFile (index) {
+    $('#file_index-' + index).find('.file-act input[type=file]').click()
+  }
+  function changeEditFile(el, index) {
+    publicObj.uploadFile({
+      el: el,
+      app: 'admin'
+    }, function (img) {
+      fileList[index] = img.url
+    });
+  }
+  function delFile (index) {
+    $('#file_index-' + index).remove()
+    fileList.splice(index, 1)
+  }
+  /**endregion*/
+
+  /**region 表单验证*/
+  function submitForm() {
+    var verifyArr = [
+      { key: 'money', verify_type: 'required', error_text: '请输入金额'},
+    ]
+    switch (tabId) {
+      case "income":
+        verifyArr.push({ key: 'incometype', verify_type: 'required', error_text: '请选择收入项目', input_type: 'select'})
+        verifyArr.push({ key: 'paytype', verify_type: 'required', error_text: '请选择支付账户', input_type: 'select'})
+        verifyArr.push({ key: 'sponsor', verify_type: 'required', error_text: '请选择经手人', input_type: 'select'})
+        break
+      case "expenditure":
+        verifyArr.push({ key: 'expendituretype', verify_type: 'required', error_text: '请选择支出项目', input_type: 'select'})
+        verifyArr.push({ key: 'paytype', verify_type: 'required', error_text: '请选择支付账户', input_type: 'select'})
+        verifyArr.push({ key: 'sponsor', verify_type: 'required', error_text: '请选择经手人', input_type: 'select'})
+        break
+      case "receivable":
+        verifyArr.push({ key: 'receivabletype', verify_type: 'required', error_text: '请选择应收款类别', input_type: 'select'})
+        break
+      case "payable":
+        verifyArr.push({ key: 'payabletype', verify_type: 'required', error_text: '请选择应付款类别', input_type: 'select'})
+        break
+      case "receive_debt":
+        verifyArr.push({ key: 'incometype', verify_type: 'required', error_text: '请选择收入项目', input_type: 'select'})
+        verifyArr.push({ key: 'paytype', verify_type: 'required', error_text: '请选择支付账户', input_type: 'select'})
+        verifyArr.push({ key: 'sponsor', verify_type: 'required', error_text: '请选择经手人', input_type: 'select'})
+        break
+      case "pay_debt":
+        verifyArr.push({ key: 'expendituretype', verify_type: 'required', error_text: '请选择支出项目', input_type: 'select'})
+        verifyArr.push({ key: 'paytype', verify_type: 'required', error_text: '请选择支付账户', input_type: 'select'})
+        verifyArr.push({ key: 'sponsor', verify_type: 'required', error_text: '请选择经手人', input_type: 'select'})
+        break
+      default:
+        break
+    }
+    if (!publicObj.verifyForm(verifyArr)) return false
+    //$('form').submit()
+    publicObj.layerMsg('操作成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+  /**endregion*/
+
+  /**region 新增项目、类别...*/
+  var tabString = {
+    incometype: '收入项目', expendituretype: '支出项目', paytype: '支付账户', sponsor: '经手人', receivabletype: '应收款类别', payabletype: '应付款类别'
+  }
+  //type:'incometype'-收入项目，'expendituretype'-支出项目，'paytype'-支付账户，'sponsor'-经手人，'receivabletype'-应收款类别，'payabletype'-应付款类别
+  function addCategory(type) {
+    var title = '新增' + tabString[type]
+    var html = '<div style="padding: 20px 30px 40px 30px"><span><b class="color-red">*</b>名称：</span><input type="text" name="categoryname" placeholder="请输入'+tabString[type]+'名称" style="width: 300px;"></div>'
+    parent.layer.confirm(html, {
+      type: 1,
+      title: title,
+    }, function (index) {
+      var name = parent.$('input[name="categoryname"]').val()
+      if (name === '') {
+        publicObj.layerMsg('请输入名称')
+        return false
+      }
+      //添加到select option
+      var selectDmo = document.getElementById(type);
+      selectDmo.add(new Option(''+ name + '',"99"));
+      publicObj.layerMsg('添加成功', 1)
+      $(".rule-single-select").ruleSingleSelect();
+      parent.layer.close(index)
+    })
+  }
+  /**endregion*/
+
+  /**region 选择来往单位*/
+  function selectPayee () {
+    var thisIframeIndex = publicObj.getIframeIndex()
+    publicObj.layerShow({title: '选择来往单位', el: 'customer/selector.html?iframeIndex='+thisIframeIndex})
+  }
+  /**endregion*/
+</script>
+</html>

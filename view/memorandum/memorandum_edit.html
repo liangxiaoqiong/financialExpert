@@ -1,0 +1,99 @@
+
+<!--添加提醒-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>编辑计划任务</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+
+<body>
+<form class="modify-body" method="post" action="./memorandum_edit.html" id="form-submit">
+  <div class="fe-dl-div modify-scroll">
+    <dl>
+      <dt><b class="color-red">*</b>事项分类:</dt>
+      <dd>
+        <div class="rule-single-select dd-content">
+          <select name="ddlCategoryList">
+            <option value="">请选择事项分类</option>
+            <option value="1">事项分类1</option>
+            <option value="2">事项分类2</option>
+            <option value="3">事项分类3</option>
+          </select>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>事项名称:</dt>
+      <dd><input type="text" name="txt_item_name" class="dd-content" placeholder="请输入事项名称" /></dd>
+    </dl>
+    <dl>
+      <dt>提醒模式(频率):</dt>
+      <dd>
+        <div class="rule-single-select dd-content">
+          <select>
+            <option value="1">单次</option>
+            <option value="2">每周</option>
+            <option value="3">周月</option>
+            <option value="4">每季度</option>
+            <option value="5">每年</option>
+          </select>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>提醒时间:</dt>
+      <dd>
+        <input type="text" name="txt_reminder_time" id="txt_reminder_time" value="2019-11-13" class="input-data dd-content"/>
+      </dd>
+    </dl>
+    <dl>
+      <dt><b class="color-red">*</b>循环提醒:</dt>
+      <dd class="padding: 6px 0 6px 10px;">
+        <label class="fe-switch">
+          <input type="checkbox" id="xhtx" class="cbx">
+          <label for="xhtx" class="lbl"></label>
+        </label>
+        <span class="color-tip display-align" style="margin-left: 5px">关闭后不再循环提醒</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>事项内容:</dt>
+      <dd>
+        <textarea class="dd-content" rows="4" cols="40" placeholder="事项内容"></textarea>
+      </dd>
+    </dl>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submitForm()">确定</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  publicObj.jeDate_('txt_reminder_time', {format: "YYYY-MM-DD"});
+  //表单验证提交
+  function submitForm () {
+    var verifyArr = [
+      { key: 'ddlCategoryList', verify_type: 'required', error_text: '请选择事项分类', input_type: 'select'},
+      { key: 'txt_item_name', verify_type: 'required', error_text: '请输入事项名称'},
+      { key: 'txt_reminder_time', verify_type: 'required', error_text: '请选择提醒时间'},
+    ]
+    if (!publicObj.verifyForm(verifyArr)) return false
+    //$('form').submit()
+    publicObj.layerMsg('添加提醒成功', 1)
+    setTimeout(function () {
+      publicObj.layerFrameClose()
+    }, 1000)
+  }
+</script>
+</html>

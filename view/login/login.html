@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>密码登录/扫码登录</title>
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/login.css" />
+</head>
+<body class="register-login">
+<div class="rl-container">
+  <div class="left-text">
+    <div class="t-title">
+      <h1><img src="../../static/images/login/title.png"></h1>
+      <p><img src="../../static/images/login/text.png"></p>
+    </div>
+    <div class="t-qrcode">
+      <div class="qrcode-div">
+        <img src="../../static/images/cs_img/qr_img.png">
+        <p>扫码关注微信号</p>
+      </div>
+      <div class="qrcode-div">
+        <img src="../../static/images/cs_img/qr_img.png">
+        <p>扫码下载APP</p>
+      </div>
+    </div>
+  </div>
+  <div class="right-box">
+    <!--region 密码登录-->
+    <form class="box-form" id="login-pwd" method="post" action="../index.html">
+      <div class="box-title" id="form-error">
+        <div class="title-l">
+          <div class="flex-row">
+            <h2 class="display-align">登录</h2>
+          </div>
+        </div>
+        <div class="title-r flex-top">
+          <div class="tip-div flex-row">扫码登录更安全</div>
+          <a class="rt-img" onclick="changeLoginType(2)"><img src="../../static/images/login/rt_code.png"></a>
+        </div>
+      </div>
+      <ul class="form-group">
+        <li>
+          <div class="form-item">
+            <i class="feicon-user"></i>
+            <div class="input-control">
+              <input type="text" name="name" placeholder="请输入登录账号">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form-item">
+            <i class="feicon-pwd"></i>
+            <div class="input-control">
+              <input type="password" name="password" placeholder="请输入账号密码">
+              <i class="input-clear"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="flex-between" style="padding: 0 0 20px 0">
+        <label class="fe-checkbox">
+          <input type="checkbox">
+          <font>下次自动登录</font>
+        </label>
+        <a href="reset_pwd.html">忘记密码？</a>
+      </div>
+      <div class="form-sub">
+        <button type="button" onclick="login()">登录</button>
+      </div>
+      <div class="flex-right" style="padding:5px 0 0 0"><a href="register.html">没有账号，立即注册</a></div>
+    </form>
+    <!--endregion 密码登录-->
+
+    <!--region 扫码登录-->
+    <div class="box-form" id="login-qrcode">
+      <div class="box-title">
+        <div class="title-l">
+          <div class="flex-row">
+            <h2 class="display-align">扫码登录</h2>
+          </div>
+        </div>
+        <div class="title-r flex-top">
+          <a class="rt-img" onclick="changeLoginType(1)"><img src="../../static/images/login/rt_dn.png"></a>
+        </div>
+      </div>
+      <div class="form-qrcode">
+        <div class="login-qrcode flex-row">
+          <div class="code-img">
+            <img src="../../static/images/cs_img/qr_img.png">
+          </div>
+          <div class="code-tip flex-left">
+            <i class="ficon-scan-code"></i>
+            <div>
+              <p>打开<a class="color-link">财务专家</a>app</p>
+              <p>扫一扫登录</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex-between">
+          <a>点击下载APP</a>
+          <div>
+            <a onclick="changeLoginType(1)">密码登录</a>
+            <a href="register.html" style="margin-left: 20px">立即注册</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--endregion 扫码登录-->
+  </div>
+</div>
+<div class="login-foot">版权所有 亿腾网络 Copyright © 2019 ETeng Network. All Rights Reserved.</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  var login_type = 1; //登录方式：1-密码登录，2-扫码登录
+  //更改登录方式
+  changeLoginType(login_type)
+  function changeLoginType (type) {
+    if (+type === 1) {
+      $('#login-pwd').show()
+      $('#login-qrcode').hide()
+    } else {
+      $('#login-pwd').hide()
+      $('#login-qrcode').show()
+    }
+  }
+  function login () {
+    var verifyArr = [
+      { key: 'name', verify_type: 'required', error_text: '请输入登录账号'},
+      { key: 'password', verify_type: 'required', error_text: '请输入账号密码'},
+    ]
+    if (publicObj.verifyForm(verifyArr)) {
+      $('form').submit()
+    }
+  }
+</script>
+</html>

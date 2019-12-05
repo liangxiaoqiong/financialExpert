@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>核销应收款</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/diyicon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+<body>
+<div class="modify-body">
+  <div class="modify-scroll">
+    <table class="fe-table">
+      <thead>
+      <tr>
+        <th class="t-left">
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-all">
+            <font>ID</font>
+          </label>
+        </th>
+        <th>往来单位</th>
+        <th>类别</th>
+        <th>日期</th>
+        <th>详细事项</th>
+        <th>应收金额(元)</th>
+        <th>应收余额(元)</th>
+        <th>本次核销(元)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <label class="fe-checkbox">
+            <input type="checkbox" class="check-td" value="1">
+            <font>1</font>
+          </label>
+        </td>
+        <td>供应商</td>
+        <td>应收款项</td>
+        <td>2019-09-09</td>
+        <td>哈哈哈哈哈哈</td>
+        <td>2000.00</td>
+        <td>2000.00</td>
+        <td>
+          <input type="text" value="2000.00" style="width: 80px">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="table-foot">
+      <div class="foot-action">
+        <label class="fe-checkbox">
+          <input type="checkbox" class="check-all">
+        </label>
+        <button type="button" class="febtn-white check-all-btn">全选</button>
+      </div>
+      <div>
+        <span>合计: </span>
+        <b style="font-size: 16px">8000.00</b>
+      </div>
+    </div>
+  </div>
+  <div class="layer-foot">
+    <a class="febtn-white" onclick="publicObj.layerFrameClose()">取消</a>
+    <button class="febtn-default" type="button" onclick="submit()">确定</button>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script type="text/javascript">
+  var iframeIndex = publicObj.getQueryVariable("iframeIndex");
+  function submit () {
+    parent.layer.close(iframeIndex);
+    publicObj.layerFrameClose()
+  }
+</script>
+</html>
