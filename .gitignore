@@ -1,0 +1,9 @@
+# 财务管家后台管理，纯静态页
+# 参考网站：http://fms.hnpugong.com/login.aspx 账号：gly1010 密码：123456
+
+/*
+Runtime/
+.idea/
+.svn/
+
+!.gitignore
