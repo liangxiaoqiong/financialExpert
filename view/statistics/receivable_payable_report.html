@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>应收应付报表</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-content">
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+
+            <a class="color-link ml-10" onclick="setTime(1)">今天</a>
+            <a class="color-link ml-10" onclick="setTime('prev_7')">最近一周</a>
+            <a class="color-link ml-10" onclick="setTime('prev_30')">最近一月</a>
+            <a class="color-link ml-10" onclick="setTime('prev_90')">最近三个月</a>
+            <a class="color-link ml-10" onclick="setTime('this_year')">今年</a>
+            <a class="color-link ml-10" onclick="setTime('')">全部</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <span>来往单位</span>
+          <div class="l-content input-search">
+            <div class="fe-checkbox-tab-group">
+              <label class="checkbox-tab">
+                <input type="checkbox" id="checkbox_1">
+                <label for="checkbox_1">小米</label>
+              </label>
+              <label class="checkbox-tab">
+                <input type="checkbox" id="checkbox_2">
+                <label for="checkbox_2">京东</label>
+              </label>
+              <label class="checkbox-tab">
+                <input type="checkbox" id="checkbox_3">
+                <label for="checkbox_3">阿里小小</label>
+              </label>
+              <label class="checkbox-tab">
+                <input type="checkbox" id="checkbox_4">
+                <label for="checkbox_4">大米</label>
+              </label>
+              <label class="checkbox-tab">
+                <input type="checkbox" id="checkbox_5">
+                <label for="checkbox_5">滴滴答答</label>
+              </label>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="l-content input-search">
+            <button type="submit" class="febtn-default">搜索</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+  <!--endregion-->
+</div>
+
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  publicObj.getIframeMenuHtml('statistics', 'receivable_payable')//获取左侧菜单
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  function setTime (type) {
+    if (type === '') {
+      $('#startTime').val('')
+      $('#endTime').val('')
+    } else {
+      $('#startTime').val(publicObj.dayToTime(type, 'date')[0])
+      $('#endTime').val(publicObj.dayToTime(type, 'date')[1])
+    }
+  }
+  /**endregion*/
+</script>
+</html>

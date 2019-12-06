@@ -73,7 +73,7 @@ publicObj = new Object({
     myDate.setSeconds(0);
     myDate.setMilliseconds(0);
     var oneDay = 24 * 60 * 60 * 1000 - 1;//当天23:59:59
-    switch (+type) {
+    switch (type) {
       case 1://今天
         startT = myDate.getTime();
         endT = startT + oneDay;
@@ -101,6 +101,32 @@ publicObj = new Object({
         var t = new Date(myDate + forT);
         startT = t.getTime();
         endT = startT + oneDay * 90;
+        break;
+      case 'prev_7':
+        forT = 604800000;//最近一周：今天-前7天
+        var t = new Date(myDate - forT + 2*oneDay);
+        startT = t.getTime();
+        endT = startT + oneDay * 7 - oneDay;
+        break;
+      case 'prev_30':
+        forT = 2592000000;//最近一月：今天-前30天
+        var t = new Date(myDate - forT + 2*oneDay);
+        startT = t.getTime();
+        endT = startT + oneDay * 30 - oneDay;
+        break;
+      case 'prev_90':
+        forT = 7776000000;//最近三个月：今天-前3*30天
+        var t = new Date(myDate - forT + 2*oneDay);
+        startT = t.getTime();
+        endT = startT + oneDay * 90 - oneDay;
+        break;
+      case 'this_year':
+        var t = new Date();
+        endT = t.getTime();
+        t.setFullYear(t.getFullYear());
+        t.setMonth(0);
+        t.setDate(1);
+        startT = t.getTime();
         break;
       default:
         break;
@@ -512,6 +538,52 @@ publicObj = new Object({
     var chart = myChart.setOption(option);
     return chart;
   },
+  //饼状图
+  echartPie: function (elName, optionData) {
+    var myChart = echarts.init(document.getElementById(elName));
+    var option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+      },
+      legend: {
+        show: false,
+      },
+      series: [
+        {
+          name:'',
+          type:'pie',
+          radius: ['25%', '100%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: false
+          },
+          labelLine: {
+            normal: {
+              show: false
+            }
+          },
+          legendHoverLink: false,
+          overAnimation: false,
+          hoverOffset: 0,
+          selectedOffset: 0,
+          itemStyle: {
+            borderColor: '#fff',
+            borderWidth: 4,
+          },
+          data:[
+            {value:5, name:'', itemStyle: {color: '#8DAFFF'}},
+            {value:5, name:'', itemStyle: {color: '#FFBC52'}},
+            {value:5, name:'', itemStyle: {color: '#1A8FFC'}},
+            {value:5, name:'', itemStyle: {color: '#BFE0FF'}},
+          ]
+        }
+      ]
+    };
+    $.extend(true, option, optionData);
+    var chart = myChart.setOption(option);
+    return chart;
+  },
   /**endregion*/
 
   /**region layer*/
@@ -811,6 +883,26 @@ publicObj = new Object({
           }
         ]
         break
+      case 'statistics':
+        menuListData = [
+          {
+            menuList: [
+              {
+                type: 'income_expenditure',
+                name: '收支报表',
+                url: 'statistics/income_expenditure_report.html',
+                is_selected: thisMenuType === 'income_expenditure' ? 1 : 0
+              },
+              {
+                type: 'receivable_payable',
+                name: '应收应付报表',
+                url: 'statistics/receivable_payable_report.html',
+                is_selected: thisMenuType === 'receivable_payable' ? 1 : 0
+              },
+            ]
+          }
+        ]
+        break;
       case 'system': //系统设置
         menuListData = [
           {
