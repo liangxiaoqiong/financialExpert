@@ -316,12 +316,12 @@ publicObj = new Object({
     } else {
       var el = $(config.el)[0]
       if (typeof el === 'undefined') {
-        layer.msg('没有需要上传的文件')
+        publicObj.layerMsg('没有需要上传的文件')
         return false;
       }
       var file = el.files[0]
       if (typeof file === 'undefined') {
-        layer.msg('没有需要上传的文件')
+        publicObj.layerMsg('没有需要上传的文件')
         return false;
       }
     }
@@ -336,11 +336,18 @@ publicObj = new Object({
   //多文件上传
   uploadMultiple: function (config, callback) {
     var filesList = $(config.el)[0].files
+    var fileLen = filesList.length
     if (filesList.length <= 0) {
       layer.msg('没有需要上传的文件')
       return false
     } else {
-      for (var i = 0; i < filesList.length; i++) {
+      if (typeof config.max_len !== 'undefined') {
+        if (filesList.length > config.max_len) {
+          publicObj.layerMsg('最多还能上传数量：'+config.max_len)
+          fileLen = config.max_len
+        }
+      }
+      for (var i = 0; i < fileLen; i++) {
         var form = new FormData();
         var value = filesList[i]
         form.file = value
