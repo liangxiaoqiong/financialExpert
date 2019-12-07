@@ -2594,6 +2594,25 @@ select {
 .report-list2 .report-chart:last-child {
   border-left: 5px solid #f6f6f6;
 }
+
+.report-table .table-title {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  min-height: 60px;
+}
+.report-table .table-title b {
+  margin-right: 20px;
+}
+.report-table .table-title b:last-child {
+  margin-right: 0;
+}
+.report-table .fe-table th,
+.report-table .fe-table td {
+  text-align: center;
+}
 /*endregion*/
 
 /*region 反馈详情*/

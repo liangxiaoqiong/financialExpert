@@ -906,6 +906,12 @@ publicObj = new Object({
                 url: 'statistics/receivable_payable_report.html',
                 is_selected: thisMenuType === 'receivable_payable' ? 1 : 0
               },
+              {
+                type: 'asset_report',
+                name: '资产报表',
+                url: 'statistics/asset_report.html',
+                is_selected: thisMenuType === 'asset_report' ? 1 : 0
+              },
             ]
           }
         ]

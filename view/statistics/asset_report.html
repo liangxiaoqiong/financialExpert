@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>应收应付报表</title>
+  <title>资产报表</title>
   <meta name="viewport"
         content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -22,7 +31,7 @@
             <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
             -
             <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
-
+            
             <a class="color-link ml-10" onclick="setTime(1)">今天</a>
             <a class="color-link ml-10" onclick="setTime('prev_7')">最近一周</a>
             <a class="color-link ml-10" onclick="setTime('prev_30')">最近一月</a>
@@ -65,6 +74,7 @@
         <li>
           <div class="l-content input-search">
             <button type="submit" class="febtn-default">搜索</button>
+            <button type="button" class="febtn-white ml-10" style="width: 96px"><i class="feimg-export"></i>导出报表</button>
           </div>
         </li>
       </ul>
@@ -72,59 +82,35 @@
   </form>
   <!--endregion-->
   
-  <div class="report-table border-b">
-    <div class="table-title">
-      <div><b>应收往来单位汇总</b></div>
-      <div><b>应收余额合计：¥2000.00</b><b>应收总额合计：¥2000.00</b></div>
-    </div>
-    <table class="fe-table">
-      <tr>
-        <th>往来单位</th>
-        <th>应收金额(元)</th>
-        <th>应收余额(元)</th>
-      </tr>
-      <tr>
-        <td>大米</td>
-        <td>2600</td>
-        <td>2600</td>
-      </tr>
-      <tr>
-        <td>大米</td>
-        <td>2600</td>
-        <td>2600</td>
-      </tr>
-      <tr>
-        <td>大米</td>
-        <td>2600</td>
-        <td>2600</td>
-      </tr>
-    </table>
-  </div>
   <div class="report-table">
     <div class="table-title">
-      <div><b>应收往来单位汇总</b></div>
-      <div><b>应收余额合计：¥2000.00</b><b>应收总额合计：¥2000.00</b></div>
+      <div><b>资产分类汇总</b></div>
+      <div><b>金额合计：¥2000.00</b><b>数量合计：200</b></div>
     </div>
     <table class="fe-table">
       <tr>
-        <th>往来单位</th>
-        <th>应收金额(元)</th>
-        <th>应收余额(元)</th>
+        <th>分类名称</th>
+        <th>金额(元)</th>
+        <th>数量</th>
+        <th>金额占比</th>
       </tr>
       <tr>
         <td>大米</td>
         <td>2600</td>
         <td>2600</td>
+        <td>20%</td>
       </tr>
       <tr>
         <td>大米</td>
         <td>2600</td>
         <td>2600</td>
+        <td>20%</td>
       </tr>
       <tr>
         <td>大米</td>
         <td>2600</td>
         <td>2600</td>
+        <td>20%</td>
       </tr>
     </table>
   </div>
@@ -137,7 +123,7 @@
 <script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
 <script>
-  publicObj.getIframeMenuHtml('statistics', 'receivable_payable')//获取左侧菜单
+  publicObj.getIframeMenuHtml('statistics', 'asset_report')//获取左侧菜单
 
   /**region 时间范围、日期*/
   publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
