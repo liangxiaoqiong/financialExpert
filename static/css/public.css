@@ -1819,6 +1819,85 @@ select {
 }
 /*endregion*/
 
+/*region step 步骤条*/
+.fe-step ul {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fe-step ul li {
+  flex-basis: 33.333%;
+  width: 33.333%;
+  height: 120px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.fe-step ul li:before,
+.fe-step ul li:after {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 1px;
+  background-color: #D0D0D0;
+  display: inline-block;
+  top: calc(50% + 1.5px);
+  content: '';
+}
+.fe-step ul li:before {
+  left: 0;
+}
+.fe-step ul li:after {
+  right: 0;
+}
+.fe-step ul li:first-child:before,
+.fe-step ul li:last-child:after {
+  display: none;
+}
+.fe-step ul li .step-title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  height: 24px;
+}
+.fe-step ul li .step-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin: 6px 0;
+  background: #fff url("../images/icon_img/step_0.png")center center no-repeat;
+  background-size: 20px 20px;
+  z-index: 2;
+}
+.fe-step ul li .step-desc {
+  height: 18px;
+  line-height: 18px;
+}
+.fe-step.step-1 ul li:nth-child(1) .step-icon,
+.fe-step.step-2 ul li:nth-child(1) .step-icon,
+.fe-step.step-2 ul li:nth-child(2) .step-icon,
+.fe-step.step-3 ul li:nth-child(1) .step-icon,
+.fe-step.step-3 ul li:nth-child(2) .step-icon,
+.fe-step.step-3 ul li:nth-child(3) .step-icon {
+  background: #fff url("../images/icon_img/step_1.png")center center no-repeat;
+  background-size: 20px 20px;
+}
+.fe-step.step-2 ul li:nth-child(1):after,
+.fe-step.step-2 ul li:nth-child(2):before,
+.fe-step.step-3 ul li:before,
+.fe-step.step-3 ul li:after {
+  background-color: #1A8FFC;
+}
+/*endregion*/
+
 /*region 编辑页*/
 .modify-body {
   padding: 10px 10px 0 10px;
@@ -2514,5 +2593,125 @@ select {
 }
 .report-list2 .report-chart:last-child {
   border-left: 5px solid #f6f6f6;
+}
+/*endregion*/
+
+/*region 反馈详情*/
+.feedback-view-list {
+  width: 800px;
+  margin: 20px auto;
+  background-color: #F6F6F6;
+  padding: 0 20px;
+}
+.feedback-view-list .feedback-title {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.feedback-view-list .feedback-type {
+  padding-top: 10px;
+}
+.feedback-view-list ul {
+  padding: 20px 0 0 0;
+}
+.feedback-view-list ul li {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.feedback-view-list ul li .user-img {
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+.feedback-view-list ul li .user-img img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.feedback-view-list li .feedback-main {
+  width: calc(100% - 60px);
+  float: left;
+  padding-left: 14px;
+}
+.feedback-view-list li .feedback-main .user-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.feedback-view-list li .feedback-main .feedback-content {
+  margin: 6px 0 10px 0;
+  line-height: 18px;
+}
+.feedback-view-list li .feedback-main .feedback-img img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.feedback-view-list li .feedback-main .feedback-time {
+  color: #999999;
+  margin-top: 10px;
+}
+.feedback-form {
+  padding-left: 74px;
+  padding-bottom: 30px;
+}
+.feedback-form textarea {
+  width: 100%;
+  height: 80px;
+}
+.feedback-form .feedback-upload {
+  margin-top: 10px;
+}
+.feedback-form .feedback-upload .file-img-list {
+  display: inline-block;
+  vertical-align: middle;
+}
+.feedback-form .feedback-upload .file-img-list .img-div {
+  border: 1px solid #E1E1E1;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.feedback-form .feedback-upload .file-img-list .img-div img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.feedback-form .feedback-upload .file-img-list .img-div .feimg-close-red {
+  position: absolute;
+  z-index: 2;
+  top: -8px;
+  right: -8px;
+  display: none;
+}
+.feedback-form .feedback-upload .file-img-list .img-div:hover .feimg-close-red {
+  display: inline-block;
+}
+.feedback-form .feedback-upload .file-add {
+  border: 1px dashed #E1E1E1;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff url("../images/icon_img/upload_grey.png")center center no-repeat;
+  background-size: 24px 19px;
+  position: relative;
+}
+.feedback-form .feedback-upload .file-add input[type=file]{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  opacity: 0;
+}
+.feedback-form .feedback-upload .color-tip {
+  margin-left: 10px;
+  vertical-align: middle;
 }
 /*endregion*/

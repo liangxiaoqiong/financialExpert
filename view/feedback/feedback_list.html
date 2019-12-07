@@ -68,7 +68,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr onclick="viewFeedback()">
         <td>
           <label class="fe-checkbox">
             <input type="checkbox" class="check-td" value="1">
@@ -115,9 +115,14 @@
   publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
   /**endregion*/
 
+  //查看反馈详情
+  function viewFeedback() {
+    window.location.href = 'feedback_view.html'
+  }
   //回复
   function replyFeedback () {
     publicObj.layerShow({title: '提交反馈', el: 'feedback/feedback_reply.html'})
+    event.stopPropagation()
   }
 </script>
 </html>
