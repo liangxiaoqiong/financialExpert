@@ -95,16 +95,16 @@
           <label class="fe-checkbox">
             <input type="checkbox" class="check-all" onchange="publicObj.checkAll()">
           </label>
-          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+          <a class="display-align" onclick="changeSort(this)" sort-type="asc"><span>序号</span><i class="feimg-sort-asc"></i></a>
         </th>
         <th>
-          <a><span>往来单位</span><i class="feimg-sort-desc"></i></a>
+          <a onclick="changeSort(this)" sort-type="desc"><span>往来单位</span><i class="feimg-sort-desc"></i></a>
         </th>
         <th>类别</th>
         <th>应收/付金额(元)</th>
         <th>应收/付余额(元)</th>
         <th>
-          <a><span>日期</span><i class="feimg-sort-desc"></i></a>
+          <a onclick="changeSort(this)" sort-type="desc"><span>日期</span><i class="feimg-sort-desc"></i></a>
         </th>
         <th width="30%">详细事项</th>
         <th>录入员</th>
@@ -245,6 +245,17 @@
       parent.layer.close(layeo)
     })
     event.stopPropagation()
+  }
+  //排序
+  function changeSort(obj) {
+    var sortType = $(obj).attr('sort-type')
+    if (sortType === 'asc') {
+      $(obj).attr('sort-type', 'desc')
+      $(obj).find('i').removeClass('feimg-sort-asc').addClass('feimg-sort-desc')
+    } else {
+      $(obj).attr('sort-type', 'asc')
+      $(obj).find('i').removeClass('feimg-sort-desc').addClass('feimg-sort-asc')
+    }
   }
 </script>
 </html>

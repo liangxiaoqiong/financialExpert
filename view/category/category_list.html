@@ -38,7 +38,7 @@
           <label class="fe-checkbox">
             <input type="checkbox" class="check-all">
           </label>
-          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+          <a class="display-align" onclick="changeSort(this)" sort-type="asc"><span>序号</span><i class="feimg-sort-asc"></i></a>
         </th>
         <th width="40%">名称</th>
         <th>创建日期</th>
@@ -121,6 +121,17 @@
   //保存排序
   function saveSort () {
     if (!publicObj.getCheckBox()) return false
+  }
+  //排序
+  function changeSort(obj) {
+    var sortType = $(obj).attr('sort-type')
+    if (sortType === 'asc') {
+      $(obj).attr('sort-type', 'desc')
+      $(obj).find('i').removeClass('feimg-sort-asc').addClass('feimg-sort-desc')
+    } else {
+      $(obj).attr('sort-type', 'asc')
+      $(obj).find('i').removeClass('feimg-sort-desc').addClass('feimg-sort-asc')
+    }
   }
 </script>
 </html>

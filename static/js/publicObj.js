@@ -560,7 +560,7 @@ publicObj = new Object({
         {
           name:'',
           type:'pie',
-          radius: ['25%', '100%'],
+          radius: ['30%', '100%'],
           avoidLabelOverlap: false,
           label: {
             show: false
@@ -574,15 +574,15 @@ publicObj = new Object({
           overAnimation: false,
           hoverOffset: 0,
           selectedOffset: 0,
-          itemStyle: {
+          /*itemStyle: {
             borderColor: '#fff',
             borderWidth: 4,
-          },
+          },*/
           data:[
-            {value:5, name:'', itemStyle: {color: '#8DAFFF'}},
+            /*{value:5, name:'', itemStyle: {color: '#8DAFFF'}},
             {value:5, name:'', itemStyle: {color: '#FFBC52'}},
             {value:5, name:'', itemStyle: {color: '#1A8FFC'}},
-            {value:5, name:'', itemStyle: {color: '#BFE0FF'}},
+            {value:5, name:'', itemStyle: {color: '#BFE0FF'}},*/
           ]
         }
       ]
@@ -605,9 +605,6 @@ publicObj = new Object({
     if (config.title == null || config.title == '') {
       config.title = false;
     }
-    if (typeof (config.area) === 'undefined') {
-      config.area = ['700px', '95%']
-    }
     if (+config.type === 1) {
       config.el = $(config.el);
     } else {
@@ -617,11 +614,17 @@ publicObj = new Object({
     }
     config.offset = config.offset ? config.offset : ['2.5%', '']
     config.anim = config.anim ? config.anim : 2
+    config.shadeClose = config.shadeClose ? config.shadeClose : false
     if (typeof direction !== 'undefined' && direction === 'right') {
-      config.area = ['45%', '100%']
+      config.area = config.area ? config.area : ['45%', '100%']
       config.offset = 'r'
       config.anim = 7
+      config.shadeClose = true
     }
+    if (typeof (config.area) === 'undefined') {
+      config.area = ['700px', '95%']
+    }
+    var shadeClose = typeof direction !== 'undefined' && direction === 'right'
     return parent.layer.open({
       type: config.type ? config.type : 2,
       area: config.area,
@@ -631,7 +634,7 @@ publicObj = new Object({
       title: config.title,
       closeBtn: config.closeBtn ? config.closeBtn : config.title == null || config.title == '' ? false : true,
       skin: config.skin ? config.skin : 'layer-skin',
-      shadeClose: typeof direction !== 'undefined' && direction === 'right',
+      shadeClose: config.shadeClose,
       content: config.el,
     });
   },
@@ -911,6 +914,12 @@ publicObj = new Object({
                 name: '资产报表',
                 url: 'statistics/asset_report.html',
                 is_selected: thisMenuType === 'asset_report' ? 1 : 0
+              },
+              {
+                type: 'advanced_filter',
+                name: '高级筛选',
+                url: 'statistics/advanced_filter_report.html',
+                is_selected: thisMenuType === 'advanced_filter' ? 1 : 0
               },
             ]
           }

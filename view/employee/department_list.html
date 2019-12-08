@@ -50,7 +50,7 @@
           <label class="fe-checkbox">
             <input type="checkbox" class="check-all">
           </label>
-          <a class="display-align"><span>序号</span><i class="feimg-sort-asc"></i></a>
+          <a class="display-align" onclick="changeSort(this)" sort-type="asc"><span>序号</span><i class="feimg-sort-asc"></i></a>
         </th>
         <th>部门名称</th>
         <th width="40%">备注</th>
@@ -116,6 +116,17 @@
   function showModifyLayer(type) {
     var t = type === 'add' ? '新增' : '编辑'
     publicObj.layerShow({title: t + '部门', el: 'employee/department_edit.html', area: ['640px', '50%'], offset: ['', '25%']})
+  }
+  //排序
+  function changeSort(obj) {
+    var sortType = $(obj).attr('sort-type')
+    if (sortType === 'asc') {
+      $(obj).attr('sort-type', 'desc')
+      $(obj).find('i').removeClass('feimg-sort-asc').addClass('feimg-sort-desc')
+    } else {
+      $(obj).attr('sort-type', 'asc')
+      $(obj).find('i').removeClass('feimg-sort-desc').addClass('feimg-sort-asc')
+    }
   }
 </script>
 </html>

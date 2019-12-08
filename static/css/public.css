@@ -293,6 +293,9 @@ a:link, a:visited {
 .mr-10 {
   margin-right: 10px;
 }
+.mt-10 {
+  margin-top: 10px;
+}
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -566,6 +569,12 @@ a:link, a:visited {
   background: url("../images/icon_img/title_icon/msg.png")center center no-repeat;
   background-size: 17px 16px;
 }
+.feimg-t-notice {
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon_img/title_icon/notice.png")center center no-repeat;
+  background-size: 16px 16px;
+}
 .feimg-export {
   width: 9px;
   height: 12px;
@@ -612,6 +621,39 @@ a:link, a:visited {
 }
 .fepoint-purper1 {
   background-color: #9F6FFA;
+}
+.fepoint-1 {
+  background-color: #4BA8FF;
+}
+.fepoint-2 {
+  background-color: #FFC33E;
+}
+.fepoint-3 {
+  background-color: #FF4545;
+}
+.fepoint-4 {
+  background-color: #83C6FF;
+}
+.fepoint-5 {
+  background-color: #AC77FF;
+}
+.fepoint-6 {
+  background-color: #8BF6FF;
+}
+.fepoint-7 {
+  background-color: #FFF969;
+}
+.fepoint-8 {
+  background-color: #FF9AD0;
+}
+.fepoint-9 {
+  background-color: #1A8FFC;
+}
+.fepoint-10 {
+  background-color: #C4C4C4;
+}
+.fepoint-11 {
+  background-color: #8DAFFF;
 }
 /*endregion*/
 
@@ -1150,6 +1192,38 @@ select {
   font-size: 12px;
 }
 
+/*endregion*/
+
+/*region search-dl*/
+.search-dl-div {
+  padding: 10px 0 10px 20px;
+}
+.search-dl-div dl {
+  display: inline-block;
+  width: 100%;
+}
+.search-dl-div dt {
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 30px;
+  width: 80px;
+  float: left;
+  text-align: right;
+}
+.search-dl-div dd {
+  font-size: 12px;
+  width: calc(100% - 80px);
+  padding-left: 10px;
+  display: inline-block;
+  float: left;
+}
+.search-dl-div dd input[type=text],
+.search-dl-div dd .select-tit {
+  width: 120px;
+}
+.search-dl-div dd .fe-checkbox-tab-group .checkbox-tab {
+  margin-bottom: 10px;
+}
 /*endregion*/
 
 /*region list-row*/
@@ -1813,9 +1887,21 @@ select {
   display: none;
 }
 .checkbox-tab input[type=checkbox]:checked~label{
-  background:#1A8FFC;
   border: 1px solid #1A8FFC;
-  color: #ffffff;
+  color:#1A8FFC;
+  position: relative;
+}
+.checkbox-tab input[type=checkbox]:checked~label:after {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  content: '';
+  background: url("../images/icon_img/checked_2.png")center center no-repeat;
+  background-size: 15px 15px;
 }
 /*endregion*/
 
@@ -2306,7 +2392,8 @@ select {
   height:40px;
   line-height: 38px;
 }
-.layui-layer.success-alert {
+.layui-layer.success-alert,
+.layui-layer.pay-layer {
   min-width: initial!important;
 }
 /*endregion*/
@@ -2371,6 +2458,8 @@ select {
   border-radius: 10px;
   padding: 0 25px;position: relative;
   text-align: center;
+  cursor: pointer;
+  border: 1px solid #ffffff;
 }
 .vip-recharge-list li .title {
   color: #333333;
@@ -2472,7 +2561,7 @@ select {
   left: 0;
   top: calc(50% - 2px);
 }
-.vip-recharge-list li.masonry {
+.vip-recharge-list li.active {
   border: 1px solid #FCB61A;
   background-color: #FFFAF0;
 }
@@ -2488,7 +2577,7 @@ select {
   height: 87px;
   display: inline-block;
 }
-.vip-recharge-list li.masonry .recharge-btn a {
+.vip-recharge-list li.active .recharge-btn a {
   background-color: #FCB61A;
 }
 /*endregion*/
@@ -2516,7 +2605,7 @@ select {
 .report-chart .report-content {
   display: flex;
   display: -webkit-flex;
-  align-items: center;
+  /*align-items: center;*/
   justify-content: space-between;
   width: 100%;
 }
@@ -2524,7 +2613,7 @@ select {
   display: inline-block;
   width: 220px;
   position: relative;
-  padding: 0 30px;
+  padding: 10px 30px 0 30px;
 }
 .report-chart .report-content .chart-pie em {
   position: absolute;
@@ -2576,9 +2665,62 @@ select {
 .report-chart .report-content .chart-text ul li>div {
   line-height: 30px;
 }
-.report-chart .report-content .chart-text ul li>div [class*='fepoint-'] {
+.report-chart .report-content [class*='fepoint-'] {
   margin-right: 4px;
 }
+
+.report-chart .report-content .chart-table {
+  display: inline-block;
+  width: calc(100% - 220px);
+  margin-bottom: 20px;
+  padding-left: 14px;
+}
+.report-chart .report-content .chart-table .fe-table {
+  width: 50%;
+  float: left;
+  min-width: inherit;
+  border-top: 1px solid #F0F0F0;
+  border-left: 1px solid #F0F0F0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.report-chart .report-content .chart-table .fe-table:last-child {
+  border-right: 1px solid #F0F0F0;
+}
+.report-chart .report-content .chart-table .fe-table th {
+  background-color: #ffffff;
+  border-bottom: 1px solid #F0F0F0;
+}
+.report-chart .report-content .chart-table .fe-table th:first-child {
+  padding-left: 40px;
+}
+.report-chart .report-content .chart-table .fe-table th:last-child {
+  padding-right: 40px;
+}
+.report-chart .report-content .chart-table .fe-table td {
+  height: 43px;
+}
+.report-chart .report-content .chart-table .fe-table td:first-child {
+  padding-left: 20px;
+}
+.report-chart .report-content .chart-table .fe-table td:last-child {
+  padding-right: 40px;
+}
+.report-chart .report-content .chart-table .fe-table td [class*='fepoint-'] {
+  margin-right: 14px;
+}
+.report-chart .report-content .chart-table .fe-table td span {
+  vertical-align: middle;
+}
+.report-chart .report-content .chart-empty {
+  background: url("../images/icon_img/chart_empty.png")center top no-repeat;
+  background-size: 68px 90px;
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+  padding: 108px 0 20px 0;
+  width: 100%;
+}
+
 .report-list2 {
   display: flex;
   display: -webkit-flex;
@@ -2612,6 +2754,13 @@ select {
 .report-table .fe-table th,
 .report-table .fe-table td {
   text-align: center;
+}
+.table-total td {
+  text-align: center!important;
+  border: 1px solid #F0F0F0;
+}
+.table-total td span.space font {
+  letter-spacing: 4px;
 }
 /*endregion*/
 
@@ -2732,5 +2881,197 @@ select {
 .feedback-form .feedback-upload .color-tip {
   margin-left: 10px;
   vertical-align: middle;
+}
+/*endregion*/
+
+
+/*region 公告栏*/
+.page-notice-list {
+  background-color: #F6F6F6!important;
+}
+.search-notice {
+  padding-right: 20px;
+  background-color: #ffffff;
+}
+.search-notice .radio-tab label {
+  padding: 0 20px;
+  height: 30px;
+  line-height: 29px;
+}
+.page-notice-list .notice-list {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  height: calc(100% - 70px);
+}
+.page-notice-list .notice-list .list-container>a {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 36px;
+}
+.page-notice-list .notice-list .list-container>a .notice-content {
+  width: calc(100% - 200px);
+}
+.page-notice-list .notice-list .list-container>a .notice-content .index {
+  min-width: 35px;
+  display: inline-block;
+  color: #333333;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.page-notice-list .notice-list .list-container>a .notice-content .title {
+  min-width: 35px;
+  display: inline-block;
+  color: #333333;
+  font-size: 14px;
+  max-width: calc(100% - 100px);
+  vertical-align: middle;
+}
+.page-notice-list .notice-list .list-container>a .notice-content .type-read0,
+.page-notice-list .notice-list .list-container>a .notice-content .type-read1 {
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 2px;
+  height: 17px;
+  line-height: 16px;
+  padding: 0 4px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.page-notice-list .notice-list .list-container>a .notice-content .type-read0 {
+  background-color: #FF0000;
+}
+.page-notice-list .notice-list .list-container>a .notice-content .type-read1 {
+  background-color: #1A8FFC;
+}
+.page-notice-list .notice-list .list-container>a .notice-time {
+  color: #333333;
+  font-size: 14px;
+  width: 200px;
+  text-align: right;
+}
+.notice-main {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 0;
+}
+.notice-main .notice-title {
+  color: #333333;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+.notice-main .notice-time {
+  color: #999;
+  font-size: 14px;
+}
+.notice-main .notice-content {
+  font-size: 16px;
+  color: #333333;
+  padding-top: 28px;
+  line-height: 24px;
+}
+.notice-main .notice-content .part {
+  margin-bottom: 18px;
+  color: #333333;
+}
+.notice-main .notice-link {
+  font-size: 14px;
+  padding: 20px 0;
+}
+.notice-main .notice-link>div{
+  width: 45%;
+}
+/*endregion*/
+
+
+/*region 支付页面*/
+.payment-page {
+  padding: 10px 60px;
+  text-align: center;
+}
+.payment-page .pay-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  padding: 18px 0;
+}
+.payment-page .pay-desc {
+  font-size: 14px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.payment-page .pay-desc em {
+  color: #999;
+  font-style: normal;
+}
+.payment-page .pay-desc font {
+  color: #333333;
+  font-style: normal;
+}
+.payment-page .pay-qrcode .qrcode-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  padding: 25px 0 20px 0;
+}
+.payment-page .pay-qrcode .fe-tab li {
+  width: 100px;
+  text-align: center;
+}
+.payment-page .qrcode-show {
+  margin-top: 40px;
+}
+.payment-page .qrcode-show .qrcode-img {
+  background: url("../images/icon_img/qrcode_bg.png")center center no-repeat;
+  background-size: 180px 180px;
+  width: 180px;
+  height: 180px;
+  padding: 15px;
+  display: inline-block;
+}
+.payment-page .qrcode-show .qrcode-img img {
+  width: 100%;
+  height: 100%;
+}
+.payment-page .qrcode-show .pay-money {
+  padding-left: 20px;
+  text-align: left;
+}
+.payment-page .qrcode-show .price em,
+.payment-page .qrcode-show .price font {
+  color: #FF533D;
+  font-style: normal;
+  font-weight: bold;
+}
+.payment-page .qrcode-show .price em {
+  font-size: 26px;
+}
+.payment-page .qrcode-show .price font {
+  font-size: 36px;
+}
+.payment-page .qrcode-show .type-desc {
+  color: #999999;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.payment-page .qrcode-show .pay-type-wx,
+.payment-page .qrcode-show .pay-type-alipay {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+.payment-page .qrcode-show .pay-type-wx {
+  background: url("../images/icon_img/wxcode.png")center center no-repeat;
+  background-size: 30px 30px;
+}
+.payment-page .qrcode-show .pay-type-alipay {
+  background: url("../images/icon_img/zhifubcode.png")center center no-repeat;
+  background-size: 30px 30px;
 }
 /*endregion*/

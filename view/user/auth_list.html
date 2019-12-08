@@ -43,7 +43,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr onclick="selectAuth(this)">
         <td>
           <label class="fe-checkbox">
             <input type="checkbox" class="check-td" value="李大呼">
@@ -53,7 +53,7 @@
         <td>李大呼</td>
         <td class="t-left">15589896363</td>
       </tr>
-      <tr>
+      <tr onclick="selectAuth(this)">
         <td>
           <label class="fe-checkbox">
             <input type="checkbox" class="check-td" value="李小呼">
@@ -85,6 +85,14 @@
 <script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
 <script type="text/javascript">
+  $(function () {
+    $('.check-td').click(function () {
+      event.stopPropagation()
+    })
+  })
+  function selectAuth(obj) {
+    $(obj).find('.check-td').click()
+  }
   function submitForm() {
     if (!publicObj.getCheckBox()) return false
     var frames=window.parent.window.document.getElementById("mainframe");

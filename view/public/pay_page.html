@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>支付弹框</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css" />
+</head>
+<body>
+<div class="payment-page">
+  <div class="pay-title">支付详情</div>
+  <div class="pay-desc flex-between">
+    <span><em>订单信息：</em><font>大袋零食科技-预付款</font></span>
+    <span><em>收款账户：</em><font>¥600.00</font></span>
+  </div>
+  <div class="pay-qrcode">
+    <div class="qrcode-title">请选择二维码进行支付</div>
+    <div class="fe-tab">
+      <ul>
+        <li id="tabli-wx" onclick="changePayType('wx')">微信支付</li>
+        <li id="tabli-alipay" onclick="changePayType('alipay')">支付宝支付</li>
+      </ul>
+    </div>
+    <div class="qrcode-show flex-row">
+      <div class="qrcode-img">
+        <img src="../../static/images/cs_img/qr_img.png">
+      </div>
+      <div class="pay-money">
+        <div class="price"><em>￥</em><font>600.00</font></div>
+        <div class="type-desc">请使用微信支付</div>
+        <div class="type-icon">
+          <a class="pay-type-wx"></a>
+          <a class="pay-type-alipay"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  //切换支付方式
+  changePayType('wx')
+  function changePayType(type) {
+    $('.fe-tab li').removeClass('active')
+    $('#tabli-'+type).addClass('active')
+    $('.type-icon a').hide()
+    $('.type-icon a.pay-type-'+type).show()
+  }
+  
+  //支付成功弹框
+  function paySuccess () {
+    publicObj.layerShow({el: 'public/success_alert.html', area: ['300px', '300px'], offset: ['', ''], skin: 'success-alert'})
+  }
+</script>
+</html>

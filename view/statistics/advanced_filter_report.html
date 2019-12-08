@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>高级筛选</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+  <style>
+    .table-detail th:first-child,
+    .table-detail td:first-child {
+      padding-left: 60px;
+    }
+    .table-detail th:last-child,
+    .table-detail td:last-child {
+      padding-right: 60px;
+    }
+  </style>
+</head>
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-dl-div border-b">
+    <dl>
+      <dt>收入项分类</dt>
+      <dd>
+        <div class="fe-checkbox-tab-group">
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_1">
+            <label for="checkbox_1">技术维护</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_2">
+            <label for="checkbox_2">其他收入</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_3">
+            <label for="checkbox_3">会员费</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_4">
+            <label for="checkbox_4">哈哈哈嗝</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_5">
+            <label for="checkbox_5">滴滴答答</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_6">
+            <label for="checkbox_6">收入6</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_7">
+            <label for="checkbox_7">收入7</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_8">
+            <label for="checkbox_8">收入8</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_9">
+            <label for="checkbox_9">收入收入9</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_10">
+            <label for="checkbox_10">收入收入10</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_11">
+            <label for="checkbox_11">收入收入11</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="checkbox_12">
+            <label for="checkbox_12">收入收入12</label>
+          </label>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>支出项分类</dt>
+      <dd>
+        <div class="fe-checkbox-tab-group">
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_1">
+            <label for="zcx_checkbox_1">技术维护</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_2">
+            <label for="zcx_checkbox_2">其他收入</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_3">
+            <label for="zcx_checkbox_3">会员费</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_4">
+            <label for="zcx_checkbox_4">哈哈哈嗝</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_5">
+            <label for="zcx_checkbox_5">滴滴答答</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_6">
+            <label for="zcx_checkbox_6">支出分类6</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_7">
+            <label for="zcx_checkbox_7">支出分类7</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_8">
+            <label for="zcx_checkbox_8">支出分类8</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_9">
+            <label for="zcx_checkbox_9">支出分类9</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_10">
+            <label for="zcx_checkbox_10">支出分类10</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_11">
+            <label for="zcx_checkbox_11">支出分类11</label>
+          </label>
+          <label class="checkbox-tab">
+            <input type="checkbox" id="zcx_checkbox_12">
+            <label for="zcx_checkbox_12">支出分类12</label>
+          </label>
+        </div>
+      </dd>
+    </dl>
+    <dl class="mb-10">
+      <dt>经手人</dt>
+      <dd>
+        <div class="rule-single-select">
+          <select>
+            <option value="">全部</option>
+            <option value="1">经手人1</option>
+            <option value="2">经手人2</option>
+          </select>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>统计日期</dt>
+      <dd>
+        <div>
+          <div class="display-align">
+            <span class="display-align">
+              <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+              -
+              <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+            </span>
+            
+            <div class="fe-checkbox-tab-group">
+              <label class="checkbox-tab" style="margin-bottom: 0;margin-left: 8px">
+                <input type="checkbox" id="tjrq_all">
+                <label for="tjrq_all">全部</label>
+              </label>
+            </div>
+          </div>
+          <div class="display-align" style="margin-left: 30px">
+            <span style="margin-right: 4px">统计维度</span>
+            <div class="fe-radio-tab-group">
+              <label class="radio-tab">
+                <input type="radio" id="tjwd_radio_1" name="tjwd" checked>
+                <label for="tjwd_radio_1" style="width: 77px">按日期</label>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" id="tjwd_radio_2" name="tjwd">
+                <label for="tjwd_radio_2" style="width: 77px">按月份</label>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" id="tjwd_radio_3" name="tjwd">
+                <label for="tjwd_radio_3" style="width: 77px">按年份</label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="color-tip mt-10">温馨提示：维度按日期统计，统计日期天数最多为60天</div>
+      </dd>
+    </dl>
+    <dl class="mt-10 mb-10">
+      <dt>&nbsp;</dt>
+      <dd class="l-content input-search">
+        <button type="submit" class="febtn-default" style="width: 100px">开始统计</button>
+        <button type="button" class="febtn-white ml-10" style="width: 96px"><i class="feimg-export"></i>导出报表</button>
+      </dd>
+    </dl>
+  </form>
+  <!--endregion-->
+  
+  <div class="border-b">
+    <table class="fe-table table-total">
+      <tr>
+        <td><span>账单收入(元)：</span>86000</td>
+        <td><span>账单支出(元)：</span><font class="color-default">86000</font></td>
+        <td><span>账单结余(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+      <tr>
+        <td><span class="space"><font>应收款</font>(元)：</span>86000</td>
+        <td><span class="space"><font>应付款</font>(元)：</span><font class="color-default">86000</font></td>
+        <td><span>收付结余(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+      <tr>
+        <td><span class="space"><font>总收入</font>(元)：</span>86000</td>
+        <td><span class="space"><font>总支出</font>(元)：</span><font class="color-default">86000</font></td>
+        <td><span class="space"><font>总结余</font>(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="border-b">
+    <table class="fe-table table-detail">
+      <tr>
+        <th>日期</th>
+        <th>收入(元)</th>
+        <th>支出(元)</th>
+        <th>结余</th>
+      </tr>
+      <tr>
+        <td>2019-09-09</td>
+        <td>2600</td>
+        <td>20</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2019-09-09</td>
+        <td>2600</td>
+        <td>20</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2019-09-09</td>
+        <td>2600</td>
+        <td>20</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2019-09-09</td>
+        <td>2600</td>
+        <td>20</td>
+        <td>10</td>
+      </tr>
+    </table>
+  </div>
+  
+  <!--饼图-->
+  <!--收入统计(按收入项目)-->
+  <div class="report-chart border-b">
+    <div class="title">收入统计(按收入项目)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-1"></div></div>
+      </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-4"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-5"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-6"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-7"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-10"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!--收入统计(按经手人)-->
+  <div class="report-chart border-b">
+    <div class="title">收入统计(按收入项目)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-2"></div></div>
+      </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!--支出统计(按支出项目)-->
+  <div class="report-chart border-b">
+    <div class="title">支出统计(按支出项目)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-3"></div></div>
+      </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!--支出统计(按经手人)-->
+  <div class="report-chart border-b">
+    <div class="title">支出统计(按经手人)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-4"></div></div>
+      </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  publicObj.getIframeMenuHtml('statistics', 'advanced_filter')//获取左侧菜单
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  function setTime (type) {
+    if (type === '') {
+      $('#startTime').val('')
+      $('#endTime').val('')
+    } else {
+      $('#startTime').val(publicObj.dayToTime(type, 'date')[0])
+      $('#endTime').val(publicObj.dayToTime(type, 'date')[1])
+    }
+  }
+  /**endregion*/
+  
+  /**region 饼图*/
+  publicObj.echartPie('chart-pie-1', {
+    series: [
+      {
+        name: '收入统计(按收入项目)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-2', {
+    series: [
+      {
+        name: '收入统计(按经手人)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-3', {
+    series: [
+      {
+        name: '支出统计(按支出项目)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-4', {
+    series: [
+      {
+        name: '支出统计(按经手人)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
+        ]
+      }
+    ],
+  })
+  /**endregion*/
+</script>
+</html>

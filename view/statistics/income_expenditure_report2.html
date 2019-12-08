@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>收支报表</title>
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="stylesheet" type="text/css" href="../../static/lib/jedate/jeDageGray.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/iconfont/feicon/style.css"/>
+  <link rel="stylesheet" type="text/css" href="../../static/css/public.css"/>
+</head>
+<body class="iframe-body">
+<div class="iframe-main">
+  <!--region 搜索-->
+  <form class="search-content">
+    <div class="search-container">
+      <ul class="search-left">
+        <li>
+          <span>日期</span>
+          <div class="l-content">
+            <input type="text" readonly class="input-data" id="startTime" placeholder="开始日期"/>
+            -
+            <input type="text" readonly class="input-data" id="endTime" placeholder="结束日期"/>
+
+            <a class="color-link ml-10" onclick="setTime(1)">今天</a>
+            <a class="color-link ml-10" onclick="setTime('prev_7')">最近一周</a>
+            <a class="color-link ml-10" onclick="setTime('prev_30')">最近一月</a>
+            <a class="color-link ml-10" onclick="setTime('prev_90')">最近三个月</a>
+            <a class="color-link ml-10" onclick="setTime('this_year')">今年</a>
+            <a class="color-link ml-10" onclick="setTime('')">全部</a>
+          </div>
+        </li>
+        <li>
+          <div class="l-content">
+            <button type="submit" class="febtn-default">搜索</button>
+          </div>
+        </li>
+      </ul>
+      <div class="flex-right search-right">
+        <button type="button" class="febtn-white" style="width: 96px"><i class="feimg-export"></i>导出报表</button>
+      </div>
+    </div>
+  </form>
+  <!--endregion-->
+
+  <div class="list-row3 row-child">
+    <div class="list-row3">
+      <a><p>账单收入(元)</p><h1>86000</h1></a>
+      <a><p>应收款(元)</p><h1>86000</h1></a>
+      <a><p>总收入(元)</p><h1>86000</h1></a>
+    </div>
+    <div class="list-row3">
+      <a><p>账单支出(元)</p><h1 class="color-default">86000</h1></a>
+      <a><p>应付款(元)</p><h1 class="color-default">86000</h1></a>
+      <a><p>总支出(元)</p><h1 class="color-default">86000</h1></a>
+    </div>
+    <div class="list-row3">
+      <a><p>账单结余(元)</p><h1 class="color-orange">86000</h1></a>
+      <a><p>收付结余(元)</p><h1 class="color-orange">86000</h1></a>
+      <a><p>总结余(元)</p><h1 class="color-orange">86000</h1></a>
+    </div>
+  </div>
+
+  <div class="report-chart border-b">
+    <div class="title">收入分类统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-1"></div></div>
+      </div>
+      <div class="chart-text">
+        <div class="text-scroll">
+          <ul>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="report-chart border-b">
+    <div class="title">支出分类统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-2"></div></div>
+      </div>
+      <div class="chart-text">
+        <div class="text-scroll">
+          <ul>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+            <li>
+              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-list2 border-b">
+    <div class="report-chart">
+      <div class="title">应收来往单位统计(共200)</div>
+      <div class="report-content">
+        <div class="chart-pie">
+          <em>单位: ¥</em>
+          <div class="pie-demo"><div id="chart-pie-3"></div></div>
+        </div>
+        <div class="chart-text">
+          <div class="text-scroll">
+            <ul>
+              <li>
+                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="report-chart">
+      <div class="title">应付来往单位统计(共200)</div>
+      <div class="report-content">
+        <div class="chart-pie">
+          <em>单位: ¥</em>
+          <div class="pie-demo"><div id="chart-pie-4"></div></div>
+        </div>
+        <div class="chart-text">
+          <div class="text-scroll">
+            <ul>
+              <li>
+                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-list2 border-b">
+    <div class="report-chart">
+      <div class="title">收入经手人统计(共200)</div>
+      <div class="report-content">
+        <div class="chart-pie">
+          <em>单位: ¥</em>
+          <div class="pie-demo"><div id="chart-pie-5"></div></div>
+        </div>
+        <div class="chart-text">
+          <div class="text-scroll">
+            <ul>
+              <li>
+                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+              </li>
+              <li>
+                <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="report-chart">
+      <div class="title">支出经手人统计(共200)</div>
+      <div class="report-content">
+        <div class="chart-pie">
+          <em>单位: ¥</em>
+          <div class="pie-demo"><div id="chart-pie-6"></div></div>
+        </div>
+        <div class="chart-text">
+          <div class="text-scroll">
+            <ul>
+              <li>
+                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
+              </li>
+              <li>
+                <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
+                <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
+                <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
+                <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/jedate/jedate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
+<script>
+  publicObj.getIframeMenuHtml('statistics', 'income_expenditure')//获取左侧菜单
+
+  publicObj.echartPie('chart-pie-1', {
+    series: [
+      {
+        name: '收入分类统计',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-2', {
+    series: [
+      {
+        name: '支出分类统计',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-3', {
+    series: [
+      {
+        name: '应收来往单位统计(共200)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-4', {
+    series: [
+      {
+        name: '应付来往单位统计(共200)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-5', {
+    series: [
+      {
+        name: '收入经手人统计(共200)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+  publicObj.echartPie('chart-pie-6', {
+    series: [
+      {
+        name: '支出经手人统计(共200)',
+        data:[
+          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+        ]
+      }
+    ],
+  })
+
+  /**region 时间范围、日期*/
+  publicObj.jeDate_('startTime', {format: "YYYY-MM-DD"});
+  publicObj.jeDate_('endTime', {format: "YYYY-MM-DD"});
+  function setTime (type) {
+    if (type === '') {
+      $('#startTime').val('')
+      $('#endTime').val('')
+    } else {
+      $('#startTime').val(publicObj.dayToTime(type, 'date')[0])
+      $('#endTime').val(publicObj.dayToTime(type, 'date')[1])
+    }
+  }
+  /**endregion*/
+</script>
+</html>

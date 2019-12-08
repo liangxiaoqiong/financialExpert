@@ -33,36 +33,39 @@
           </div>
         </li>
         <li>
-          <div class="l-content input-search">
-            <button type="submit" class="febtn-default">搜索</button>
+          <div class="l-content">
+            <button type="submit" class="febtn-default" style="width: 63px">搜索</button>
           </div>
         </li>
       </ul>
       <div class="flex-right search-right">
-        <button type="button" class="febtn-white" style="width: 96px"><i class="feimg-export"></i>导出报表</button>
+        <button type="button" class="febtn-white"><i class="feimg-export"></i>导出报表</button>
       </div>
     </div>
   </form>
   <!--endregion-->
-
-  <div class="list-row3 row-child">
-    <div class="list-row3">
-      <a><p>账单收入(元)</p><h1>86000</h1></a>
-      <a><p>应收款(元)</p><h1>86000</h1></a>
-      <a><p>总收入(元)</p><h1>86000</h1></a>
-    </div>
-    <div class="list-row3">
-      <a><p>账单支出(元)</p><h1 class="color-default">86000</h1></a>
-      <a><p>应付款(元)</p><h1 class="color-default">86000</h1></a>
-      <a><p>总支出(元)</p><h1 class="color-default">86000</h1></a>
-    </div>
-    <div class="list-row3">
-      <a><p>账单结余(元)</p><h1 class="color-orange">86000</h1></a>
-      <a><p>收付结余(元)</p><h1 class="color-orange">86000</h1></a>
-      <a><p>总结余(元)</p><h1 class="color-orange">86000</h1></a>
-    </div>
+  
+  <div class="border-b">
+    <table class="fe-table table-total">
+      <tr>
+        <td><span>账单收入(元)：</span>86000</td>
+        <td><span>账单支出(元)：</span><font class="color-default">86000</font></td>
+        <td><span>账单结余(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+      <tr>
+        <td><span class="space"><font>应收款</font>(元)：</span>86000</td>
+        <td><span class="space"><font>应付款</font>(元)：</span><font class="color-default">86000</font></td>
+        <td><span>收付结余(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+      <tr>
+        <td><span class="space"><font>总收入</font>(元)：</span>86000</td>
+        <td><span class="space"><font>总支出</font>(元)：</span><font class="color-default">86000</font></td>
+        <td><span class="space"><font>总结余</font>(元)：</span><font class="color-orange">86000</font></td>
+      </tr>
+    </table>
   </div>
-
+  
+  <!--收入分类统计-->
   <div class="report-chart border-b">
     <div class="title">收入分类统计(共200)</div>
     <div class="report-content">
@@ -70,98 +73,96 @@
         <em>单位: ¥</em>
         <div class="pie-demo"><div id="chart-pie-1"></div></div>
       </div>
-      <div class="chart-text">
-        <div class="text-scroll">
-          <ul>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-          </ul>
-        </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-4"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-5"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-6"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-7"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-10"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
+  
+  <!--支出分类统计-->
   <div class="report-chart border-b">
     <div class="title">支出分类统计(共200)</div>
     <div class="report-content">
@@ -169,137 +170,201 @@
         <em>单位: ¥</em>
         <div class="pie-demo"><div id="chart-pie-2"></div></div>
       </div>
-      <div class="chart-text">
-        <div class="text-scroll">
-          <ul>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-            <li>
-              <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-              <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-              <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-              <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-            </li>
-          </ul>
-        </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-4"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-5"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-6"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-7"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-10"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
-
-  <div class="report-list2 border-b">
-    <div class="report-chart">
-      <div class="title">应收来往单位统计(共200)</div>
-      <div class="report-content">
-        <div class="chart-pie">
-          <em>单位: ¥</em>
-          <div class="pie-demo"><div id="chart-pie-3"></div></div>
-        </div>
-        <div class="chart-text">
-          <div class="text-scroll">
-            <ul>
-              <li>
-                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+  
+  <!--应收来往单位统计-->
+  <div class="report-chart border-b">
+    <div class="title">应收来往单位统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-3"></div></div>
       </div>
-    </div>
-    <div class="report-chart">
-      <div class="title">应付来往单位统计(共200)</div>
-      <div class="report-content">
-        <div class="chart-pie">
-          <em>单位: ¥</em>
-          <div class="pie-demo"><div id="chart-pie-4"></div></div>
-        </div>
-        <div class="chart-text">
-          <div class="text-scroll">
-            <ul>
-              <li>
-                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
-
-  <div class="report-list2 border-b">
-    <div class="report-chart">
-      <div class="title">收入经手人统计(共200)</div>
-      <div class="report-content">
-        <div class="chart-pie">
-          <em>单位: ¥</em>
-          <div class="pie-demo"><div id="chart-pie-5"></div></div>
-        </div>
-        <div class="chart-text">
-          <div class="text-scroll">
-            <ul>
-              <li>
-                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-              </li>
-              <li>
-                <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  
+  <!--应付来往单位统计-->
+  <div class="report-chart border-b">
+    <div class="title">应付来往单位统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-empty">应付来往单位统计</div>
     </div>
-    <div class="report-chart">
-      <div class="title">支出经手人统计(共200)</div>
-      <div class="report-content">
-        <div class="chart-pie">
-          <em>单位: ¥</em>
-          <div class="pie-demo"><div id="chart-pie-6"></div></div>
-        </div>
-        <div class="chart-text">
-          <div class="text-scroll">
-            <ul>
-              <li>
-                <div><i class="fepoint-default"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-red"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-orange"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue1"></i><span>房租：12(8%)</span></div>
-              </li>
-              <li>
-                <div><i class="fepoint-red1"></i><span>餐饮：2000(80%)</span></div>
-                <div><i class="fepoint-purper"></i><span>车费：20(12%)</span></div>
-                <div><i class="fepoint-purper1"></i><span>报销：12(8%)</span></div>
-                <div><i class="fepoint-blue2"></i><span>房租：12(8%)</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+  </div>
+  
+  <!--收入经手人统计-->
+  <div class="report-chart border-b">
+    <div class="title">收入经手人统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-empty">暂无收入经手人统计</div>
+    </div>
+  </div>
+  
+  <!--支出经手人统计-->
+  <div class="report-chart border-b">
+    <div class="title">支出经手人统计(共200)</div>
+    <div class="report-content">
+      <div class="chart-pie">
+        <em>单位: ¥</em>
+        <div class="pie-demo"><div id="chart-pie-6"></div></div>
+      </div>
+      <div class="chart-table">
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-1"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-2"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-3"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-4"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-5"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <table class="fe-table">
+          <tr>
+            <th>名称</th>
+            <th>金额(元)</th>
+            <th>占比</th>
+          </tr>
+          <tr>
+            <td><i class="fepoint-6"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-7"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-8"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-9"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><i class="fepoint-10"></i><span>餐饮</span></td>
+            <td>1000</td>
+            <td>20%</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -319,9 +384,9 @@
         name: '收入分类统计',
         data:[
           {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
-          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
           {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
-          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
         ]
       }
     ],
@@ -331,10 +396,16 @@
       {
         name: '支出分类统计',
         data:[
-          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
-          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
-          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
-          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+          {value:20, name:'分类1', itemStyle: {color: '#4BA8FF'}},
+          {value:20, name:'分类2', itemStyle: {color: '#FFC33E'}},
+          {value:20, name:'分类3', itemStyle: {color: '#FF4545'}},
+          {value:20, name:'分类4', itemStyle: {color: '#83C6FF'}},
+          {value:20, name:'分类5', itemStyle: {color: '#AC77FF'}},
+          {value:20, name:'分类6', itemStyle: {color: '#8BF6FF'}},
+          {value:20, name:'分类7', itemStyle: {color: '#FFF969'}},
+          {value:20, name:'分类8', itemStyle: {color: '#FF9AD0'}},
+          {value:20, name:'分类9', itemStyle: {color: '#1A8FFC'}},
+          {value:20, name:'分类10', itemStyle: {color: '#C4C4C4'}},
         ]
       }
     ],
@@ -344,36 +415,7 @@
       {
         name: '应收来往单位统计(共200)',
         data:[
-          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
-          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
-          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
-          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
-        ]
-      }
-    ],
-  })
-  publicObj.echartPie('chart-pie-4', {
-    series: [
-      {
-        name: '应付来往单位统计(共200)',
-        data:[
-          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
-          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
-          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
-          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
-        ]
-      }
-    ],
-  })
-  publicObj.echartPie('chart-pie-5', {
-    series: [
-      {
-        name: '收入经手人统计(共200)',
-        data:[
-          {value:20, name:'分类1', itemStyle: {color: '#8DAFFF'}},
-          {value:20, name:'分类2', itemStyle: {color: '#FFBC52'}},
-          {value:20, name:'分类3', itemStyle: {color: '#1A8FFC'}},
-          {value:20, name:'分类4', itemStyle: {color: '#BFE0FF'}},
+          {value:20, name:'分类1', itemStyle: {color: '#4BA8FF'}},
         ]
       }
     ],

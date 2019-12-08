@@ -127,7 +127,7 @@
         </div>
       </div>
     </li>
-    <li class="masonry">
+    <li class="masonry active">
       <div class="title">钻石版</div>
       <div class="price">¥<b>900</b>/年</div>
       <div class="discount-tip"></div>
@@ -162,8 +162,14 @@
   publicObj.diyRadialIndicator('.radialIndicator#2')
   /**endregion*/
 
+  $(function () {
+    $('.vip-recharge-list li').click(function () {
+      $('.vip-recharge-list li').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
   function toPay () {
-    publicObj.layerShow({el: 'public/success_alert.html', area: ['300px', '300px'], offset: ['', ''], skin: 'success-alert'})
+    publicObj.layerShow({el: 'public/pay_page.html', area: ['600px', '550px'], offset: ['', ''], skin: 'pay-layer', shadeClose: true})
   }
 </script>
 </html>

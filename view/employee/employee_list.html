@@ -15,7 +15,7 @@
 <body class="iframe-body">
 <div class="iframe-main">
   <!--region 搜索-->
-  <form class="search-content" method="post" action="./customer_list.html">
+  <form class="search-content">
     <div class="search-container">
       <ul class="search-left">
         <li>
@@ -66,7 +66,7 @@
           <label class="fe-checkbox">
             <input type="checkbox" class="check-all">
           </label>
-          <a class="display-align"><span>ID</span><i class="feimg-sort-asc"></i></a>
+          <a class="display-align" onclick="changeSort(this)" sort-type="asc"><span>ID</span><i class="feimg-sort-asc"></i></a>
         </th>
         <th>姓名</th>
         <th>登录密码</th>
@@ -192,6 +192,17 @@
       publicObj.layerMsg('删除成功', 1)
       parent.layer.close(layeo)
     }, {title: title})
+  }
+  //排序
+  function changeSort(obj) {
+    var sortType = $(obj).attr('sort-type')
+    if (sortType === 'asc') {
+      $(obj).attr('sort-type', 'desc')
+      $(obj).find('i').removeClass('feimg-sort-asc').addClass('feimg-sort-desc')
+    } else {
+      $(obj).attr('sort-type', 'asc')
+      $(obj).find('i').removeClass('feimg-sort-desc').addClass('feimg-sort-asc')
+    }
   }
 </script>
 </html>
