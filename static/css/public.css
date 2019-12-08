@@ -2744,6 +2744,7 @@ select {
   justify-content: space-between;
   padding: 0 20px;
   min-height: 60px;
+  line-height: 60px;
 }
 .report-table .table-title b {
   margin-right: 20px;
