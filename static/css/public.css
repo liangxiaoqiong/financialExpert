@@ -2995,6 +2995,19 @@ select {
 .payment-page {
   padding: 10px 60px;
   text-align: center;
+  position: relative;
+}
+.payment-page .close-btn {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
 }
 .payment-page .pay-title {
   font-size: 22px;
@@ -3023,6 +3036,7 @@ select {
 }
 .payment-page .pay-qrcode .fe-tab li {
   width: 100px;
+  padding: 0;
   text-align: center;
 }
 .payment-page .qrcode-show {
