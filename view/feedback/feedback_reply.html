@@ -131,6 +131,7 @@
     }, function () {
       var remark = parent.$('textarea[name="feedback_remark"]').val()
       submitRemark(key, remark, 1)
+      return false
     })
   }
   //type-1:单张描述。2-批量描述
