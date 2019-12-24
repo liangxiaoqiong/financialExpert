@@ -1,0 +1,2 @@
+# 财务管家PC官网，纯静态页
+# 参考网站：http://www.cash360.cn/module-feather.html
