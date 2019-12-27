@@ -1,0 +1,195 @@
+body {
+  min-width: 1200px;
+  background-color: #fff;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(102, 102, 102);
+  font-family: "Helvetica Neue","PingFangSC-regular","Hiragino Sans GB","Arial","Times New Roman","Microsoft YaHei","WenQuanYi Micro Hei"," sans-serif";
+  font-size: 14px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+/*region 按钮*/
+[class*='wbtn-'] {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font-size: 16px;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  background-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+}
+.wbtn-green {
+  background-color: #28DA98;
+  border-color: #28DA98;
+  color: #ffffff;
+}
+.wbtn-white {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+/*endregion*/
+
+/*region 顶部header*/
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 30px 80px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .head-left {
+  width: 160px;
+  height: 41px;
+  display: inline-block;
+  background: url("../images/index/logo.png")center center no-repeat;
+  background-size: 160px 41px;
+}
+.header .head-right {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .head-right .head-nav {
+  display: flex;
+  display: -webkit-flex;
+}
+.header .head-right .head-nav li {
+  display: flex;
+  display: -webkit-flex;
+  line-height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  margin: 0 20px;
+}
+.header .head-right .head-nav li.active:after {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: calc(50% - 12px);
+  width:24px;
+  height:2px;
+  background:linear-gradient(270deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+  content: '';
+}
+.header .head-right .head-login {
+  padding-left: 10px;
+}
+.header .head-right .head-login .wbtn-green {
+  margin-right: 15px;
+}
+.header .head-right .head-login .wbtn-green:last-child {
+  margin-right: 0;
+}
+
+.header.skin-white {
+  background-color: #ffffff;
+}
+.header.skin-2 {
+  background-color: rgba(26,143,252, .2);
+}
+.header.skin-2 .head-right .head-nav li,
+.header.skin-white .head-right .head-nav li {
+  color: #000000;
+}
+.header.skin-2 .head-right .head-nav li.active,
+.header.skin-white .head-right .head-nav li.active {
+  color: #1A8FFC;
+}
+.header.skin-2.head-right .head-nav li.active:after,
+.header.skin-white .head-right .head-nav li.active:after  {
+  background:linear-gradient(270deg,rgba(255,255,255,0) 0%,rgba(26,143,252,1) 100%);
+}
+/*endregion*/
+
+/*region 右侧公共客服列表*/
+.right-service {
+  position: fixed;
+  z-index: 1000;
+  right: 10px;
+  top: calc(50% - 190px);
+  width: 68px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.right-service li {
+  cursor: pointer;
+  width: 100%;
+  background-color: #1A8FFC;
+  border-radius: 4px;
+  height: 90px;
+  margin: 1px 0;
+}
+.right-service li .float-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.right-service li .float-div p {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.right-service li [class*='rsicon-'] {
+  display: inline-block;
+  vertical-align: middle;
+}
+.rsicon-weixin {
+  width: 34px;
+  height: 28px;
+  background: url("../images/right_service/weixin.png")center center no-repeat;
+  background-size: 34px 28px;
+}
+.rsicon-app {
+  width: 29px;
+  height: 34px;
+  background: url("../images/right_service/app.png")center center no-repeat;
+  background-size: 29px 34px;
+}
+.rsicon-qq {
+  width: 28px;
+  height: 33px;
+  background: url("../images/right_service/qq.png")center center no-repeat;
+  background-size: 28px 33px;
+}
+.rsicon-jishu {
+  width: 28px;
+  height: 40px;
+  background: url("../images/right_service/jishu.png")center center no-repeat;
+  background-size: 28px 40px;
+}
+/*endregion*/
+
+.common-container {
+  width: 80%;
+  margin: 0 auto;
+}
