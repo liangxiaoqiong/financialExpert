@@ -1,0 +1,214 @@
+.body-support-help {
+  padding-top: 100px;
+  background-color: #F7F7F7;
+}
+.swiper-support-help {
+  height: 0;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15.625%;
+  background: url("../images/support_help/swiper_bg.png")left top no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+.swiper-support-help .swi-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 13%;
+}
+.swiper-support-help .swi-container .title {
+  width: 280px;
+  height: 72px;
+  display: inline-block;
+  background: url("../images/support_help/swiper_title.png")left top no-repeat;
+  background-size: 280px 72px;
+  vertical-align: middle;
+}
+.swiper-support-help .swi-container .desc {
+  font-size: 30px;
+  color: #FFFFFF;
+  margin-top: 2%;
+}
+
+/*region help-container*/
+.help-main {
+  text-align: center;
+}
+.help-container {
+  display: inline-block;
+  width: 1200px;
+  margin: 30px auto 100px auto;
+}
+.help-container .left {
+  float: left;
+  width: 300px;
+  display: inline-block;
+  text-align: left;
+}
+.help-container .left li {
+  background-color: #ffffff;
+  margin-bottom: 30px;
+}
+.help-container .left li .title {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  height: 60px;
+  line-height: 1.5;
+  padding: 0 30px;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #ECECEC;
+}
+.help-container .left .problem-list .list-one {
+  border-bottom: 1px solid #ECECEC;
+}
+.help-container .left .problem-list .list-one-name {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  height: 60px;
+  line-height: 1.5;
+  padding: 0 30px;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  background: url("../images/common/down_grey.png")calc(100% - 30px) center no-repeat;
+  background-size: 17px 10px;
+  cursor: pointer;
+}
+.help-container .left .problem-list .list-two {
+  display: none;
+}
+.help-container .left .problem-list .list-two a {
+  height: 60px;
+  padding: 0 40px 0 50px;
+  line-height: 1.5;
+  border-top: 1px solid #ECECEC;
+  color: #666666;
+  font-size: 16px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  position: relative;
+}
+.help-container .left .problem-list .list-one:hover .list-one-name,
+.help-container .left .problem-list .list-two a:hover,
+.help-container .left .problem-list .list-two a.active {
+  color: #1A8FFC;
+}
+.help-container .left .problem-list .list-two a.active:before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  display: inline-block;
+  background-color: #1A8FFC;
+  content: '';
+}
+.help-container .left .download-help {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.help-container .left .download-help .wicon-download {
+  background: url("../images/support_help/download.png")center center no-repeat;
+  background-size: 21px 20px;
+  width: 21px;
+  height: 20px;
+  margin-right: 6px;
+  margin-top: 2px;
+}
+.help-container .left .download-help span {
+  color: #1A8FFC;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.help-container .left .contract-us-list a {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  height: 60px;
+  padding-left: 79px;
+  color: #888888;
+  font-size: 16px;
+  font-weight: bold;
+}
+.help-container .left .contract-us-list a.phone {
+  background: url("../images/common/phone_grey.png")30px center no-repeat;
+  background-size: 22px 22px;
+}
+.help-container .left .contract-us-list a.email {
+  background: url("../images/common/email_grey.png")30px center no-repeat;
+  background-size: 22px 18px;
+}
+.help-container .left .contract-us-list a.qq {
+  background: url("../images/common/qq_default.png")30px center no-repeat;
+  background-size: 19px 23px;
+  color: #1A8FFC;
+}
+.help-container .left .contract-us-list a.time {
+  background: url("../images/common/time_grey.png")30px center no-repeat;
+  background-size: 20px 20px;
+}
+.help-container .right {
+  float: left;
+  width: calc(100% - 330px);
+  display: inline-block;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  margin-left: 30px;
+}
+.help-container .right.common-problem {
+  padding-bottom: 0;
+}
+.help-container .right.common-problem .title {
+  padding: 30px 20px;
+  color: #333333;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: left;
+}
+.help-container .right.common-problem .common-problem-list li {
+  border-top: 1px solid #ECECEC;
+  padding: 30px 20px;
+}
+.help-container .right.common-problem .common-problem-list li .p-question,
+.help-container .right.common-problem .common-problem-list li .p-answer {
+  padding-left: 44px;
+  text-align: left;
+}
+.help-container .right.common-problem .common-problem-list li .p-question {
+  background: url("../images/support_help/q.png")left top no-repeat;
+  background-size: 24px 27px;
+  color: #333333;
+  font-size: 20px;
+  line-height:28px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+.help-container .right.common-problem .common-problem-list li .p-answer {
+  background: url("../images/support_help/a.png")left top no-repeat;
+  background-size: 24px 27px;
+  color: #333333;
+  font-size: 15px;
+  line-height:22px;
+}
+/*endregion*/

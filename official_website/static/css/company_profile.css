@@ -1,0 +1,103 @@
+.body-company-profile {
+  padding-top: 100px;
+}
+.swiper-company-profile {
+  height: 0;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15.625%;
+  background: url("../images/company_profile/swiper_bg.png")left top no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+.swiper-company-profile .swi-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 13%;
+}
+.swiper-company-profile .swi-container .title {
+  width: 280px;
+  height: 72px;
+  display: inline-block;
+  background: url("../images/company_profile/swiper_title.png")left top no-repeat;
+  background-size: 280px 72px;
+  vertical-align: middle;
+}
+.swiper-company-profile .swi-container .desc {
+  font-size: 30px;
+  color: #FFFFFF;
+  margin-top: 2%;
+}
+
+.company-main {
+  width: 1200px;
+  text-align: center;
+  margin: 0 auto 100px auto;
+}
+.company-main .title {
+  height: 84px;
+  line-height: 100px;
+  color: #000000;
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 70px;
+}
+.company-main .main-list {
+  margin-top: 100px;
+}
+.company-main .company-js .title {
+  background: url("../images/company_profile/t_company_profile.png")center center no-repeat;
+  background-size: 476px 84px;
+}
+.company-main .company-js .js-content .list {
+  margin-bottom: 30px;
+  text-align: left;
+}
+.company-main .company-js .js-content .t {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.company-main .company-js .js-content .d {
+  color: #666666;
+  font-size: 16px;
+  line-height: 22px;
+}
+.company-main .company-zjtd .title {
+  background: url("../images/company_profile/t_team_of_financial_experts.png") center center no-repeat;
+  background-size: 730px 84px;
+}
+.company-main .zjtd-content .info {
+  line-height:30px;
+  font-size: 16px;
+  color: #333333;
+  text-align: left;
+}
+.company-main .zjtd-content .photo {
+  display: inline-block;
+  width: 100%;
+  margin-top: 45px;
+}
+.company-main .zjtd-content .photo img {
+  width: calc(50% - 25px);
+  height: auto;
+  vertical-align: middle;
+  float: left;
+  max-height: 323px;
+}
+.company-main .zjtd-content .photo img:nth-child(odd) {
+  margin-right: 25px;
+}
+.company-main .zjtd-content .photo img:nth-child(even) {
+  margin-left: 25px;
+}

@@ -1,0 +1,81 @@
+.body-function {
+  padding-top: 100px;
+  min-width: 1270px;
+}
+.swiper-function {
+  height: 0;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 23.4375%;
+  background: url("../images/function/swiper_bg.png")left top no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+.swiper-function .swi-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  padding-left: 7%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.swiper-function .swi-container .title {
+  font-size: 46px;
+  color: #FFFFFF;
+}
+.swiper-function .swi-container .desc {
+  font-size: 20px;
+  color: #FFFFFF;
+  line-height: 28px;
+  margin-top: 27px;
+}
+.function-list ul {
+  text-align: center;
+}
+.function-list li {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 70px 15px;
+  min-width: 100%;
+}
+.function-list li:nth-child(even) {
+  background-color: #F0F0F0;
+}
+.function-list li:nth-child(even) .text {
+  text-align: right;
+}
+.function-list li .list-container {
+  width: 1240px;
+  margin: 0 auto;
+}
+.function-list li .text {
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100% - 736px);
+  text-align: left;
+}
+.function-list li .text .t {
+  font-size: 38px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.function-list li .text .desc {
+  font-size: 18px;
+  line-height:28px;
+}
+.function-list li .img {
+  vertical-align: middle;
+  display: inline-block;
+}
+.function-list li .img img {
+  width: auto;
+  height: 450px;
+  vertical-align: middle;
+}

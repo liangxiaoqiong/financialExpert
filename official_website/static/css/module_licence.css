@@ -1,0 +1,99 @@
+.body-module-licence {
+  padding-top: 100px;
+  background-color: #F7F7F7;
+}
+.swiper-module-licence {
+  height: 0;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15.625%;
+  background: url("../images/module_licence/swiper_bg.png")left top no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+.swiper-module-licence .swi-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 13%;
+}
+.swiper-module-licence .swi-container .title {
+  width: 280px;
+  height: 72px;
+  display: inline-block;
+  background: url("../images/module_licence/swiper_title.png")left top no-repeat;
+  background-size: 280px 72px;
+  vertical-align: middle;
+}
+.swiper-module-licence .swi-container .desc {
+  font-size: 30px;
+  color: #FFFFFF;
+  margin-top: 2%;
+}
+
+.licence-main {
+  width: 1200px;
+  margin: 30px auto 100px auto;
+  background-color: #ffffff;
+}
+.licence-main .title {
+  height: 130px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ECECEC;
+  color: #333333;
+  font-size: 36px;
+  font-weight: bold;
+}
+.licence-main .content {
+  padding: 20px 10px;
+}
+.licence-main .content ul {
+  padding: 20px 40px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+/*region 滚动条样式*/
+.licence-main .content ul::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background-color: #F6F6F6;
+}
+
+.licence-main .content ul::-webkit-scrollbar-thumb {
+  width: 7px;
+  height: 7px;
+  border-radius: 3px;
+  background-color: #E9E9E9;
+}
+.licence-main .content ul::-webkit-scrollbar {
+  background-color: transparent;
+}
+.licence-main .content ul li {
+  margin-bottom: 30px;
+}
+.licence-main .content ul li:last-child {
+  margin-bottom: 0;
+}
+.licence-main .content ul li .content-title {
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: #333333;
+  font-weight: bold;
+}
+.licence-main .content ul li .content-desc {
+  font-size: 18px;
+  color: #333333;
+  line-height: 30px;
+}

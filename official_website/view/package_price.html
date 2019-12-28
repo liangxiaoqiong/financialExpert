@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>套餐价格</title>
+  <link rel="stylesheet" href="../static/css/common.css">
+  <link rel="stylesheet" href="../static/css/package_price.css">
+</head>
+<body class="body-package-price">
+<!--region 顶部header-->
+<div class="header skin-white">
+  <div class="head-left"></div>
+  <div class="head-right">
+    <ul class="head-nav">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="function.html">功能</a></li>
+      <li class="active"><a href="package_price.html">套餐价格</a></li>
+      <li><a href="contact_us.html">联系我们</a></li>
+      <li><a href="support_help.html">支持帮助</a></li>
+    </ul>
+    <div class="head-login">
+      <a class="wbtn-green">注册试用</a>
+      <a class="wbtn-green">登录</a>
+    </div>
+  </div>
+</div>
+<!--endregion-->
+
+<div class="swiper-package-price">
+  <div class="swi-container">
+    <div class="title"></div>
+    <div class="desc">
+      <p>800万用户，不忘初心，砥砺前行</p>
+    </div>
+  </div>
+</div>
+
+<div class="package-list">
+  <ul class="vip-recharge-list">
+    <li>
+      <div class="title">基础版</div>
+      <div class="price">¥<b>120</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">适用于公司初创，业务量不大，简单记录收支 流水、应收应付，简单管理库存。特别推荐小微商户、个体户、初创型小公司购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">标准版</div>
+      <div class="price">¥<b>300</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">大部分用户的选择。适用于公司业务进入发展期，记账数据较多，对报表分析、财务管理有更高的要求。推荐物流企业、传媒、科技、工业制品等企业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="title">旗舰版</div>
+      <div class="price">¥<b>500</b>/年</div>
+      <div class="discount-tip">两年送3个月，三年送6个月</div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"><span>申请免费试用15天</span><i class="feimg-right-default"></i></a>
+      <div class="vip-desc">适用于有一定规模，记账人数及分店都较多，数据量大的公司。特别推荐连锁企业、微商代购、电商零售批发行业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+    <li class="masonry active">
+      <div class="title">钻石版</div>
+      <div class="price">¥<b>900</b>/年</div>
+      <div class="discount-tip"></div>
+      <div class="recharge-btn"><a onclick="toPay()">立即购买</a></div>
+      <a class="recharge-tip"></a>
+      <div class="vip-desc">适用于有一定规模，记账人数及分店都较多，数据量大的公司。特别推荐连锁企业、微商代购、电商零售批发行业购买。</div>
+      <div class="vip-fun">
+        <h2>功能特征</h2>
+        <div class="fun-desc">
+          <p>最多建3套账，每套账最多3个用户使用</p>
+          <p>100.00M空间大小</p>
+          <p>5000条数据空间</p>
+          <p>记应收款、应付款、押金保证金等</p>
+          <p>记预收款、预付款</p>
+          <p>附件功能</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-common">
+  <div class="f-container">
+    <div class="f-link4">
+      <a href="module_licence.html">服务条款</a>
+      <a href="company_profile.html">公司介绍</a>
+      <a href="contact_us.html">联系我们</a>
+      <a href="support_help.html">帮助手册</a>
+    </div>
+    <div class="f-link3">
+      <a>4006-360-658</a>
+      <a>Email: kf@cash360.cn</a>
+      <a>周一到周五9:00-22:00</a>
+    </div>
+  </div>
+  <div class="friends-copyright">
+    <div class="f-friends">
+      <span>友情链接:</span>
+      <a>快租365</a>
+      <a>第二办公室</a>
+      <a>zol软件下载</a>
+      <a>绿盟</a>
+      <a>非凡软件站</a>
+      <a>仁和会计培训</a>
+      <a>中国会计网</a>
+      <a>中华会计网校</a>
+    </div>
+    <div class="f-copyright">沪ICP备14010763号-1 | 公安备案号33010602010201 | Copyright © 2019 财务管家</div>
+  </div>
+</div>
+
+<!--region 右侧公共客服弹框-->
+<ul class="right-service">
+  <li>
+    <div class="float-div"><i class="rsicon-weixin"></i><p>微信</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-app"></i><p>下载</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-qq"></i><p>客服</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-jishu"></i><p>技术</p></div>
+  </li>
+</ul>
+<!--endregion-->
+
+</body>
+<script type="text/javascript" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script>
+  $(function () {
+    $(window).scroll(function() {
+      changeHeaderSkin()
+    })
+  })
+  changeHeaderSkin()
+  function changeHeaderSkin () {
+    var offsetWidth = document.body.offsetWidth;
+    var changeH = offsetWidth * 0.15625
+    var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
+    if(srollPos >= changeH) {
+      $('.header').addClass('skin-2')
+    } else {
+      $('.header').removeClass('skin-2')
+    }
+  }
+
+</script>
+</html>

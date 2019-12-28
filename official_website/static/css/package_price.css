@@ -1,0 +1,191 @@
+.body-package-price {
+  padding-top: 100px;
+  background-color: #f0f0f0;
+  min-width: 1220px;
+}
+
+.swiper-package-price {
+  height: 0;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15.625%;
+  background: url("../images/package_price/swiper_bg.png")left top no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+.swiper-package-price .swi-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.swiper-package-price .swi-container .title {
+  width: 503px;
+  height: 72px;
+  display: inline-block;
+  background: url("../images/package_price/swiper_title.png")left top no-repeat;
+  background-size: 503px 72px;
+  vertical-align: middle;
+}
+.swiper-package-price .swi-container .desc {
+  font-size: 30px;
+  color: #FFFFFF;
+  margin-top: 2%;
+}
+
+/*region package-list*/
+.package-list {
+  width: 1200px;
+  margin: 80px auto;
+}
+.vip-recharge-list {
+  width: calc(100% + 10px);
+  margin: 0 -5px;
+  overflow-x: hidden;
+  display: flex;
+  display: -webkit-flex;
+}
+.vip-recharge-list li {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-content: center;
+  min-height: 650px;
+  margin: 0 5px;
+  width: calc(25% - 10px);
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0 25px;position: relative;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+}
+.vip-recharge-list li .title {
+  color: #333333;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 32px 0 15px 0;
+}
+.vip-recharge-list li .price {
+  font-size: 22px;
+  color: #333333;
+  font-weight: bold;
+}
+.vip-recharge-list li .price b {
+  color: #333333;
+  font-size: 35px;
+}
+.vip-recharge-list li .discount-tip {
+  color: #F0A600;
+  font-size: 14px;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 5px 0 25px 0;
+}
+.vip-recharge-list li .recharge-btn {
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+.vip-recharge-list li .recharge-btn a {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  width: 220px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1A8FFC;
+  border-radius: 23px;
+}
+.vip-recharge-list li .recharge-tip {
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  margin: 12px 0 20px 0;
+}
+.vip-recharge-list li .recharge-tip span {
+  color: #1A8FFC;
+  font-size: 14px;
+  max-width: calc(100% - 60px);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vip-recharge-list li .vip-desc {
+  color: #666666;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: justify;
+}
+.vip-recharge-list li .vip-fun {
+
+}
+.vip-recharge-list li .vip-fun h2 {
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 38px 0 20px 0;
+}
+.vip-recharge-list li .vip-fun .fun-desc p {
+  color: #333333;
+  font-size: 12px;
+  position: relative;
+  margin-bottom: 18px;
+  line-height: 18px;
+  padding-left: 14px;
+  text-align: left;
+}
+.vip-recharge-list li .vip-fun .fun-desc p:before {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  width: 4px;
+  height: 4px;
+  display: inline-block;
+  border-radius: 100%;
+  background-color: #999999;
+  left: 0;
+  top: calc(50% - 2px);
+}
+.vip-recharge-list li.active {
+  border: 1px solid #FCB61A;
+  background-color: #FFFAF0;
+}
+.vip-recharge-list li.masonry:before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  content: '';
+  background: url("../images/package_price/tuijian_lt.png")center center no-repeat;
+  background-size: 87px 87px;
+  width: 87px;
+  height: 87px;
+  display: inline-block;
+}
+.vip-recharge-list li.active .recharge-btn a {
+  background-color: #FCB61A;
+}
+/*endregion*/

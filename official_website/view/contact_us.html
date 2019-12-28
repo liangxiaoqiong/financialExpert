@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>联系我们</title>
+  <link rel="stylesheet" href="../static/css/common.css">
+  <link rel="stylesheet" href="../static/css/contact_us.css">
+</head>
+<body class="body-contact-us">
+<!--region 顶部header-->
+<div class="header skin-white">
+  <div class="head-left"></div>
+  <div class="head-right">
+    <ul class="head-nav">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="function.html">功能</a></li>
+      <li><a href="package_price.html">套餐价格</a></li>
+      <li class="active"><a href="contact_us.html">联系我们</a></li>
+      <li><a href="support_help.html">支持帮助</a></li>
+    </ul>
+    <div class="head-login">
+      <a class="wbtn-green">注册试用</a>
+      <a class="wbtn-green">登录</a>
+    </div>
+  </div>
+</div>
+<!--endregion-->
+
+<div class="swiper-contact-us">
+  <div class="swi-container">
+    <div class="title"></div>
+    <div class="desc">
+      <p>用户至上，是我们不断前进的动力</p>
+    </div>
+  </div>
+</div>
+
+<div class="contact-list">
+  <ul>
+    <li class="li-service">
+      <div class="list-container">
+        <div class="li-title">客服中心</div>
+        <div class="service-list">
+          <a class="email">Email：kf@cash360.cn</a>
+          <a class="phone">服务热线：4006-360-658</a>
+          <a class="phone">客服QQ：65732762</a>
+        </div>
+      </div>
+    </li>
+    <li class="li-partnership">
+      <div class="list-container">
+        <div class="li-title">市场合作</div>
+        <div class="desc">
+          <p>(受理商务合作，广告投放或交换，媒体采访等相关事宜)</p>
+          <p>Email：mxmu@sina.com</p>
+          <p>QQ：65732762</p>
+        </div>
+      </div>
+    </li>
+    <li class="li-headquarters">
+      <div class="list-container">
+        <div class="left">
+        <div class="li-title">上海总部</div>
+        <div class="desc">
+          <p>名称：上海财妙信息科技有限公司杭州分公司</p>
+          <p>地址：杭州市西湖区万塘路266号之江大楼407室</p>
+        </div>
+        </div>
+        <div class="right">
+          <div class="map-div">
+            <img src="../static/images/contact_us/map.png">
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-common">
+  <div class="f-container">
+    <div class="f-link4">
+      <a href="module_licence.html">服务条款</a>
+      <a href="company_profile.html">公司介绍</a>
+      <a href="contact_us.html">联系我们</a>
+      <a href="support_help.html">帮助手册</a>
+    </div>
+    <div class="f-link3">
+      <a>4006-360-658</a>
+      <a>Email: kf@cash360.cn</a>
+      <a>周一到周五9:00-22:00</a>
+    </div>
+  </div>
+  <div class="friends-copyright">
+    <div class="f-friends">
+      <span>友情链接:</span>
+      <a>快租365</a>
+      <a>第二办公室</a>
+      <a>zol软件下载</a>
+      <a>绿盟</a>
+      <a>非凡软件站</a>
+      <a>仁和会计培训</a>
+      <a>中国会计网</a>
+      <a>中华会计网校</a>
+    </div>
+    <div class="f-copyright">沪ICP备14010763号-1 | 公安备案号33010602010201 | Copyright © 2019 财务管家</div>
+  </div>
+</div>
+
+<!--region 右侧公共客服弹框-->
+<ul class="right-service">
+  <li>
+    <div class="float-div"><i class="rsicon-weixin"></i><p>微信</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-app"></i><p>下载</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-qq"></i><p>客服</p></div>
+  </li>
+  <li>
+    <div class="float-div"><i class="rsicon-jishu"></i><p>技术</p></div>
+  </li>
+</ul>
+<!--endregion-->
+
+</body>
+<script type="text/javascript" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script>
+  $(function () {
+    $(window).scroll(function() {
+      changeHeaderSkin()
+    })
+  })
+  changeHeaderSkin()
+  function changeHeaderSkin () {
+    var offsetWidth = document.body.offsetWidth;
+    var changeH = offsetWidth * 0.15625
+    var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
+    if(srollPos >= changeH) {
+      $('.header').addClass('skin-2')
+    } else {
+      $('.header').removeClass('skin-2')
+    }
+  }
+
+</script>
+</html>
