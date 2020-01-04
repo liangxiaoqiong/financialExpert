@@ -3090,3 +3090,76 @@ select {
   background-size: 30px 30px;
 }
 /*endregion*/
+
+
+/*region 首页公告弹框*/
+.index-notice-alert {
+  min-width: 500px;
+  width: 500px!important;
+  height: 500px!important;
+  top: calc(50% - 250px)!important;
+  left: calc(50% - 250px)!important;
+  border-radius: 9px!important;
+}
+.index-alert-container {
+  width: 500px;
+  height: 500px;
+  background: url("../images/index_layer_bg.png")center center no-repeat;
+  background-size: 500px 500px;
+  padding: 138px 50px 50px 50px;
+}
+.index-alert-container .title {
+  color: #1A8FFC;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+.index-alert-container .content {
+  line-height: 30px;
+  color: #000000;
+  margin: 30px 0;
+  height: 157px;
+  overflow-y: auto;
+}
+.index-alert-container .foot .febtn-default {
+  width: 400px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 59px;
+  border-radius: 10px;
+}
+/*endregion*/
+
+/*region 请求失败页面*/
+.fail-page {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+}
+.fail-page .fail-img img {
+  width: 123px;
+  margin-bottom: 20px;
+}
+.fail-page .fail-title {
+  font-size: 22px;
+  color: #333333;
+  font-weight: bold;
+  margin: 10px;
+}
+.fail-page .fail-tip {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 20px;
+}
+.fail-page .febtn-default {
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+/*endregion*/
