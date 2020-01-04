@@ -20,17 +20,19 @@ a {
 }
 /*region 按钮*/
 [class*='wbtn-'] {
-  height: 36px;
-  line-height: 36px;
+  height: 32px;
+  line-height: 32px;
   padding: 0 18px;
   border-radius: 18px;
-  font-size: 16px;
+  font-size: 14px;
   border-color: transparent;
   border-style: solid;
   border-width: 1px;
   background-color: transparent;
   display: inline-block;
   cursor: pointer;
+  text-align: center;
+  min-width: 74px;
 }
 .wbtn-green {
   background-color: #28DA98;
@@ -51,18 +53,18 @@ a {
   left: 0;
   right: 0;
   width: 100%;
-  padding: 30px 80px;
+  padding: 10px 60px;
   display: flex;
   display: -webkit-flex;
   align-items: center;
   justify-content: space-between;
 }
 .header .head-left {
-  width: 160px;
-  height: 41px;
+  width: 128px;
+  height: 32px;
   display: inline-block;
   background: url("../images/common/logo.png")center center no-repeat;
-  background-size: 160px 41px;
+  background-size: 128px 32px;
 }
 .header .head-right {
   display: flex;
@@ -101,7 +103,7 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   margin: 0 20px;
@@ -134,12 +136,13 @@ a {
   background-color: #ffffff;
 }
 .header.skin-2 {
-  background-color: rgba(26,143,252, .2);
+  background-color: #ffffff;
+  box-shadow: rgba(69, 71, 77, 0.2) 0px 1px 10px 0px;
 }
 .header.skin-2 .head-left,
 .header.skin-white .head-left {
   background: url("../images/common/logo_2.png")center center no-repeat;
-  background-size: 160px 41px;
+  background-size: 128px 32px;
 }
 .header.skin-2 .head-right .head-nav li a,
 .header.skin-white .head-right .head-nav li a {
@@ -153,6 +156,48 @@ a {
 .header.skin-white .head-right .head-nav li.active:after  {
   background:linear-gradient(270deg,rgba(255,255,255,0) 0%,rgba(26,143,252,1) 100%);
 }
+.index-mobile .header {
+  display: none;
+}
+/*endregion*/
+
+/*region 手机端显示header*/
+.mobile-header {
+  display: none;
+  width: 100%;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: middle;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  padding: 0 .75rem;
+  background-color: #ffffff;
+  box-shadow: rgba(69, 71, 77, 0.2) 0px 1px 10px 0px;
+}
+.mobile-header img {
+  width: 4rem;
+  vertical-align: middle;
+}
+.mobile-header a {
+  width: 3rem;
+  height: 1.5rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .6rem;
+  color: #FFFFFF;
+  border-radius: .75rem;
+  background-color: #1A8FFC;
+}
+.index-mobile .mobile-header {
+  display: flex;
+  display: -webkit-flex;
+}
+
 /*endregion*/
 
 /*region 右侧公共客服列表*/
@@ -247,6 +292,41 @@ a {
   text-align: center;
   line-height: 59px;
 }
+/*region 手机端显示*/
+.foot-index .title-mobile {
+  display: none;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: bold;
+  line-height:1.55rem;
+}
+.index-mobile .foot-index .btn-mfsy,
+.index-mobile .foot-index .title,
+.foot-index .btn-xz {
+  display: none;
+}
+.index-mobile .foot-index {
+  height: initial;
+  padding: 2rem 0 2.5rem 0;
+  background-color: #1A8FFC;
+}
+.index-mobile .foot-index .title-mobile {
+  display: inline-block;
+}
+.index-mobile .foot-index .btn-xz {
+  display: block;
+}
+.index-mobile .foot-index .btn-xz a {
+  background: rgba(255,255,255,.2);
+  border: 1px solid #ffffff;
+  font-size: .85rem;
+  font-weight: normal;
+  width: 12.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-top: 1.5rem;
+}
+/*endregion*/
 /*endregion*/
 
 /*region foot-common*/
@@ -313,5 +393,198 @@ a {
 .foot-common .f-container .f-link4 a:hover,
 .foot-common .friends-copyright .f-friends a:hover {
   font-weight: bold;
+}
+.index-mobile .foot-common {
+  display: none;
+}
+/*endregion*/
+
+/*region 手机端显示 foot-common*/
+.foot-common-mobile {
+  display: none;
+}
+.foot-common-mobile .f-container {
+  background-color: #5E616F;
+  padding: 1.5rem 1rem 1.7rem 1rem;
+  text-align: left;
+}
+.foot-common-mobile .f-container .t {
+  margin-bottom: .5rem;
+}
+.foot-common-mobile .f-container .t a {
+  color: #FFFFFF;
+  font-size: .85rem;
+  font-weight: bold;
+}
+.foot-common-mobile .f-container .c a {
+  color: #FFFFFF;
+  font-size: .7rem;
+  margin-right: 1.25rem;
+}
+.foot-common-mobile .f-container .c a:last-child {
+  margin-right: 0;
+}
+.foot-common-mobile .f-copyright {
+  background-color: #42444D;
+  color: #ffffff;
+  font-size: .55rem;
+  line-height: .75rem;
+  padding: .75rem 0;
+}
+.index-mobile .foot-common-mobile {
+  display: block;
+  text-align: center;
+}
+/*endregion*/
+
+/*region 手机端显示*/
+.index-mobile {
+  min-width: initial;
+  font-size: 20px;
+}
+/*endregion*/
+
+/*region 进度条*/
+.loading-layer {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 9999999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+@-webkit-keyframes scale {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; }
+
+  45% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 0.7; }
+
+  80% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; } }
+@keyframes scale {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; }
+
+  45% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 0.7; }
+
+  80% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; } }
+.loading-div > div:nth-child(0) {
+  -webkit-animation: scale 0.75s 0s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.loading-div > div:nth-child(1) {
+  -webkit-animation: scale 0.75s 0.12s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0.12s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.loading-div > div:nth-child(2) {
+  -webkit-animation: scale 0.75s 0.24s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0.24s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.loading-div > div:nth-child(3) {
+  -webkit-animation: scale 0.75s 0.36s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0.36s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.loading-div > div {
+  background-color:#1A8FFC;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  margin: 2px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: inline-block; }
+/*endregion*/
+
+/*region 手机端下载页面*/
+.body-mobile-download {
+  text-align: center;
+  min-width: initial;
+  width: 100%;
+}
+.body-mobile-download .app-info {
+  margin-top: 1.83rem;
+}
+.body-mobile-download .app-info .logo {
+  width: 4.28rem;
+}
+.body-mobile-download .app-info .title {
+  color: #666666;
+  font-size: .85rem;
+  margin: .3rem 0 .5rem 0;
+}
+.body-mobile-download .app-info .desc span {
+  color: #999999;
+  font-size: .6rem;
+  padding: 0 .6rem;
+  position: relative;
+}
+.body-mobile-download .app-info .desc span:after {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - .3rem);
+  width: 1px;
+  height: .6rem;
+  display: inline-block;
+  background-color: #999999;
+  content: '';
+  right: 0;
+}
+.body-mobile-download .app-info .desc span:last-child:after {
+  display: none;
+}
+.body-mobile-download .app-btn {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: .7rem 0 .2rem 0;
+}
+.body-mobile-download .app-btn a {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - .38rem);
+  max-width: 8rem;
+  height: 2.5rem;
+  background-color: #1A8FFC;
+  border-radius: .25rem;
+}
+.body-mobile-download .app-btn a:nth-child(1) {
+  margin-right: .38rem;
+}
+.body-mobile-download .app-btn a:nth-child(2) {
+  margin-left: .38rem;
+}
+.body-mobile-download .app-btn a:nth-child(1) img {
+  width: 1.18rem;
+}
+.body-mobile-download .app-btn a:nth-child(2) img {
+  width: 1.12rem;
+}
+.body-mobile-download .app-btn a span {
+  color: #ffffff;
+  font-size: .75rem;
+  margin-left: .5rem;
+}
+.body-mobile-download .app-desc-img img {
+  width: 12.8rem;
 }
 /*endregion*/

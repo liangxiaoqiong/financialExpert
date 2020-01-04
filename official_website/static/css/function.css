@@ -1,5 +1,5 @@
 .body-function {
-  padding-top: 100px;
+  padding-top: 60px;
   min-width: 1270px;
 }
 .swiper-function {
@@ -8,7 +8,7 @@
   width: 100%;
   display: inline-block;
   padding-bottom: 23.4375%;
-  background: url("../images/function/swiper_bg.png")left top no-repeat;
+  background: url("../images/function/swiper_bg.jpg")left top no-repeat;
   background-size: 100% 100%;
   vertical-align: middle;
 }
@@ -27,11 +27,11 @@
   flex-direction: column;
 }
 .swiper-function .swi-container .title {
-  font-size: 46px;
+  font-size: 40px;
   color: #FFFFFF;
 }
 .swiper-function .swi-container .desc {
-  font-size: 20px;
+  font-size: 16px;
   color: #FFFFFF;
   line-height: 28px;
   margin-top: 27px;

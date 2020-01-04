@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>首页</title>
   <link rel="stylesheet" href="../static/lib/swiper-5.2.1/swiper.min.css">
   <link rel="stylesheet" href="../static/css/common.css">
   <link rel="stylesheet" href="../static/css/index.css">
+  <script type="text/javascript" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/publicObj.js"></script>
+  <script>
+    publicObj.showLoading() //显示进度条
+  </script>
 </head>
 <body class="body-index">
 <!--region 顶部header-->
@@ -77,6 +84,19 @@
 </div>
 <!--endregion-->
 
+<!--region 手机端显示-->
+<div class="mobile-header">
+  <img src="../static/images/common/logo_2.png">
+  <a href="mobile_download.html">下载</a>
+</div>
+<div class="mobile-swiper">
+  <div class="swiper-info">
+    <div class="swiper-title"><p>5分钟轻松上手</p><p>无需专业会计知识</p></div>
+    <a class="swiper-btn" href="mobile_download.html">下载移动客户端</a>
+  </div>
+</div>
+<!--endregion-->
+
 <div>
   <!--region 选择的八大理由-->
   <div class="choose-reason">
@@ -91,42 +111,47 @@
       <li>
         <img src="../static/images/index/reason_jichu.png">
         <div class="title">零基础</div>
-        <div class="desc">5分钟上手，无需会计知识</div>
+        <div class="desc desc-mobile">5分钟上手，无需会计知识</div>
       </li>
       <li>
         <img src="../static/images/index/reason_pingt.png">
         <div class="title">全平台</div>
         <div class="desc">APP、微信小程序、电脑版，全平台记账</div>
+        <div class="desc-mobile">APP、微信小程序<br>电脑版，全平台记账</div>
       </li>
       <li>
         <img src="../static/images/index/reason_yonghu.png">
         <div class="title">多用户</div>
         <div class="desc">多用户、分权限，告别糊涂账</div>
+        <div class="desc-mobile">多用户、分权限<br>告别糊涂账</div>
       </li>
       <li>
         <img src="../static/images/index/reason_baozhang.png" style="width: 44.5px">
         <div class="title">安全保障</div>
-        <div class="desc">安全至极，多重安全设置</div>
+        <div class="desc desc-mobile">安全至极，多重安全设置</div>
       </li>
       <li>
         <img src="../static/images/index/reason_tiyan.png">
         <div class="title">优质体验</div>
         <div class="desc">模块化设计，极致记账体验</div>
+        <div class="desc-mobile">模块化设计<br>极致记账体验</div>
       </li>
       <li>
         <img src="../static/images/index/reason_baoxiao.png" style="width: 46.5px">
         <div class="title">轻松报销</div>
         <div class="desc">微信小程序员工报销，方便快捷</div>
+        <div class="desc-mobile">微信小程序员工报销<br>方便快捷</div>
       </li>
       <li>
         <img src="../static/images/index/reason_fenxi.png" style="width: 47.5px">
         <div class="title">报表分析</div>
         <div class="desc">强大的报表统计，导入导出更方便</div>
+        <div class="desc-mobile">强大的报表统计<br>导入导出更方便</div>
       </li>
       <li>
         <img src="../static/images/index/reason_fuwu.png" style="width: 43.5px">
         <div class="title">专业服务</div>
-        <div class="desc">专业可靠的服务团队</div>
+        <div class="desc desc-mobile">专业可靠的服务团队</div>
       </li>
     </ul>
   </div>
@@ -190,8 +215,23 @@
 
 <div class="foot-index">
   <div class="title">财务专家，记录每一笔账，管理好每一分钱，让你做个省心的老板</div>
-  <div><a class="wbtn-green">免费试用</a></div>
+  <div class="title-mobile">财务专家，记录每一笔账<br>让你做个省心的老板</div>
+  <div class="btn-mfsy"><a class="wbtn-green">免费试用</a></div>
+  <div class="btn-xz"><a class="wbtn-green" href="mobile_download.html">下载移动客户端</a></div>
 </div>
+
+<!--region 手机端显示-->
+<div class="foot-common-mobile">
+  <div class="f-container">
+    <div class="t"><a href="contact_us.html">联系我们</a></div>
+    <div class="c">
+      <a>4006-360-658</a>
+      <a>Email: kf@cash360.cn</a>
+    </div>
+  </div>
+  <div class="f-copyright">沪ICP备14010763号-1 | 公安备案号<br>33010602010201 | Copyright © 2019 财务管家</div>
+</div>
+<!--endregion-->
 <div class="foot-common">
   <div class="f-container">
     <div class="f-link4">
@@ -239,9 +279,19 @@
 </ul>
 <!--endregion-->
 </body>
-<script type="text/javascript" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../static/lib/swiper-5.2.1/swiper.min.js"></script>
 <script>
+  //前端判断手机端改变样式会有延时，最好后台判断，assign页面
+  try {
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      $('body').addClass('index-mobile')
+      $('html').addClass('html-font-20')
+    } else {
+      $('body').removeClass('index-mobile')
+      $('html').removeClass('html-font-20')
+    }
+  } catch (e) {}
+  publicObj.hideLoading() //关闭进度条
   var mySwiper = new Swiper('.swiper-index', {
     autoplay: true,
     loop: true,
