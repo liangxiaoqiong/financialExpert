@@ -90,6 +90,10 @@
   background: url("../images/contact_us/phone.png")center top no-repeat;
   background-size: 58px 58px;
 }
+.contact-list li.li-service .service-list a.qq {
+  background: url("../images/contact_us/qq_grey.png")center top no-repeat;
+  background-size: 58px 65px;
+}
 .contact-list li.li-partnership .li-title {
   background: url("../images/contact_us/t_partnership.png")left center no-repeat;
   background-size: 328px 84px;
