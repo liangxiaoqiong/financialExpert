@@ -206,7 +206,7 @@ a {
   z-index: 1000;
   right: 10px;
   top: calc(50% - 190px);
-  width: 68px;
+  width: 80px;
   display: flex;
   display: -webkit-flex;
   align-items: center;
@@ -216,19 +216,19 @@ a {
 .right-service li {
   cursor: pointer;
   width: 100%;
+}
+.right-service li .float-div {
   background-color: #1A8FFC;
   border-radius: 4px;
   height: 90px;
-  margin: 1px 0;
-}
-.right-service li .float-div {
-  width: 100%;
-  height: 100%;
+  margin: 1px auto;
+  width: 68px;
   display: flex;
   display: -webkit-flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 .right-service li .float-div p {
   color: #ffffff;
@@ -262,6 +262,75 @@ a {
   height: 40px;
   background: url("../images/right_service/jishu.png")center center no-repeat;
   background-size: 28px 40px;
+}
+.right-service .float-layer {
+  position: absolute;
+  z-index: 1;
+  background: rgba(255,255,255,1);
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  border-radius: 8px;
+  display: none;
+  width: 140px;
+  right: 75px;
+  text-align: center;
+}
+.right-service .float-layer:after {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  background: url("../images/common/right_arrow.png")center center no-repeat;
+  background-size: 23px 30px;
+  width: 23px;
+  height: 30px;
+  right: -13px;
+  top: calc(50% - 15px);
+}
+.right-service li:hover .float-layer {
+  display: inline-block;
+}
+.right-service li .float-layer.qrcode {
+  padding-top: 20px;
+}
+.right-service li .float-layer.qrcode img {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.right-service li .float-layer.qrcode p {
+  color: #333333;
+  font-size: 12px;
+  padding: 10px 0;
+  margin-top: 0;
+}
+.right-service li .float-layer.service {
+  padding: 0 14px;
+}
+.right-service li .float-layer.service .t {
+  padding: 12px 0;
+  color: #666666;
+  font-size: 14px;
+  text-align: left;
+}
+.right-service li .float-layer.service .list a {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  padding-bottom: 10px;
+  text-align: left;
+}
+.right-service li .float-layer.service .list a img {
+  width: 19px;
+  height: auto;
+}
+.right-service li .float-layer.service .list a span {
+  color: #1A8FFC;
+  font-size: 14px;
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - 30px);
 }
 /*endregion*/
 
@@ -337,7 +406,7 @@ a {
   text-align: center;
 }
 .foot-common a {
-   color: #ffffff;
+  color: #ffffff;
 }
 .foot-common .f-container {
   width: 750px;
@@ -443,7 +512,6 @@ a {
 }
 .index-mobile {
   min-width: initial;
-  font-size: 20px;
 }
 /*endregion*/
 
@@ -589,5 +657,21 @@ a {
 }
 .body-mobile-download .app-desc-img img {
   width: 12.8rem;
+}
+/*endregion*/
+
+/*region 右上角分享提示*/
+.layer-shade{
+  position: fixed;_position: absolute;z-index:90;top:0;right: 0;width: 100%;height: 100%;_height: expression(document.body.clientHeight);background: rgba(0, 0, 0, 0.65);
+}
+
+.share-top-tip-layer .share-fixed {
+  position: fixed;
+  z-index: 102;
+  top: .5rem;
+  right: 35px;
+}
+.share-top-tip-layer .share-fixed img {
+  width: 282.5px;
 }
 /*endregion*/

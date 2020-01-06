@@ -295,6 +295,7 @@
   z-index: 1;
   left: 0;
   top: 0;
+  padding-top: 2.5rem;
 }
 .mobile-swiper .swiper-info .swiper-title {
   color: #FFFFFF;
