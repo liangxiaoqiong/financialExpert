@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="html-font-20">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
@@ -14,11 +14,28 @@
   <div class="desc"><span>4.8分</span><span>38万下载量</span><span>37.5M</span></div>
 </div>
 <div class="app-btn">
-  <a><img src="../static/images/mobile_download/iphone.png"><span>iPhone版下载</span></a>
-  <a><img src="../static/images/mobile_download/android.png"><span>Android版下载</span></a>
+  <a onclick="toDownload()"><img src="../static/images/mobile_download/iphone.png"><span>iPhone版下载</span></a>
+  <a onclick="toDownload()"><img src="../static/images/mobile_download/android.png"><span>Android版下载</span></a>
 </div>
 <div class="app-desc-img">
   <img src="../static/images/mobile_download/jixing.png">
 </div>
+
+<div class="share-top-tip-layer" style="display: none;">
+  <div class="layer-shade" onclick="hideShareLayer()"></div>
+  <div class="share-fixed">
+    <img src="../static/images/common/download_tip.png" />
+  </div>
+</div>
 </body>
+<script type="text/javascript" src="../static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script>
+  //点击下载按钮
+  function toDownload () {
+    $('.share-top-tip-layer').show()
+  }
+  function hideShareLayer () {
+    $('.share-top-tip-layer').hide()
+  }
+</script>
 </html>

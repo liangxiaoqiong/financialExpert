@@ -438,6 +438,9 @@ a {
 /*endregion*/
 
 /*region 手机端显示*/
+.html-font-20 {
+  font-size: 20px;
+}
 .index-mobile {
   min-width: initial;
   font-size: 20px;
