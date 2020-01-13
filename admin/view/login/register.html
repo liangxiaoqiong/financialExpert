@@ -84,6 +84,25 @@
             <button type="button" id="send-code-btn" onclick="sendMessage()">获取验证码</button>
           </div>
         </li>
+        <li class="form-area">
+          <div class="form-item">
+            <div class="rule-single-select">
+              <select id="province">
+                <option value="0">省</option>
+              </select>
+            </div>
+            <div class="rule-single-select">
+              <select id="city">
+                <option value="0">市</option>
+              </select>
+            </div>
+            <div class="rule-single-select">
+              <select id="area">
+                <option value="0">区</option>
+              </select>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="form-sub">
         <button type="button" onclick="register()">注册</button>
@@ -96,8 +115,11 @@
 </body>
 <script type="text/javascript" charset="utf-8" src="../../static/lib/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../static/lib/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/js/city.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../static/js/publicObj.js"></script>
 <script>
+  //省市区初始化
+  setcity('province', 'city', 'area', '', '', '');
   /**region 短信验证码*/
   var InterValObj; //timer变量，控制时间
   var count = 60; //间隔函数，1秒执行

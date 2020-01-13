@@ -1040,7 +1040,7 @@ $.fn.ruleSingleSelect = function () {
     //遍历option选项
     selectObj.find("option").each(function (i) {
       var indexNum = selectObj.find("option").index(this); //当前索引
-      var liObj = $('<li>' + $(this).text() + '</li>').appendTo(itemObj.find("ul")); //创建LI
+      var liObj = $('<li title="' + $(this).text() + '">' + $(this).text() + '</li>').appendTo(itemObj.find("ul")); //创建LI
       if ($(this).prop("selected") == true) {
         liObj.addClass("selected");
         titObj.find("span").text($(this).text());

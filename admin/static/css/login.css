@@ -259,6 +259,34 @@ html,
     background-size: 30px 30px;
     margin-right: 5px;
 }
+.form-area .form-item {
+    width: calc(100% + 10px)!important;
+    margin: 0 -5px;
+    display: inline-block;
+}
+.form-area .single-select {
+    margin: 0 5px;
+    float: left;
+    width: calc(33.333% - 10px);
+}
+.form-area .select-tit {
+    min-width: initial;
+    height: 40px;
+    line-height: 38px;
+    border-radius: 4px;
+}
+.form-area .single-select .select-items {
+    min-width: initial;
+    width: 90px;
+}
+.form-area .single-select .select-items ul {
+    min-width: initial;
+    max-height: 200px;
+}
+.form-area .single-select .select-items ul li {
+    margin-bottom: 0;
+    width: initial;
+}
 .login-foot {
     color: #FFFFFF;
     font-size: 12px;

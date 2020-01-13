@@ -981,6 +981,10 @@ select {
   color: #666666;
   font-size: 12px;
   vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .single-select .select-items {
