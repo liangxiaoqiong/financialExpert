@@ -202,6 +202,13 @@ body {
 }
 
 /*endregion*/
+
+/*region el-select的下拉框、时间下拉框：进出过程会导致页面闪动，修复*/
+.el-scrollbar__bar {
+  opacity: 1!important;
+}
+/*endregion*/
+
 [v-cloak] {
   display: none;
 }
