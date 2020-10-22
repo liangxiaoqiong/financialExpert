@@ -1,0 +1,96 @@
+<!--新增、编辑设备弹框-->
+<!-- template -->
+<script type="x-template" id="equipment_info_layer">
+  <!--region 模版-->
+  <div class="scroll-box" id="equipment-info-layer" style="display: none;">
+    <div class="form-row">
+      <div class="row-cell">
+        <p class="row-t">设备名称</p>
+        <input type="text" class="layui-input row-div" placeholder="填写设备名称">
+      </div>
+      <div class="row-cell">
+        <p class="row-t">设备绑定ID</p>
+        <input type="text" class="layui-input row-div" placeholder="填写设备绑定ID">
+      </div>
+      <div class="row-cell">
+        <p class="row-t">预警类型</p>
+        <el-select class="row-div" v-model="info.yjlx">
+          <el-option value="" label="全部预警类型"></el-option>
+          <el-option value="1" label="预警类型1"></el-option>
+          <el-option value="2" label="预警类型2"></el-option>
+        </el-select>
+      </div>
+      <div class="row-cell">
+        <p class="row-t">设备位置</p>
+        <input type="text" class="layui-input row-div" placeholder="填写设备位置">
+      </div>
+      <div class="row-cell">
+        <p class="row-t">责任人</p>
+        <input type="text" class="layui-input row-div" placeholder="填写责任人">
+      </div>
+      <div class="row-cell">
+        <p class="row-t">联系电话</p>
+        <input type="text" class="layui-input row-div" placeholder="填写联系电话">
+      </div>
+    </div>
+    <div class="form-row">
+      <p class="row-t">备注</p>
+      <textarea class="layui-textarea row-div"></textarea>
+    </div>
+    <div class="form-row mt-20">
+      <span class="row-t" style="display: inline-block;margin-right: 10px;">设备已启用</span>
+      <el-switch class="display-align"
+          active-value="1"
+          inactive-value="0"
+          v-model="info.status"></el-switch>
+    </div>
+  </div>
+  <!--endregion-->
+</script>
+
+<!-- JS -->
+<script>
+  COMPONENT.EQUIPMENT_INFO_LAYER = {
+    template: '#equipment_info_layer',
+    props: {},
+    computed: {},
+    mounted: function () {
+    },
+    data: function () {
+      return {
+        info: {}
+      }
+    },
+    methods: {
+      init: function (item) {
+        var self = this
+        self.info = {
+          id: 0,
+          yjlx: '',//预警类型
+          status: '0'//状态
+        }
+        var title = '新增设备'
+        if (typeof item.id !== 'undefined') {
+          item.yjlx = '1'
+          item.status = '1'
+          self.info = JSON.parse(JSON.stringify(item))
+          title = '编辑设备'
+        }
+        self.showLayer(title)
+      },
+      showLayer: function (layTitle) {
+        var self = this
+        self.$nextTick(function () {
+          publicObj.layerConfirm({
+            title: layTitle,
+            area: ['680px', '90%'],
+            el: $('#equipment-info-layer'),
+          }, function (index) {
+
+          })
+        })
+      }
+    },
+    directives: {}
+  }
+</script>

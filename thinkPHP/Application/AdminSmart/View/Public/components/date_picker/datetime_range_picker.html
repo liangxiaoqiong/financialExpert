@@ -1,0 +1,49 @@
+<!--日期时间段组件，引入element-ui插件-->
+<script type="x-template" id="datetime_range_picker">
+  <el-date-picker
+      class="diy-time-picker"
+      v-model="dateRange"
+      type="datetimerange"
+      value-format="yyyy-MM-dd HH:mm:ss"
+      :default-time="['00:00:00', '23:59:59']"
+      range-separator=" "
+      start-placeholder="开始时间"
+      end-placeholder="结束时间">
+  </el-date-picker>
+</script>
+<script>
+  COMPONENT.DATETIME_RANGE_PICKER = {
+    template: '#datetime_range_picker',
+    props: {
+      param: {
+        type: Array,
+        default: function () {
+          return ['start_time', 'end_time']
+        }
+      }, // 变量名
+      info: Object
+    },
+    data: function () {
+      return {}
+    },
+    computed: {
+      dateRange: {
+        set: function (val) {
+          if (val === '' || val == null) {
+            this.info[this.param[0]] = ''
+            this.info[this.param[1]] = ''
+          } else {
+            this.info[this.param[0]] = val[0]
+            this.info[this.param[1]] = val[1]
+          }
+        },
+        get: function () {
+          if (this.info[this.param[0]] === '') {
+            return ''
+          }
+          return [this.info[this.param[0]], this.info[this.param[1]]]
+        }
+      },
+    }
+  }
+</script>

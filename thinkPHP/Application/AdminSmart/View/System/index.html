@@ -1,0 +1,65 @@
+<!--系统管理-->
+<include file="Public:base"/>
+<body class="iframe-body system-index">
+<div class="iframe-main" id="app" v-cloak="">
+  <div class="system-main">
+    <div class="diy-dl-div">
+      <dl>
+        <dt>语音播报</dt>
+        <dd>
+          <el-switch
+              active-value="1"
+              inactive-value="0"
+              v-model="info.ctrl"></el-switch>
+        </dd>
+      </dl>
+      <dl>
+        <dt>接口参数</dt>
+        <dd>
+          <input type="text" class="display-align" style="margin-right: 15px;width: 600px;" placeholder="填写设备ID">
+          <button type="button" class="diybtn-primary no-right">配置</button>
+        </dd>
+      </dl>
+      <dl>
+        <dt>修改密码</dt>
+        <dd>
+          <button type="button" class="diybtn-primary no-right" @click="showPwdLayer">修改密码</button>
+        </dd>
+      </dl>
+      <dl>
+        <dt>数据刷新</dt>
+        <dd>
+          <button type="button" class="diybtn-primary no-right">数据刷新</button>
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  <pwd-layer ref="pwdLayer"></pwd-layer>
+</div>
+</body>
+<include file="System/components/pwd_layer" />
+<script>
+  var vm = new Vue ({
+    el: '#app',
+    components: {
+      'pwd-layer': COMPONENT.PWD_LAYER
+    },
+    data: function () {
+      return {
+        info: {
+          ctrl: '1'
+        }
+      }
+    },
+    mounted: function () {
+
+    },
+    methods: {
+      //显示修改密码弹框
+      showPwdLayer: function () {
+        this.$refs.pwdLayer.init()
+      }
+    }
+  });
+</script>

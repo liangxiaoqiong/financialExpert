@@ -1,0 +1,43 @@
+<!--右滑预警详情-->
+<include file="Public:base"/>
+<body style="min-width: initial;">
+<div class="transform-parent right-row" id="app" :style="'height:'+pageHeight+'px;width:'+pageWidth+'px'">
+  <div id="transform-box">
+    <div class="right-row-scroll">
+      <div>
+        <div class="diy-dl-div">
+          <dl><dt>预警编号</dt><dd>2100020</dd></dl>
+          <dl><dt>预警类型</dt><dd>工服安全</dd></dl>
+          <dl><dt>设备名称</dt><dd>设备名称</dd></dl>
+          <dl><dt>责  任 人</dt><dd>张三</dd></dl>
+          <dl><dt>联系电话</dt><dd>18265689653</dd></dl>
+          <dl><dt>预警位置</dt><dd>工地报警的设备地址</dd></dl>
+          <dl><dt>预警时间</dt><dd>2020-08-01  12:15:00</dd></dl>
+          <dl><dt>预警内容</dt><dd>预警内容</dd></dl>
+          <div onclick="clickParent()">触发父页面iframe事件</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/js/responsiveLayout.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        pageHeight: 1920,
+        pageWidth: 1920,
+      }
+    }
+  })
+  function clickParent () {
+    var parent = window.parent.frames['mainframe'].vm
+    if (typeof parent !== 'undefined') {
+      if (typeof parent.getTableData === 'function') {
+        parent.getTableData()
+      }
+    }
+  }
+</script>

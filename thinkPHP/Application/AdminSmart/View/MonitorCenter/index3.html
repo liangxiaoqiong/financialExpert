@@ -1,0 +1,190 @@
+<!--监控中心-->
+<include file="Public:base"/>
+<body class="iframe-body monitor-index">
+<div class="iframe-main" id="app" v-cloak="">
+  <div class="monitor-list">
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">工服安全</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">塔吊作业</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">电焊作业</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="monitor-chart">
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">今日预警统计</div>
+        <div class="title-right"></div>
+      </div>
+      <div class="card-content" id="content"></div>
+    </div>
+  </div>
+  <div class="monitor-list">
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">钢筋作业</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">高空作业</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-box card-box-2">
+      <div class="card-title">
+        <div class="title-left flex-left">违规闯入</div>
+        <div class="title-right"><b>更多</b><i class="el-icon-arrow-right"></i></div>
+      </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th></th>
+            <th>设备名称</th>
+            <th>违规次数</th>
+            <th>最近一次时间</th>
+          </tr>
+          <tr v-for="(i, index) in 6">
+            <td>{{ index+1 }}</td>
+            <td>设备名称1</td>
+            <td>20</td>
+            <td>2020-01-02 13:00:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- 加载 物可视SDK-->
+<script type="text/javascript" src="https://iotviz2.cdn.bcebos.com/bin/prod/sdk/bdiotvizplayer.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+
+      }
+    },
+    mounted: function () {
+    },
+    methods: {
+      getChartData: function () {
+        const bdIotVizPlayer = window.BDIotVizPlayer;
+        const container = document.getElementById('content');
+        const myDashboard = bdIotVizPlayer({
+          containerElement: container,
+          dashboardId: '5f8d47a6008c6a000e32ed2a',
+          fillMode: 'none', // <-- Optional, Possible value: 'none', 'contain', 'cover', 'responsive'
+          token: {
+            type: 'embedded', // <-- Must be 'embedded'
+            value: '7bb406238c414e26355e3840a56d095f' // <-- Access Token for current dashboard
+          },
+          customizeLogo: { // <-- Customize Logo Info
+            enable: false,
+            sign: '',
+            loadingImg: '',
+            loadingMsg: ''
+          }
+        });
+        myDashboard.getDashboardConfig().then(function(config){
+          console.log(config); // <--- Current Dashboard Config
+        });
+      }
+
+    }
+  })
+</script>

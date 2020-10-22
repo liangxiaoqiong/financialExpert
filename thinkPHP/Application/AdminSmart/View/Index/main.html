@@ -1,0 +1,305 @@
+<include file="Public:base"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/adminSmart/css/main.css"/>
+<body class="iframe-body">
+<div class="iframe-main" id="app" v-cloak="">
+  <div class="main-calendar">
+    <div class="calendar-left">
+      <div class="card-box">
+        <div class="card-title"><div class="title-left flex-left">设备统计</div></div>
+        <div class="card-content">
+          <div class="list-row3">
+            <a><h1 class="color-primary">80</h1><p>总计设备</p></a>
+            <a><h1 class="color-primary">80</h1><p>启用中</p></a>
+            <a><h1 class="color-red">32</h1><p>停用中</p></a>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-box">
+        <!--日历-->
+        <div class="calendar-date">
+          <!--头部当前时间-->
+          <div class="calendar-top">
+            <!--上个月时间-->
+            <a class="flex-row"
+               :data-year="calendar.lastMonth.year" :data-month="calendar.lastMonth.month"
+               :data-day="calendar.lastMonth.day"
+               @click="queryDay"><i class="el-icon-arrow-left"></i></a>
+            <span>{{ theDay }}</span>
+            <!--下个月时间-->
+            <a class="flex-row"
+               :data-year="calendar.nextMonth.year" :data-month="calendar.nextMonth.month"
+               :data-day="calendar.nextMonth.day"
+               @click="queryDay"><i class="el-icon-arrow-right"></i></a>
+          </div>
+          <div class="date-container">
+            <table class="day" cellspacing="0" cellpadding="0">
+              <tr>
+                <th v-for="weekdays in calendar.calendar.weekdays">{{ weekdays }}</th>
+              </tr>
+              <!--周数==tr个数-->
+              <tr v-for="week in calendar.calendar.days">
+                <td v-for="day in week">
+                    <span @click="queryDay"
+                          :class="{
+                          active: day.day_number == calendar.theDay.day,
+                          current: day.day_number == calendar.currentDay.day &&
+                          calendar.theDay.year == calendar.currentDay.year && calendar.theDay.month == calendar.currentDay.month
+                          }"
+                          :data-year="calendar.theDay.year" :data-month="calendar.theDay.month"
+                          :data-day="day.day_number">
+                      {{ day.day_number }}
+                    </span>
+                  <i v-if="day.has_todos" class="todos"><!--has_todos:true(有标记的日期)--></i>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!--日历下统计-->
+        <div class="calendar-stats">
+          <ul>
+            <li class="stats-week" :class="{'active': tableQuery.mark === 'week'}" @click="changeCalendarMark('week')">
+              <label><i class="diyimg-time-week"></i>本周预警</label>
+              <span>80</span>
+            </li>
+            <li class="stats-month" :class="{'active': tableQuery.mark === 'month'}" @click="changeCalendarMark('month')">
+              <label><i class="diyimg-time-month"></i>本月预警</label>
+              <span>80</span>
+            </li>
+            <li class="stats-year" :class="{'active': tableQuery.mark === 'year'}" @click="changeCalendarMark('year')">
+              <label><i class="diyimg-time-year"></i>本年预警</label>
+              <span>80</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="calendar-right">
+      <div class="card-box">
+        <div class="card-title"><div class="title-left flex-left">预警与故障</div></div>
+        <div class="card-content">
+          <div class="list-row6">
+            <a><h1 class="color-primary">80</h1><p>工服安全</p></a>
+            <a><h1 class="color-warn">80</h1><p>吊塔作业</p></a>
+            <a><h1 class="color-purple">80</h1><p>电焊作业</p></a>
+            <a><h1 class="color-blue">80</h1><p>钢筋作业</p></a>
+            <a><h1 class="color-green">80</h1><p>高空作业</p></a>
+            <a><h1 class="color-red">32</h1><p>违规闯入</p></a>
+          </div>
+        </div>
+      </div>
+      <div class="diy-tab">
+        <ul>
+          <li v-for="tab in tabList" :class="{'active': +tableQuery.type === +tab.value}" @click="changeTab(tab)">
+            <a>{{ tab.label }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="calendar-table">
+        <table class="diy-table">
+          <thead>
+          <tr>
+            <th>设置</th>
+            <th>预警编号</th>
+            <th>预警时间</th>
+            <th>预警类型</th>
+            <th>预警位置</th>
+            <th>设备名称</th>
+            <th>预警内容</th>
+            <th>责任人</th>
+            <th>联系电话</th>
+          </tr>
+          </thead>
+          <tbody>
+          <!--循环表格 start-->
+          <tr v-for="list in tableData.list">
+            <td>1</td>
+            <td>0123456789</td>
+            <td>2020-08-01 12:15:00</td>
+            <td>工服安全</td>
+            <td>工地报警的设备地址</td>
+            <td>设备名称</td>
+            <td><span class="color-red">预警内容</span></td>
+            <td>张三</td>
+            <td>15906060608</td>
+          </tr>
+          <!--循环表格 end-->
+          </tbody>
+        </table>
+        <!--region 分页-->
+        <pagination
+            :query="tableQuery"
+            :total="tableData.total"
+            @temp-page-event="getTableData"></pagination>
+        <!--endregion-->
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<include file="Public/components/pagination" />
+<script>
+  var vm = new Vue ({
+    el: '#app',
+    components: {
+      'pagination': COMPONENT.PAGINATION_COMPONENT
+    },
+    created: function () {
+      this.getCalendar()
+    },
+    data: function () {
+      return {
+
+        /*左侧日历*/
+        calendarQuery: {
+          year: '',
+          month: '',
+          day: '',
+        },
+        calendar: {
+          calendar: {
+            days: [],
+            weekdays: []
+          },
+          lastMonth: {},
+          theDay: {},
+          nextMonth: {}
+        },
+
+        /*右侧表格内容*/
+        tabList: [
+          {value: 0, label: '全部类型'}, {value: 1, label: '工服安全'}, {value: 2, label: '塔吊作业'},
+          {value: 3, label: '电焊作业'}, {value: 4, label: '钢筋作业'}, {value: 5, label: '高空作业'},
+          {value: 6, label: '违规闯入'},
+        ],
+        tableQuery: {
+          page: 1,
+          limit: 12,
+          year: '',
+          month: '',
+          day: '',
+          type: 0,//表格tab类别（0-全部类型，1-工服安全，2-塔吊作业，3-电焊作业，4-钢筋作业，5-高空作业，6-违规闯入）
+          mark: 'week', // week-本周 month-本月 year-本年
+          query_type: 'calendar'
+        },
+        tableData: {
+          total: '',
+          list: [],
+        },
+      }
+    },
+
+    computed: {
+      theDay: {
+        get: function () {
+          var self = this
+          if (typeof self.calendar.theDay.year !== 'undefined') {
+            return self.calendar.theDay.year + '.' + self.calendar.theDay.month + '.' + self.calendar.theDay.day
+          } else {
+            return ''
+          }
+        }
+      }
+    },
+
+    methods: {
+
+      /**region 左侧事件*/
+      //获取日历数据
+      getCalendar: function () {
+        var self = this
+        self.calendar = {
+          "currentDay": {"year": "2020", "month": "01", "day": "19"},
+          "theDay": {"year": "2020", "month": "01", "day": "19"},
+          "nextMonth": {"year": "2020", "month": "02", "day": "19"},
+          "lastMonth": {"year": "2019", "month": "12", "day": "19"},
+          "calendar": {
+            "weekdays": ["日", "一", "二", "三", "四", "五", "六"],
+            "days": [
+              [
+                {"day_number": "", "has_todos": false, "is_today": false},
+                {"day_number": "", "has_todos": false, "is_today": false},
+                {"day_number": "", "has_todos": false, "is_today": false},
+                {"day_number": 1, "has_todos": true, "is_today": false},
+                {"day_number": 2, "has_todos": true, "is_today": false},
+                {"day_number": 3, "has_todos": true, "is_today": false},
+                {"day_number": 4, "has_todos": true, "is_today": false}
+              ],
+              [
+                {"day_number": 5, "has_todos": true, "is_today": false},
+                {"day_number": 6, "has_todos": true, "is_today": false},
+                {"day_number": 7, "has_todos": false, "is_today": false},
+                {"day_number": 8, "has_todos": true, "is_today": false},
+                {"day_number": 9, "has_todos": true, "is_today": false},
+                {"day_number": 10, "has_todos": true, "is_today": false},
+                {"day_number": 11, "has_todos": false, "is_today": false}
+              ],
+              [
+                {"day_number": 12, "has_todos": true, "is_today": false},
+                {"day_number": 13, "has_todos": true, "is_today": false},
+                {"day_number": 14, "has_todos": true, "is_today": false},
+                {"day_number": 15, "has_todos": false, "is_today": false},
+                {"day_number": 16, "has_todos": false, "is_today": false},
+                {"day_number": 17, "has_todos": true, "is_today": false},
+                {"day_number": 18, "has_todos": false, "is_today": false}
+              ],
+              [
+                {"day_number": 19, "has_todos": false, "is_today": true},
+                {"day_number": 20, "has_todos": false, "is_today": false},
+                {"day_number": 21, "has_todos": false, "is_today": false},
+                {"day_number": 22, "has_todos": true, "is_today": false},
+                {"day_number": 23, "has_todos": true, "is_today": false},
+                {"day_number": 24, "has_todos": true, "is_today": false},
+                {"day_number": 25, "has_todos": true, "is_today": false}
+              ],
+              [
+                {"day_number": 26, "has_todos": false, "is_today": false},
+                {"day_number": 27, "has_todos": false, "is_today": false},
+                {"day_number": 28, "has_todos": false, "is_today": false},
+                {"day_number": 29, "has_todos": false, "is_today": false},
+                {"day_number": 30, "has_todos": true, "is_today": false},
+                {"day_number": 31, "has_todos": true, "is_today": false}
+              ]
+            ]
+          }
+        }
+        self.getTableData()
+      },
+      //点击左侧日期
+      queryDay: function (event) {
+        var self = this
+        var el = event.target
+        self.calendarQuery.year = $(el).attr('data-year')
+        self.calendarQuery.month = $(el).attr('data-month')
+        self.calendarQuery.day = $(el).attr('data-day')
+        self.tableQuery.year = $(el).attr('data-year')
+        self.tableQuery.month = $(el).attr('data-month')
+        self.tableQuery.day = $(el).attr('data-day')
+        self.tableQuery.query_type = 'calendar'
+        self.getCalendar()
+      },
+      //点击左侧下方统计
+      changeCalendarMark: function (type) {
+        this.tableQuery.mark = type
+        this.getTableData()
+      },
+      /**endregion*/
+
+      /**region 右侧事件*/
+      //获取右侧表格数据
+      getTableData: function () {
+        var self = this
+        self.tableData.total = 800
+        self.tableData.list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+      },
+
+      //表格上方tab切换
+      changeTab: function (tab) {
+        var self = this;
+        self.tableQuery.type = tab.value;
+        self.getTableData()
+      },
+      /**endregion*/
+    }
+  });
+</script>

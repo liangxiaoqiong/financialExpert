@@ -1,0 +1,109 @@
+<!-- template 表格下分页-->
+<style>
+  .table-page {
+    margin: 14px 0;
+  }
+  .el-pagination button,
+  .el-pagination span:not([class*=suffix]) {
+    font-size: 14px;
+    color: #C3CFFF;
+    height: 36px;
+    line-height: 34px;
+  }
+  .el-pagination .el-pager {
+    display: inline-block;
+  }
+  .el-pagination .el-input__inner,
+  .el-pagination .btn-next,
+  .el-pagination .btn-prev,
+  .el-pagination .el-pager li {
+    border-radius: 0!important;
+    margin: 0!important;
+    background-color: transparent!important;
+    min-width: 41px!important;
+    color: #C3CFFF!important;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0 8px!important;
+    height: 36px;
+    line-height: 34px;
+    border: 3px solid;
+    border-image: linear-gradient(90deg, #0033FF 0%, rgba(0, 51, 255, .2) 100%) 10 10;
+    display: inline-block;
+  }
+  .el-pagination .el-select .el-input {
+    margin: 0 9px;
+  }
+  .el-pagination__jump {
+    margin-left: 0!important;
+  }
+  .el-pagination__jump .el-pagination__editor {
+    margin: 0 9px;
+    width: 57px!important;
+  }
+  .el-pagination__jump .el-pagination__editor .el-input__inner {
+    width: 57px;
+    background: rgba(0, 51, 255, 0.2)!important;
+    height: 36px!important;
+    line-height: 34px!important;
+    border: none;
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background: linear-gradient(90deg, rgba(0, 51, 255, 0.4), rgba(0, 51, 255, 0))!important;
+    border: 2px solid #0033FF!important;
+    color: #00D8FF!important;
+  }
+  .table-page {
+    display: inline-block;
+    float: right;
+  }
+
+  .none-table-data {
+    text-align: center;
+    color: #C3CFFF;
+    padding: 10px;
+  }
+</style>
+<script type="x-template" id="pagination_component">
+  <div v-if="!isNaN(total)">
+    <div class="table-page" v-if="+total > 0">
+      <el-pagination
+          background
+          :page-size="+query.limit"
+          layout="total, prev, pager, next, sizes, jumper"
+          :page-sizes="[10, 20, 30, 40, 50, 100]"
+          :total="+total"
+          prev-text="上一页"
+          next-text="下一页"
+          :current-page="+query.page"
+          @current-change="pageChange" @size-change="limitChange">
+      </el-pagination>
+    </div>
+    <div class="none-table-data" v-else>
+      暂无数据
+    </div>
+  </div>
+</script>
+<script>
+  COMPONENT.PAGINATION_COMPONENT = {
+    template: '#pagination_component',
+    components: {},
+    props: {
+      query: Object,
+      total: [Number, String],
+    },
+    data: function () {
+      return {}
+    },
+    methods: {
+      pageChange: function (page) {
+        this.query.page = page
+        this.$emit('temp-page-event')
+      },
+      limitChange: function (limit) {
+        this.query.limit = limit
+        this.$emit('temp-page-event')
+      }
+    }
+  }
+</script>

@@ -1,0 +1,245 @@
+<!--违规预警-->
+<include file="Public:base"/>
+<body class="iframe-body">
+<div class="iframe-main" id="app" v-cloak="">
+  <div class="flex-between">
+    <div class="diy-tab-nav">
+      <ul>
+        <li v-for="type in timeTypeList"
+            :class="{'active': +query.time_type === +type.value}"
+            @click="changeTimeType(type)" v-if="+type.value !== 5"><a>{{ type.label }}</a></li>
+        <li :class="[(+query.time_type === +type.value ? 'active' : ''), (isShowRange ? 'show-layer' : '')]"
+            class="has-layer" v-else>
+          <a @click="isShowRange = !isShowRange">其他时间<i class="el-icon-arrow-down"></i></a>
+          <div class="layer-box">
+            <datetime-range-picker :info="query" :param="['order_time_min', 'order_time_max']"></datetime-range-picker>
+            <button type="button" class="diybtn-primary" @click="changeTimeType(type)">确定</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <!--:popper-append-to-body="false",解决zoom，导致弹框位置bug-->
+      <el-select class="diy-select" style="width: 198px" placeholder="请选择预警类型"
+                 v-model="query.warn_type_id"
+                 :popper-append-to-body="false">
+        <el-option value="" label="全部预警类型"></el-option>
+        <el-option v-for="(option, index) in warnTypeList" :value="option.warn_type_id" :key="index" :label="option.label"></el-option>
+      </el-select>
+    </div>
+  </div>
+  <div class="flex-between mt-20">
+    <div class="diy-border has-background">
+      {{ timeTypeText}} > {{ warnTypeText }}
+    </div>
+    <div style="width: 198px">
+      <a class="diy-border has-background" style="padding-right: 8px" @click="isShowStatistic = !isShowStatistic">
+        <template v-if="isShowStatistic"><i class="el-icon-arrow-up"></i>收起统计数据</template>
+        <template v-else><i class="el-icon-arrow-down"></i>展开统计数据</template>
+      </a>
+    </div>
+  </div>
+  <div class="list-row-box flex-between">
+    <div class="list-row6">
+      <a><h1 class="color-primary">80</h1><p>工服安全</p></a>
+      <a><h1 class="color-warn">80</h1><p>吊塔作业</p></a>
+      <a><h1 class="color-purple">80</h1><p>电焊作业</p></a>
+      <a><h1 class="color-blue">80</h1><p>钢筋作业</p></a>
+      <a><h1 class="color-green">80</h1><p>高空作业</p></a>
+      <a><h1 class="color-red">80</h1><p>违规闯入</p></a>
+    </div>
+    <div class="box-right flex-left">
+      <p>预警最多次数设备:设备名称1</p>
+      <p>预警最少次数设备:设备名称1</p>
+    </div>
+  </div>
+  <div class="search-content">
+    <ul class="search-list">
+      <li>
+        <label>预警编号</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>预警位置</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>设备名称</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>预警内容</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>责任人</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>联系电话</label>
+        <input type="text" class="s-param">
+      </li>
+    </ul>
+    <div class="search-btn">
+      <a class="diybtn-primary" @click="getTableData({page: 1})">筛选</a>
+    </div>
+  </div>
+  <div>
+    <table class="diy-table">
+      <thead>
+      <tr>
+        <th>设置</th>
+        <th>预警编号</th>
+        <th>预警时间</th>
+        <th>预警类型</th>
+        <th>预警位置</th>
+        <th>设备名称</th>
+        <th>预警内容</th>
+        <th>责任人</th>
+        <th>联系电话</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--循环表格 start-->
+      <tr v-for="list in tableData.list" @click="showInfoLayer">
+        <td>1</td>
+        <td>0123456789</td>
+        <td>2020-08-01 12:15:00</td>
+        <td>工服安全</td>
+        <td>工地报警的设备地址</td>
+        <td>设备名称</td>
+        <td><span class="color-red">预警内容</span></td>
+        <td>张三</td>
+        <td>15906060608</td>
+        <td class="table-action">
+          <a>查看</a>
+        </td>
+      </tr>
+      <!--循环表格 end-->
+      </tbody>
+    </table>
+    <!--region 分页-->
+    <pagination
+        :query="query"
+        :total="tableData.total"
+        @temp-page-event="getTableData"></pagination>
+    <!--endregion-->
+  </div>
+</div>
+</body>
+<include file="Public/components/date_picker/datetime_range_picker"/>
+<include file="Public/components/pagination" />
+<script>
+  var vm = new Vue ({
+    el: '#app',
+    components: {
+      'pagination': COMPONENT.PAGINATION_COMPONENT,
+      'datetime-range-picker': COMPONENT.DATETIME_RANGE_PICKER
+    },
+    data: function () {
+      return {
+        timeTypeList: [
+          {value: 0, label: '全部', to_time_type: ''},
+          {value: 1, label: '今日', to_time_type: 1},
+          {value: 2, label: '昨日', to_time_type: -1},
+          {value: 3, label: '本月', to_time_type: 1001},
+          {value: 4, label: '上个月', to_time_type: 1002},
+          {value: 5, label: '其他时间'},
+        ],
+        isShowRange: false, //是否展开显示其他时间弹框
+        isShowStatistic: true,//是否显示统计数据
+        warnTypeList: [
+          {warn_type_id: 1, label: '类型1'}, {warn_type_id: 2, label: '类型2'},
+        ], //预警类型列表
+        query: {
+          page: 1,
+          limit: 12,
+          time_type: 0,//0-全部，1-今日，2-昨日，3-本月，4-上个月，5-其他
+          warn_type_id: '', //预警类型id，''-全部
+          order_time_min: '', //时间：开始
+          order_time_max: '', //时间：结束
+        },
+        tableData: {
+          total: '',
+          list: [],
+        },
+      }
+    },
+    computed: {
+      //选择的时间
+      timeTypeText: function () {
+        var self = this
+        var text = ''
+        if (+self.query.time_type === 5) {
+          text = self.query.order_time_min + '~' + self.query.order_time_max
+        } else {
+          self.timeTypeList.forEach(function (value) {
+            if (+self.query.time_type === +value.value) {
+              text = value.label
+            }
+          })
+        }
+        return text
+      },
+      //选择的预警类型
+      warnTypeText: function () {
+        var self = this
+        var text = ''
+        if (self.query.warn_type_id === '') {
+          text = '全部'
+        } else {
+          self.warnTypeList.forEach(function (value) {
+            if (+self.query.warn_type_id === +value.warn_type_id) {
+              text = value.label
+            }
+          })
+        }
+        return text
+      }
+    },
+    mounted: function () {
+      this.getTableData()
+    },
+    methods: {
+      //切换时间类型
+      changeTimeType: function (time) {
+        this.query.time_type = time.value
+        this.isShowRange = false
+        if (+time.value === 0) {
+          this.query.order_time_min = '';
+          this.query.order_time_max = '';
+        } else {
+          if (+time.value !== 5) {
+            this.query.order_time_min = publicObj.dayToTime(time.to_time_type)[0]
+            this.query.order_time_max = publicObj.dayToTime(time.to_time_type)[1]
+          }
+        }
+        this.page = 1
+        this.getTableData()
+      },
+      //获取表格数据
+      getTableData: function (current) {
+        var self = this
+        if (typeof current !== 'undefined') {
+          if (typeof current.page !== 'undefined') {
+            self.query.page = current.page
+          }
+        }
+        self.tableData.total = 800
+        self.tableData.list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+        console.log('获取表格数据')
+      },
+      //右滑显示详情抽屉
+      showInfoLayer: function () {
+        var self = this
+        self.$nextTick(function () {
+          publicObj.layerDialog({title: '预警详情', el: '/admin.php?s=/Index/warnInfo', direction: 'right'}, function (index) {
+            console.log('关闭弹框后的回调')
+          })
+          event.stopPropagation()
+        })
+      }
+    }
+  });
+</script>

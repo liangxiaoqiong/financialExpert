@@ -1,0 +1,70 @@
+<!--修改密码弹框-->
+<!-- template -->
+<script type="x-template" id="pwd_layer">
+  <!--region 模版-->
+  <div class="scroll-box" id="pwd-layer" style="display: none;">
+    <div class="form-row">
+      <p class="row-t">旧密码</p>
+      <input type="password" class="layui-input row-div" placeholder="填写旧密码" v-model="info.old_pwd">
+    </div>
+    <div class="form-row">
+      <p class="row-t">新密码</p>
+      <input type="password" class="layui-input row-div" placeholder="填写新密码" v-model="info.new_pwd">
+    </div>
+    <div class="form-row">
+      <p class="row-t">确认密码</p>
+      <input type="password" class="layui-input row-div" placeholder="填写确认密码" v-model="info.confirm_pwd">
+    </div>
+  </div>
+  <!--endregion-->
+</script>
+
+<!-- JS -->
+<script>
+  COMPONENT.PWD_LAYER = {
+    template: '#pwd_layer',
+    props: {},
+    computed: {},
+    mounted: function () {
+    },
+    data: function () {
+      return {
+        info: {
+          old_pwd: '',//旧密码
+          new_pwd: '',//新密码
+          confirm_pwd: '',//确认密码
+        }
+      }
+    },
+    methods: {
+      init: function () {
+        this.showLayer()
+      },
+      showLayer: function () {
+        var self = this
+        self.$nextTick(function () {
+          publicObj.layerConfirm({
+            title: '修改登录密码',
+            area: ['500px', ''],
+            offset: ['0', 'calc(50% - 250px)'],
+            el: $('#pwd-layer'),
+            btn: ['确认修改']
+          }, function (layeo) {
+            self.submit(layeo)
+          })
+        })
+      },
+      submit: function (layeo) {
+        var self = this
+        var verifyRule = [
+          { key: 'old_pwd', verify_type: 'required', error_text: '请输入旧密码'},
+          { key: 'new_pwd', verify_type: 'required', error_text: '请输入新密码'},
+          { key: 'confirm_pwd', verify_type: 'equalTo', error_text: '两次密码输入不一致', equal_val: 'new_pwd'},
+        ]
+        if (!publicObj.verifyForm(verifyRule, self.info)) return false
+        layer.close(layeo)
+      }
+    },
+    directives: {}
+  }
+</script>

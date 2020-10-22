@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>登录</title>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/adminSmart/css/public.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/adminSmart/css/login.css" />
+</head>
+<body>
+<div id="app" class="transform-parent" v-cloak="" :style="'height:'+pageHeight+'px'">
+  <div id="transform-box" class="login-page flex-row">
+    <div class="login-title"></div>
+    <div class="box-form">
+    <div class="box-title"></div>
+    <ul class="form-group">
+      <li>
+        <div class="form-item">
+          <i class="diyimg-account"></i>
+          <div class="input-control">
+            <input type="text" v-model="query.name" placeholder="智能工地登录账号">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="form-item">
+          <i class="diyimg-pwd"></i>
+          <div class="input-control">
+            <input type="password" v-model="query.password" placeholder="智慧工地登录密码">
+          </div>
+        </div>
+      </li>
+      <li class="form-img-code">
+        <div class="form-item">
+          <i class="diyimg-code"></i>
+          <div class="input-control">
+            <input type="text" v-model="query.code" placeholder="请输入图形验证码">
+          </div>
+          <img src="__PUBLIC__/adminSmart/images/cs_img/img_code.png">
+        </div>
+      </li>
+    </ul>
+    <div class="form-sub">
+      <button type="button" @click="login"></button>
+    </div>
+
+    <div>
+      <label class="diy-checkbox">
+        <input type="checkbox" value="1" checked>
+        <font>下次自动登录</font>
+      </label>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/layer/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/vue-2.x/vue-2.6.11.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/js/publicObj.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/js/responsiveLayout.js"></script>
+<script>
+  var vm = new Vue ({
+    el: '#app',
+    data: function () {
+      return {
+        pageHeight: 1920,
+        query: {
+          name: '',
+          password: '',
+          code: '',
+        }
+      }
+    },
+    methods: {
+      login: function () {
+        var self = this
+        var verifyRule = [
+          { key: 'name', verify_type: 'required', error_text: '请输入智能工地登录账号'},
+          { key: 'password', verify_type: 'required', error_text: '请输入智慧工地登录密码'},
+          { key: 'code', verify_type: 'required', error_text: '请输入图形验证码'},
+        ]
+        if (publicObj.verifyForm(verifyRule, self.query)) {
+          publicObj.layerMsg('登录成功', {icon: 1}, function (index) {
+            window.location.href = '/admin.php/Index/index'
+          })
+        }
+      }
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!--监控中心-->
+<include file="Public:base"/>
+<body class="iframe-body monitor-index">
+<div class="iframe-main" id="app" v-cloak="">
+
+</div>
+</body>
+<!-- 加载 物可视SDK-->
+<script type="text/javascript" src="https://iotviz2.cdn.bcebos.com/bin/prod/sdk/bdiotvizplayer.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+
+      }
+    },
+    mounted: function () {
+      this.getChartData()
+    },
+    methods: {
+      getChartData: function () {
+        var self = this
+        self.$nextTick(function () {
+          const bdIotVizPlayer = window.BDIotVizPlayer;
+          const container = document.getElementById('app');
+          const myDashboard = bdIotVizPlayer({
+            containerElement: container,
+            dashboardId: '5f8fac5388927c000e120d4a',
+            fillMode: 'none', // <-- Optional, Possible value: 'none', 'contain', 'cover', 'responsive'
+            token: {
+              type: 'embedded', // <-- Must be 'embedded'
+              value: '5ca1c412d5ab119307ae2b6ea3a0cb99' // <-- Access Token for current dashboard
+            },
+            customizeLogo: { // <-- Customize Logo Info
+              enable: false,
+              sign: '',
+              loadingImg: '',
+              loadingMsg: ''
+            }
+          });
+          myDashboard.getDashboardConfig().then(function(config){
+            console.log(config); // <--- Current Dashboard Config
+          });
+          // 'myDashboard' exposes the API to the dashboard loaded
+          // refer to API doc for complete API description
+        })
+      }
+
+    }
+  })
+</script>

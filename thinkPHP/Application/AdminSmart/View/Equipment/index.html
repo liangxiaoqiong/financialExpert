@@ -1,0 +1,151 @@
+<!--设备管理-->
+<include file="Public:base"/>
+<body class="iframe-body">
+<div class="iframe-main" id="app" v-cloak="">
+  <div class="search-content">
+    <ul class="search-list">
+      <li>
+        <el-select class="diy-select" v-model="query.warn_type_id" placeholder="请选择预警类型" :popper-append-to-body="false">
+          <el-option value="" label="全部预警类型"></el-option>
+          <el-option value="1" label="类型1"></el-option>
+          <el-option value="2" label="类型2"></el-option>
+        </el-select>
+      </li>
+      <li>
+        <el-select class="diy-select" v-model="query.sb_type_id" placeholder="全部设备状态" :popper-append-to-body="false">
+          <el-option value="" label="全部设备状态"></el-option>
+          <el-option value="1" label="设备状态1"></el-option>
+          <el-option value="2" label="设备状态2"></el-option>
+        </el-select>
+      </li>
+      <li>
+        <label>设备名称</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>设备位置</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>责任人</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>联系电话</label>
+        <input type="text" class="s-param">
+      </li>
+      <li>
+        <label>备注</label>
+        <input type="text" class="s-param">
+      </li>
+    </ul>
+    <div class="search-btn">
+      <a class="diybtn-primary" @click="getTableData({page: 1})">筛选</a>
+      <a class="diybtn-primary" @click="showInfoLayer"><i>+</i> 新增设备</a>
+    </div>
+  </div>
+  <div>
+    <table class="diy-table">
+      <thead>
+      <tr>
+        <th>设置</th>
+        <th>设备编号</th>
+        <th>设备名称</th>
+        <th>预警类型</th>
+        <th>预警位置</th>
+        <th>责任人</th>
+        <th>联系电话</th>
+        <th>备注</th>
+        <th class="t-right">创建时间</th>
+        <th class="t-right">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--循环表格 start-->
+      <tr v-for="(list, index) in tableData.list">
+        <td>
+          <template v-if="index === 2"><span class="color-red">已停用</span></template>
+          <template v-else>{{ index }}</template>
+        </td>
+        <td>0123456789</td>
+        <td>设备名称</td>
+        <td>工服安全</td>
+        <td>工地报警的设备地址</td>
+        <td>张三</td>
+        <td>15906060608</td>
+        <td>自定义备注</td>
+        <td class="t-right">2020-08-01 12:15:00</td>
+        <td class="table-action t-right">
+          <a @click="showInfoLayer(list)">编辑</a>
+          <a @click="delEquipment(list)">删除</a>
+        </td>
+      </tr>
+      <!--循环表格 end-->
+      </tbody>
+    </table>
+    <!--region 分页-->
+    <pagination
+        :query="query"
+        :total="tableData.total"
+        @temp-page-event="getTableData"></pagination>
+    <!--endregion-->
+  </div>
+
+  <info-layer ref="infoLayer"></info-layer>
+</div>
+</body>
+<include file="Public/components/date_picker/datetime_range_picker"/>
+<include file="Public/components/pagination" />
+<include file="Equipment/components/info_layer" />
+<script>
+  var vm = new Vue ({
+    el: '#app',
+    components: {
+      'pagination': COMPONENT.PAGINATION_COMPONENT,
+      'info-layer': COMPONENT.EQUIPMENT_INFO_LAYER
+    },
+    data: function () {
+      return {
+        query: {
+          page: 1,
+          limit: 12,
+          warn_type_id: '', //预警类型id，''-全部
+          sb_type_id: '', //设备类型id，''-全部
+        },
+        tableData: {
+          total: '',
+          list: [],
+        },
+      }
+    },
+    mounted: function () {
+      this.getTableData()
+    },
+    methods: {
+      //获取表格数据
+      getTableData: function (current) {
+        var self = this
+        if (typeof current !== 'undefined') {
+          if (typeof current.page !== 'undefined') {
+            self.query.page = current.page
+          }
+        }
+        self.tableData.total = 800
+        self.tableData.list = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}]
+        console.log('获取表格数据')
+      },
+      //新增、编辑弹框
+      showInfoLayer: function (item) {
+        var self = this
+        self.$refs.infoLayer.init(item)
+      },
+      //删除
+      delEquipment: function (item) {
+        var self = this
+        publicObj.confirmDel(function (index) {
+          parent.layer.close(index)
+        }, {title: '确定删除该设备吗？'})
+      }
+    }
+  });
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>智慧工地Ai系统</title>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/common/plug-ins/element-ui/2.13.2/theme-chalk/index.css"/>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/adminSmart/css/public.css"/>
+</head>
+<body>
+<include file="Public:ieTip"/>
+<div id="app" class="transform-parent" :style="'height:'+pageHeight+'px'" v-cloak="">
+<div id="transform-box">
+  <div class="main-top">
+    <div class="main-top-box diybtn-bimg">
+      <div class="top-left">
+        <img src="__PUBLIC__/adminSmart/images/common/logo.png" height="43">
+      </div>
+      <div class="top-menu">
+        <img src="__PUBLIC__/adminSmart/images/icon_img/home_top_strleft.png" height="34">
+        <div id="main-nav" class="main-nav diy-tab">
+          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="changeMenu">
+            <el-menu-item v-for="menu in menuList" :index="menu.index">
+              <a :href="menu.url" target="mainframe">{{ menu.title }}</a>
+            </el-menu-item>
+          </el-menu>
+        </div>
+        <img src="__PUBLIC__/adminSmart/images/icon_img/home_top_strleft.png" height="34">
+      </div>
+      <div class="top-right flex-right">
+        <span class="time">2020/08/21 12:16:31</span>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <iframe id="mainframe" name="mainframe" frameborder="0" src="{:U('Index/main')}" style="overflow-x: hidden;"></iframe>
+  </div>
+</div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/layer/layer.js">/*该layer主要用于子iframe调用parent.layer.*/</script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/vue-2.x/vue-2.6.11.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/plug-ins/element-ui/2.13.2/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/js/publicObj.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/common/js/responsiveLayout.js"></script>
+<script type="text/javascript" language="javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        pageHeight: 1920,
+        activeIndex: '1',//选中的菜单index
+        menuList: [
+          {index: '1', title: '首页概况', url: '{:U("Index/main")}'},
+          {index: '2', title: '监控中心', url: '/admin.php?s=/Index/monitor'},
+          {index: '3', title: '违规预警', url: '/admin.php?s=/Index/violationWarn'},
+          {index: '4', title: '设备管理', url: '/admin.php?s=/Index/equipment'},
+          {index: '5', title: '系统管理', url: '/admin.php?s=/Index/system'},
+        ]
+      }
+    },
+    methods: {
+      changeMenu: function (key, keyPath) {
+        var self = this
+        self.$nextTick(function () {
+          self.activeIndex = key
+          var iframeUrl = ''
+          self.menuList.forEach(function (value) {
+            if (value.index === key) {
+              iframeUrl = value.url
+            }
+          })
+          $('#mainframe').attr('src', iframeUrl)
+        })
+      }
+    }
+  })
+</script>
+</html>

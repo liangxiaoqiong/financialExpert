@@ -1,0 +1,193 @@
+
+.main-calendar{
+  display: inline-block;
+  width: 100%;
+}
+/*region 左侧*/
+.main-calendar .calendar-left{
+  height: 100%;
+  width: 400px;
+  display: inline-block;float: left;vertical-align: middle;
+}
+.calendar-left .calendar-box {
+  width: 400px;
+  background: rgba(0, 51, 255, 0.2);
+  border: 2px solid;
+  border-image: linear-gradient(0deg, #0033FF, #00D8FF, #0033FF) 10 10;
+  border-image: -o-linear-gradient(-90deg, #0033FF, #00D8FF, #0033FF) 10 10;
+  border-image: -ms-linear-gradient(-90deg, #0033FF, #00D8FF, #0033FF) 10 10;
+  border-image: -moz-linear-gradient(-90deg, #0033FF, #00D8FF, #0033FF) 10 10;
+  border-image: -webkit-linear-gradient(-90deg, #0033FF, #00D8FF, #0033FF) 10 10;
+  box-shadow: inset 0px 0px 43px 0px rgba(0, 34, 255, 0.69);
+  margin-top: 20px;
+}
+.calendar-date .calendar-top {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  background: linear-gradient(90deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.6), rgba(0, 51, 255, 0.2));
+  background: -o-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.6), rgba(0, 51, 255, 0.2));
+  background: -ms-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.6), rgba(0, 51, 255, 0.2));
+  background: -moz-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.6), rgba(0, 51, 255, 0.2));
+  background: -webkit-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.6), rgba(0, 51, 255, 0.2));
+}
+.calendar-date .calendar-top>span{
+  color: #DEEFFF;
+  font-weight: bold;
+  font-size: 20px;
+}
+.calendar-date .calendar-top a {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 216, 255, 0.2);
+  border: 2px solid #00D8FF;
+}
+.calendar-date .calendar-top a i {
+  font-size: 17px;
+  color: #00D8FF;
+  font-weight: bold;
+}
+.calendar-date .date-container {
+  padding: 10px;
+}
+.calendar-date .date-container table{border-collapse: collapse;border-spacing: 0;
+  width: 100%;
+  border: none;
+}
+.date-container .day th{
+  font-weight: normal;
+  height: 50px;
+  color: #DEEFFF;
+  font-size: 16px;
+  background: rgba(0, 51, 255, 0.2);
+  border-bottom: 5px solid transparent;
+}
+.date-container .day td{
+  width: 50px;height: 50px;  text-align: center;  position: relative;  cursor: pointer;display: table-cell;
+  border: 2.5px solid transparent;
+}
+.date-container .day tr td:nth-child(1) {
+  border-left: 0;
+}
+.date-container .day tr td:last-child {
+  border-right: 0;
+}
+.date-container .day td span{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.2));
+  background: -o-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.2));
+  background: -ms-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.2));
+  background: -moz-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.2));
+  background: -webkit-linear-gradient(0deg, rgba(0, 51, 255, 0.2), rgba(0, 51, 255, 0.2));
+  color: #DEEFFF;
+  font-size: 16px;
+}
+.date-container .day td span.active{
+  background: rgba(255, 0, 96, 0.2);
+  border: 2px solid #FF0060;
+}
+.date-container .day td span:hover {
+  background: rgba(0, 216, 255, 0.2);
+  border: 2px solid #00D8FF;
+}
+.date-container .day td .todos{position: absolute;width: 4px;height: 4px;display: inline-block;content: '';border-radius: 100%;top:0;background-color: #e91e63;right: 4px;
+  z-index: 2;
+}
+.calendar-stats{
+  margin-top: 7.5px;
+  padding: 0 10px;
+}
+.calendar-stats li {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 30px 0 25px;
+  height: 95px;
+  border: 3px solid;
+  border-right: none;
+  margin-bottom: 10px;
+}
+.calendar-stats li label {
+  font-size: 20px;
+  font-weight: bold;
+}
+.calendar-stats li label i {
+  margin-right: 21px;
+}
+.calendar-stats li span {
+  font-size: 30px;
+  font-weight: bold;
+}
+.calendar-stats li.stats-week {
+  border-image: -webkit-linear-gradient(0deg, #FF0060 0%, rgba(255, 0, 96, 0) 100%) 10 10;
+  border-image: -moz-linear-gradient(0deg, #FF0060 0%, rgba(255, 0, 96, 0) 100%) 10 10;
+  border-image: -o-linear-gradient(0deg, #FF0060 0%, rgba(255, 0, 96, 0) 100%) 10 10;
+  border-image: linear-gradient(90deg, #FF0060 0%, rgba(255, 0, 96, 0) 100%) 10 10;
+  background: linear-gradient(90deg, rgba(255, 0, 96, 0.2) 0%, rgba(255, 0, 96, 0.1) 50%, rgba(255, 0, 96, 0) 100%);
+  background: -o-linear-gradient(0deg, rgba(255, 0, 96, 0.2) 0%, rgba(255, 0, 96, 0.1) 50%, rgba(255, 0, 96, 0) 100%);
+  background: -ms-linear-gradient(0deg, rgba(255, 0, 96, 0.2) 0%, rgba(255, 0, 96, 0.1) 50%, rgba(255, 0, 96, 0) 100%);
+  background: -moz-linear-gradient(0deg, rgba(255, 0, 96, 0.2) 0%, rgba(255, 0, 96, 0.1) 50%, rgba(255, 0, 96, 0) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(255, 0, 96, 0.2) 0%, rgba(255, 0, 96, 0.1) 50%, rgba(255, 0, 96, 0) 100%);
+}
+.calendar-stats li.stats-week label,
+.calendar-stats li.stats-week span {
+  color: #FF0060;
+}
+
+.calendar-stats li.stats-month {
+  border-image: -webkit-linear-gradient(0deg, #FF9966 0%, rgba(255, 153, 102, 0) 100%) 10 10;
+  border-image: -moz-linear-gradient(0deg, #FF9966 0%, rgba(255, 153, 102, 0) 100%) 10 10;
+  border-image: -o-linear-gradient(0deg, #FF9966 0%, rgba(255, 153, 102, 0) 100%) 10 10;
+  border-image: linear-gradient(90deg, #FF9966 0%, rgba(255, 153, 102, 0) 100%) 10 10;
+  background: linear-gradient(90deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 153, 102, 0.1) 50%, rgba(255, 153, 102, 0) 100%);
+  background: -o-linear-gradient(0deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 153, 102, 0.1) 50%, rgba(255, 153, 102, 0) 100%);
+  background: -ms-linear-gradient(0deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 153, 102, 0.1) 50%, rgba(255, 153, 102, 0) 100%);
+  background: -moz-linear-gradient(0deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 153, 102, 0.1) 50%, rgba(255, 153, 102, 0) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 153, 102, 0.1) 50%, rgba(255, 153, 102, 0) 100%);
+}
+.calendar-stats li.stats-month label,
+.calendar-stats li.stats-month span {
+  color: #FF9966;
+}
+
+.calendar-stats li.stats-year {
+  border-image: -webkit-linear-gradient(0deg, #E4D346 0%, rgba(228, 211, 70, 0) 100%) 10 10;
+  border-image: -moz-linear-gradient(0deg, #E4D346 0%, rgba(228, 211, 70, 0) 100%) 10 10;
+  border-image: -o-linear-gradient(0deg, #E4D346 0%, rgba(228, 211, 70, 0) 100%) 10 10;
+  border-image: linear-gradient(90deg, #E4D346 0%, rgba(228, 211, 70, 0) 100%) 10 10;
+  background: linear-gradient(90deg, rgba(228, 211, 70, 0.2) 0%, rgba(228, 211, 70, 0.1) 50%, rgba(228, 211, 70, 0) 100%);
+  background: -o-linear-gradient(0deg, rgba(228, 211, 70, 0.2) 0%, rgba(228, 211, 70, 0.1) 50%, rgba(228, 211, 70, 0) 100%);
+  background: -ms-linear-gradient(0deg, rgba(228, 211, 70, 0.2) 0%, rgba(228, 211, 70, 0.1) 50%, rgba(228, 211, 70, 0) 100%);
+  background: -moz-linear-gradient(0deg, rgba(228, 211, 70, 0.2) 0%, rgba(228, 211, 70, 0.1) 50%, rgba(228, 211, 70, 0) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(228, 211, 70, 0.2) 0%, rgba(228, 211, 70, 0.1) 50%, rgba(228, 211, 70, 0) 100%);
+}
+.calendar-stats li.stats-year label,
+.calendar-stats li.stats-year span {
+  color: #E4D346;
+}
+/*endregion*/
+
+/*region 右侧*/
+.main-calendar .calendar-right{
+  display: inline-block;
+  width: calc(100% - 420px);
+  float: right;
+}
+.main-calendar .diy-tab{
+  margin: 15px 0 23px 0;
+}
+/*endregion*/
