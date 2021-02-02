@@ -41,6 +41,14 @@
           });
           myDashboard.getDashboardConfig().then(function(config){
             console.log(config); // <--- Current Dashboard Config
+            console.log('getDashboardConfig')
+            var dataList = config.widgets;
+            // 寻找并赋值
+            dataList.forEach(function (value) {
+              if (value.id === '3d1e5e07-bbaa-425f-8865-7e7a8abed642') {
+                value.name = '公服安全啊啊啊啊啊';
+              }
+            });
           });
           // 'myDashboard' exposes the API to the dashboard loaded
           // refer to API doc for complete API description
